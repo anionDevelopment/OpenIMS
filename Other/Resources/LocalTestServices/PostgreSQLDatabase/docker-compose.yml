@@ -1,0 +1,38 @@
+services:
+
+  openims_database:
+    container_name: "openims_database"
+    image: ${image_postgresql}
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pa55w0rd
+      POSTGRES_DB: OpenIMSDatabase
+      PGDATA: /var/lib/postgresql/data
+    expose:
+      - "5432"
+    volumes:
+      - ./Volumes/OpenIMSPostgreSQLData:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -p 5432 -U user -d OpenIMSDatabase || exit 1"]
+      interval: 2s
+      timeout: 2s
+      retries: 20
+      start_period: 5s
+    networks:
+      - openims_net
+    command: >
+      postgres -c log_connections=on -c log_disconnections=on
+
+  openims_database_administration:
+    image: ${image_adminer}
+    container_name: "openims_database_administration"
+    expose:
+      - "8080"
+    depends_on:
+      - openims_database
+    networks:
+      - openims_net
+
+networks:
+  openims_net:
+    external: true

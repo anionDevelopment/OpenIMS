@@ -1,0 +1,17 @@
+services:
+  openims_reverseproxy:
+    image: ${image_nginx}
+    container_name: "openims_reverseproxy"
+    volumes:
+      - "./nginx.conf:/etc/nginx/nginx.conf:ro"
+      - "../../DevelopmentCertificate:/Workspace/Certificates"
+    expose:
+      - "443"
+    networks:
+      - openims_net
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  openims_net:
+    external: true

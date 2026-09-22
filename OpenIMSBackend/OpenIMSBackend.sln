@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11217.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenIMSBackend", "OpenIMSBackend\OpenIMSBackend.csproj", "{4E2B1A67-91C5-4E88-9A31-8F0D2C5B7E10}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenIMSBackendTests", "OpenIMSBackendTests\OpenIMSBackendTests.csproj", "{B1D9C3F2-6A47-4D50-8C2E-19F7A4E6D3B8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2A6E8D14-5C73-4F19-B0A8-D3E9741C6F52}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Any CPU = Development|Any CPU
+		Productive|Any CPU = Productive|Any CPU
+		QualityCheck|Any CPU = QualityCheck|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E2B1A67-91C5-4E88-9A31-8F0D2C5B7E10}.Development|Any CPU.ActiveCfg = Development|Any CPU
+		{4E2B1A67-91C5-4E88-9A31-8F0D2C5B7E10}.Development|Any CPU.Build.0 = Development|Any CPU
+		{4E2B1A67-91C5-4E88-9A31-8F0D2C5B7E10}.Productive|Any CPU.ActiveCfg = Productive|Any CPU
+		{4E2B1A67-91C5-4E88-9A31-8F0D2C5B7E10}.Productive|Any CPU.Build.0 = Productive|Any CPU
+		{4E2B1A67-91C5-4E88-9A31-8F0D2C5B7E10}.QualityCheck|Any CPU.ActiveCfg = QualityCheck|Any CPU
+		{4E2B1A67-91C5-4E88-9A31-8F0D2C5B7E10}.QualityCheck|Any CPU.Build.0 = QualityCheck|Any CPU
+		{B1D9C3F2-6A47-4D50-8C2E-19F7A4E6D3B8}.Development|Any CPU.ActiveCfg = Development|Any CPU
+		{B1D9C3F2-6A47-4D50-8C2E-19F7A4E6D3B8}.Development|Any CPU.Build.0 = Development|Any CPU
+		{B1D9C3F2-6A47-4D50-8C2E-19F7A4E6D3B8}.Productive|Any CPU.ActiveCfg = Productive|Any CPU
+		{B1D9C3F2-6A47-4D50-8C2E-19F7A4E6D3B8}.Productive|Any CPU.Build.0 = Productive|Any CPU
+		{B1D9C3F2-6A47-4D50-8C2E-19F7A4E6D3B8}.QualityCheck|Any CPU.ActiveCfg = QualityCheck|Any CPU
+		{B1D9C3F2-6A47-4D50-8C2E-19F7A4E6D3B8}.QualityCheck|Any CPU.Build.0 = QualityCheck|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7F3C5E21-0B94-4A6D-9E82-5C1D8A0F4B63}
+	EndGlobalSection
+EndGlobal

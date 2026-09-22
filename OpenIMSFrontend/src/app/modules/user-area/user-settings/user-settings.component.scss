@@ -1,0 +1,12 @@
+
+/* One row per setting: the description on the left, the control which changes it on the right. */
+.setting {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.setting-label {
+  min-width: 12rem;
+}

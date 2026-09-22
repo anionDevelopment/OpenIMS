@@ -1,0 +1,20 @@
+@startuml RuntimeViewQuickTest
+title Runtime-view quick test
+
+actor "User" as user
+note as UserNote
+  The user calls https://openims.test.local:443
+end note
+user .. UserNote
+
+[OpenIMS (:443)] as OpenIMS
+note as OpenIMSNote
+    Started by container-engine (for example docker).
+    The domain can be set using the commandline-parameter "--InitialDomain <domain>".
+    Backend and frontend are running in the container.
+    Transient will be used as persistence.
+end note 
+OpenIMS .. OpenIMSNote
+
+user --> OpenIMS
+@enduml

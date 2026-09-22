@@ -1,0 +1,263 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "OpenIMSFrontend": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "ar": "Other/Resources/Translations/messages.ar.xlf",
+          "cs": "Other/Resources/Translations/messages.cs.xlf",
+          "da": "Other/Resources/Translations/messages.da.xlf",
+          "de": "Other/Resources/Translations/messages.de.xlf",
+          "de-CH": "Other/Resources/Translations/messages.de-CH.xlf",
+          "de-AT": "Other/Resources/Translations/messages.de-AT.xlf",
+          "el": "Other/Resources/Translations/messages.el.xlf",
+          "en-GB": "Other/Resources/Translations/messages.en-GB.xlf",
+          "es": "Other/Resources/Translations/messages.es.xlf",
+          "fa": "Other/Resources/Translations/messages.fa.xlf",
+          "fi": "Other/Resources/Translations/messages.fi.xlf",
+          "fr": "Other/Resources/Translations/messages.fr.xlf",
+          "he": "Other/Resources/Translations/messages.he.xlf",
+          "hi": "Other/Resources/Translations/messages.hi.xlf",
+          "id": "Other/Resources/Translations/messages.id.xlf",
+          "it": "Other/Resources/Translations/messages.it.xlf",
+          "ja": "Other/Resources/Translations/messages.ja.xlf",
+          "ko": "Other/Resources/Translations/messages.ko.xlf",
+          "ms": "Other/Resources/Translations/messages.ms.xlf",
+          "nl": "Other/Resources/Translations/messages.nl.xlf",
+          "ms-SG": "Other/Resources/Translations/messages.ms-SG.xlf",
+          "nb": "Other/Resources/Translations/messages.nb.xlf",
+          "pl": "Other/Resources/Translations/messages.pl.xlf",
+          "pt": "Other/Resources/Translations/messages.pt.xlf",
+          "ru": "Other/Resources/Translations/messages.ru.xlf",
+          "sv": "Other/Resources/Translations/messages.sv.xlf",
+          "th": "Other/Resources/Translations/messages.th.xlf",
+          "ur": "Other/Resources/Translations/messages.ur.xlf",
+          "vi": "Other/Resources/Translations/messages.vi.xlf",
+          "zh": "Other/Resources/Translations/messages.zh.xlf",
+          "af": "Other/Resources/Translations/messages.af.xlf",
+          "ar-DZ": "Other/Resources/Translations/messages.ar-DZ.xlf",
+          "ar-EG": "Other/Resources/Translations/messages.ar-EG.xlf",
+          "ar-LY": "Other/Resources/Translations/messages.ar-LY.xlf",
+          "ar-MA": "Other/Resources/Translations/messages.ar-MA.xlf",
+          "ar-SD": "Other/Resources/Translations/messages.ar-SD.xlf",
+          "ar-TN": "Other/Resources/Translations/messages.ar-TN.xlf",
+          "bn": "Other/Resources/Translations/messages.bn.xlf",
+          "es-AR": "Other/Resources/Translations/messages.es-AR.xlf",
+          "es-CL": "Other/Resources/Translations/messages.es-CL.xlf",
+          "es-CO": "Other/Resources/Translations/messages.es-CO.xlf",
+          "es-CR": "Other/Resources/Translations/messages.es-CR.xlf",
+          "es-DO": "Other/Resources/Translations/messages.es-DO.xlf",
+          "es-EC": "Other/Resources/Translations/messages.es-EC.xlf",
+          "es-MX": "Other/Resources/Translations/messages.es-MX.xlf",
+          "es-VE": "Other/Resources/Translations/messages.es-VE.xlf",
+          "et": "Other/Resources/Translations/messages.et.xlf",
+          "ga": "Other/Resources/Translations/messages.ga.xlf",
+          "hr": "Other/Resources/Translations/messages.hr.xlf",
+          "hu": "Other/Resources/Translations/messages.hu.xlf",
+          "is": "Other/Resources/Translations/messages.is.xlf",
+          "ka": "Other/Resources/Translations/messages.ka.xlf",
+          "kk": "Other/Resources/Translations/messages.kk.xlf",
+          "km": "Other/Resources/Translations/messages.km.xlf",
+          "ky": "Other/Resources/Translations/messages.ky.xlf",
+          "lo": "Other/Resources/Translations/messages.lo.xlf",
+          "lv": "Other/Resources/Translations/messages.lv.xlf",
+          "lt": "Other/Resources/Translations/messages.lt.xlf",
+          "mn": "Other/Resources/Translations/messages.mn.xlf",
+          "my": "Other/Resources/Translations/messages.my.xlf",
+          "ph": "Other/Resources/Translations/messages.ph.xlf",
+          "pt-BR": "Other/Resources/Translations/messages.pt-BR.xlf",
+          "ro": "Other/Resources/Translations/messages.ro.xlf",
+          "tk": "Other/Resources/Translations/messages.tk.xlf",
+          "tl": "Other/Resources/Translations/messages.tl.xlf",
+          "tr": "Other/Resources/Translations/messages.tr.xlf",
+          "uk": "Other/Resources/Translations/messages.uk.xlf"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "outputPath": "Other/Artifacts/BuildResult_WebApplication",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills": [
+              "zone.js",
+              "@angular/localize/init"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "node_modules/@fontsource/roboto/300.css",
+              "node_modules/@fontsource/roboto/400.css",
+              "node_modules/@fontsource/roboto/500.css",
+              "node_modules/@fontsource/material-icons/index.css",
+              "src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "Productive": {
+              "localize": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1.5MB",
+                  "maximumError": "2MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.Productive.ts"
+                }
+              ]
+            },
+            "QualityCheck": {
+              "localize": true,
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.QualityCheck.ts"
+                }
+              ]
+            },
+            "Development": {
+              "localize": true,
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.Development.ts"
+                }
+              ]
+            },
+            "Test": {
+              "aot": false
+            }
+          },
+          "defaultConfiguration": "QualityCheck"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "Productive": {
+              "buildTarget": "OpenIMSFrontend:build:Productive"
+            },
+            "QualityCheck": {
+              "buildTarget": "OpenIMSFrontend:build:QualityCheck"
+            },
+            "Development": {
+              "buildTarget": "OpenIMSFrontend:build:Development"
+            },
+            "options": {}
+          },
+          "defaultConfiguration": "QualityCheck"
+        },
+        "extract-i18n": {
+          "builder": "@angular/build:extract-i18n",
+          "options": {
+            "buildTarget": "OpenIMSFrontend:build:Development",
+            "outputPath": "Other/Resources/Translations",
+            "format": "xlf2",
+            "outFile": "messages.xlf"
+          }
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "configurations": {
+            "Productive": {
+              "buildTarget": "OpenIMSFrontend:build:Productive,Test"
+            },
+            "QualityCheck": {
+              "buildTarget": "OpenIMSFrontend:build:QualityCheck,Test"
+            },
+            "Development": {
+              "buildTarget": "OpenIMSFrontend:build:Development,Test"
+            }
+          },
+          "options": {
+            "runner": "vitest",
+            "runnerConfig": "vitest-base.config.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "coverage": true,
+            "coverageReporters": [
+              "cobertura",
+              "text-summary"
+            ]
+          },
+          "defaultConfiguration": "QualityCheck"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/*.ts",
+              "src/app/**/*.ts",
+              "e2e/**/*.ts"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "type": "component"
+    },
+    "@schematics/angular:directive": {
+      "type": "directive"
+    },
+    "@schematics/angular:service": {
+      "type": "service"
+    },
+    "@schematics/angular:guard": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:interceptor": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:module": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:pipe": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:resolver": {
+      "typeSeparator": "."
+    }
+  }
+}

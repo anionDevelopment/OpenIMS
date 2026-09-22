@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<productinformation xmlns="https://projects.aniondev.de/PublicProjects/Common/ProjectTemplates/-/tree/main/Conventions/RepositoryStructure/CommonProjectStructure">
+  <producttitle>OpenIMS</producttitle>
+  <remoteaddress>https://github.com/anionDevelopment/OpenIMS</remoteaddress>
+  <requiredenvironmentvariables />
+</productinformation>

@@ -1,0 +1,4 @@
+/* The hint uses the error-color of the theme, so it is readable in the light and in the dark color-scheme. */
+.login-failed {
+  color: var(--mat-sys-error);
+}

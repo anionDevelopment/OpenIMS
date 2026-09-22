@@ -1,0 +1,10 @@
+Artifacts
+Resources/TestCoverageBadges/**
+!Resources/TestCoverageBadges/badge_shieldsio_linecoverage_blue.svg
+Reference/obj
+Reference/ReferenceContent/api/**
+Resources/DependentCodeUnits
+Resources/Constants
+Resources/OpenAPIGenerator
+!Reference/ReferenceContent/api/index.md
+Resources/Constants/CurrentTimestamp.*

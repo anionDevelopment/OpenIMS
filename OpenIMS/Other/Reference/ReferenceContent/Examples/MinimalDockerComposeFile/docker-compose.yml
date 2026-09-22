@@ -1,0 +1,29 @@
+services:
+  openims:
+    container_name: openims
+    env_file: Variables.env
+    image: openims:0.1.0
+    ports:
+    - 443:443
+    volumes:
+    - ./Volumes/openims/Data:/Workspace/Data
+    - ./Volumes/openims/Configuration:/Workspace/Configuration
+    - ./Volumes/openims/Logs:/Workspace/Logs
+  openims_database:
+    container_name: openims_database
+    environment:
+      POSTGRES_DB: OpenIMSDatabase
+      POSTGRES_PASSWORD: pa55w0rd
+      POSTGRES_USER: user
+    image: ${image_postgresql}
+    ports:
+    - 5432:5432
+    volumes:
+    - ./Volumes/openims_database/Data:/var/lib/postgresql/data
+  openims_database_administration:
+    container_name: openims_database_administration
+    depends_on:
+    - openims_database
+    image: ${image_adminer}
+    ports:
+    - 8080:8080

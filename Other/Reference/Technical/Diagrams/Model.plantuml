@@ -1,0 +1,46 @@
+@startuml Model
+skinparam defaultFontName "DejaVu Sans"
+title Model of OpenIMS
+
+class User {
+  Id
+  Name
+  PasswordHash
+  EMailAddress
+  UserIsActivated
+  UserIsLocked
+  RegistrationMoment
+}
+
+class Role {
+  Id
+  Name
+}
+
+class AccessToken {
+  Value
+  ExpiredMoment
+}
+
+class UserSetting {
+  Key
+  Value
+}
+
+class Setting {
+  Key
+  Value
+}
+
+User -right-> "*" Role : Roles
+Role --> "*" Role : DirectlyInheritedRoles
+User --> "*" AccessToken : AccessToken
+User --> "*" UserSetting : Settings of this user
+
+note as SettingNote
+  A "Setting" applies to the whole installation,
+  a "UserSetting" belongs to exactly one user.
+end note
+Setting .. SettingNote
+
+@enduml

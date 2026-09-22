@@ -1,0 +1,9 @@
+Other/Resources/CA
+Other/Resources/PlantUML
+Other/Resources/DevelopmentCertificate
+Other/Resources/CycloneDXCLI
+CLAUDE.local.md
+.claude/settings.local.json
+.claude/*.lock
+Other/Logs
+Other/Resources/Artifacts

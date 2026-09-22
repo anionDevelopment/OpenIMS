@@ -1,0 +1,27 @@
+<app-frame-work>
+  <app-admin-area-container>
+    <h2 i18n="@@users">Users</h2>
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th i18n="@@users_col_name">Name</th>
+          @for (role of allRoles; track role) {
+          <th>{{role}}</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of users; track user) {
+        <tr>
+          <td>{{user.name}}</td>
+          @for (role of allRoles; track role) {
+          <td class="role-cell">
+            <input type="checkbox" [checked]="userHasRole(user, role)" (change)="onRoleToggled(user, role, $any($event.target).checked)">
+          </td>
+          }
+        </tr>
+        }
+      </tbody>
+    </table>
+  </app-admin-area-container>
+</app-frame-work>

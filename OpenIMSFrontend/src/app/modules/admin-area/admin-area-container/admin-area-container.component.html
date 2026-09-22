@@ -1,0 +1,20 @@
+<section class="layout">
+  <div class="sidebar">
+    <div class="drawer">
+      <span class="drawer-title" i18n="@@admin_menu_label">Admin-menu:</span>
+      <button mat-button [disabled]="false" (click)="onUserAreaClick()">{{getSiteTitle("user")}}</button>
+      <button mat-button [disabled]="activeSite=='Dashboard'" (click)="onDashboardClick()">{{getSiteTitle("dashboard")}}</button>
+      <button mat-button [disabled]="activeSite=='Users'" (click)="onUsersClick()">{{getSiteTitle("users")}}</button>
+      <button mat-button [disabled]="activeSite=='Settings'" (click)="onSettingsClick()">{{getSiteTitle("settings")}}</button>
+    </div>
+  </div>
+  <div class="body">
+    <div class="header">
+      <h1>{{activeSite}}</h1>
+    </div>
+    <mat-divider></mat-divider>
+    <div>
+      <ng-content></ng-content>
+    </div>
+  </div>
+</section>

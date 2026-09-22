@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" data-diagram-type="CLASS" style="width:775px;height:378px;background:#FFFFFF;" width="775px" height="378px" viewBox="0 0 775 378" zoomAndPan="magnify" preserveAspectRatio="none" contentStyleType="text/css">
+  <defs />
+  <g font-family="sans-serif" lengthAdjust="spacing">
+    <g class="title" data-source-line="2">
+      <text x="312.236" y="22.995" fill="#000" font-size="14" textLength="143.931" font-weight="700" font-family="'DejaVu Sans'">Model of OpenIMS</text>
+    </g>
+    <g class="entity" data-qualified-name="User" id="ent0001" data-source-line="4">
+      <rect x="67.29" y="44.297" width="154.311" height="162.078" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5" />
+      <ellipse cx="124.24" cy="60.297" rx="11" ry="11" fill="#ADD1B2" style="stroke:#181818;stroke-width:1;" />
+      <path d="M127.209,65.938 Q126.631,66.234 125.99,66.375 Q125.35,66.531 124.646,66.531 Q122.146,66.531 120.818,64.891 Q119.506,63.234 119.506,60.109 Q119.506,56.984 120.818,55.328 Q122.146,53.672 124.646,53.672 Q125.35,53.672 125.99,53.828 Q126.646,53.984 127.209,54.281 L127.209,57 Q126.584,56.422 125.99,56.156 Q125.396,55.875 124.771,55.875 Q123.428,55.875 122.74,56.953 Q122.053,58.016 122.053,60.109 Q122.053,62.203 122.74,63.281 Q123.428,64.344 124.771,64.344 Q125.396,64.344 125.99,64.078 Q126.584,63.797 127.209,63.219 L127.209,65.938 Z " fill="#000" />
+      <text x="144.74" y="65.144" fill="#000" font-size="14" textLength="31.91" font-family="'DejaVu Sans'">User</text>
+      <line x1="68.29" y1="76.297" x2="220.601" y2="76.297" style="stroke:#181818;stroke-width:0.5;" />
+      <text x="73.29" y="93.292" fill="#000" font-size="14" textLength="13.016" font-family="'DejaVu Sans'">Id</text>
+      <text x="73.29" y="109.589" fill="#000" font-size="14" textLength="41.303" font-family="'DejaVu Sans'">Name</text>
+      <text x="73.29" y="125.886" fill="#000" font-size="14" textLength="101.541" font-family="'DejaVu Sans'">PasswordHash</text>
+      <text x="73.29" y="142.183" fill="#000" font-size="14" textLength="93.591" font-family="'DejaVu Sans'">EMailAddress</text>
+      <text x="73.29" y="158.479" fill="#000" font-size="14" textLength="109.84" font-family="'DejaVu Sans'">UserIsActivated</text>
+      <text x="73.29" y="174.776" fill="#000" font-size="14" textLength="93.003" font-family="'DejaVu Sans'">UserIsLocked</text>
+      <text x="73.29" y="191.073" fill="#000" font-size="14" textLength="142.311" font-family="'DejaVu Sans'">RegistrationMoment</text>
+      <line x1="68.29" y1="198.375" x2="220.601" y2="198.375" style="stroke:#181818;stroke-width:0.5;" />
+    </g>
+    <g class="entity" data-qualified-name="Role" id="ent0002" data-source-line="14">
+      <rect x="293.04" y="85.037" width="62.796" height="80.594" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5" />
+      <ellipse cx="308.04" cy="101.037" rx="11" ry="11" fill="#ADD1B2" style="stroke:#181818;stroke-width:1;" />
+      <path d="M311.009,106.678 Q310.431,106.974 309.79,107.115 Q309.149,107.271 308.446,107.271 Q305.946,107.271 304.618,105.631 Q303.306,103.974 303.306,100.849 Q303.306,97.724 304.618,96.068 Q305.946,94.412 308.446,94.412 Q309.149,94.412 309.79,94.568 Q310.446,94.724 311.009,95.021 L311.009,97.74 Q310.384,97.162 309.79,96.896 Q309.196,96.615 308.571,96.615 Q307.228,96.615 306.54,97.693 Q305.853,98.756 305.853,100.849 Q305.853,102.943 306.54,104.021 Q307.228,105.084 308.571,105.084 Q309.196,105.084 309.79,104.818 Q310.384,104.537 311.009,103.959 L311.009,106.678 Z " fill="#000" />
+      <text x="322.04" y="105.884" fill="#000" font-size="14" textLength="30.796" font-family="'DejaVu Sans'">Role</text>
+      <line x1="294.04" y1="117.037" x2="354.836" y2="117.037" style="stroke:#181818;stroke-width:0.5;" />
+      <text x="299.04" y="134.032" fill="#000" font-size="14" textLength="13.016" font-family="'DejaVu Sans'">Id</text>
+      <text x="299.04" y="150.329" fill="#000" font-size="14" textLength="41.303" font-family="'DejaVu Sans'">Name</text>
+      <line x1="294.04" y1="157.631" x2="354.836" y2="157.631" style="stroke:#181818;stroke-width:0.5;" />
+    </g>
+    <g class="entity" data-qualified-name="AccessToken" id="ent0003" data-source-line="19">
+      <rect x="7" y="283.377" width="122.884" height="80.594" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5" />
+      <ellipse cx="22" cy="299.377" rx="11" ry="11" fill="#ADD1B2" style="stroke:#181818;stroke-width:1;" />
+      <path d="M24.969,305.018 Q24.391,305.314 23.75,305.455 Q23.109,305.611 22.406,305.611 Q19.906,305.611 18.578,303.971 Q17.266,302.314 17.266,299.189 Q17.266,296.064 18.578,294.408 Q19.906,292.752 22.406,292.752 Q23.109,292.752 23.75,292.908 Q24.406,293.064 24.969,293.361 L24.969,296.08 Q24.344,295.502 23.75,295.236 Q23.156,294.955 22.531,294.955 Q21.188,294.955 20.5,296.033 Q19.813,297.096 19.813,299.189 Q19.813,301.283 20.5,302.361 Q21.188,303.424 22.531,303.424 Q23.156,303.424 23.75,303.158 Q24.344,302.877 24.969,302.299 L24.969,305.018 Z " fill="#000" />
+      <text x="36" y="304.224" fill="#000" font-size="14" textLength="90.884" font-family="'DejaVu Sans'">AccessToken</text>
+      <line x1="8" y1="315.377" x2="128.884" y2="315.377" style="stroke:#181818;stroke-width:0.5;" />
+      <text x="13" y="332.372" fill="#000" font-size="14" textLength="39.532" font-family="'DejaVu Sans'">Value</text>
+      <text x="13" y="348.669" fill="#000" font-size="14" textLength="110.421" font-family="'DejaVu Sans'">ExpiredMoment</text>
+      <line x1="8" y1="355.971" x2="128.884" y2="355.971" style="stroke:#181818;stroke-width:0.5;" />
+    </g>
+    <g class="entity" data-qualified-name="UserSetting" id="ent0004" data-source-line="24">
+      <rect x="164.42" y="283.377" width="114.038" height="80.594" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5" />
+      <ellipse cx="179.42" cy="299.377" rx="11" ry="11" fill="#ADD1B2" style="stroke:#181818;stroke-width:1;" />
+      <path d="M182.389,305.018 Q181.811,305.314 181.17,305.455 Q180.529,305.611 179.826,305.611 Q177.326,305.611 175.998,303.971 Q174.686,302.314 174.686,299.189 Q174.686,296.064 175.998,294.408 Q177.326,292.752 179.826,292.752 Q180.529,292.752 181.17,292.908 Q181.826,293.064 182.389,293.361 L182.389,296.08 Q181.764,295.502 181.17,295.236 Q180.576,294.955 179.951,294.955 Q178.608,294.955 177.92,296.033 Q177.233,297.096 177.233,299.189 Q177.233,301.283 177.92,302.361 Q178.608,303.424 179.951,303.424 Q180.576,303.424 181.17,303.158 Q181.764,302.877 182.389,302.299 L182.389,305.018 Z " fill="#000" />
+      <text x="193.42" y="304.224" fill="#000" font-size="14" textLength="82.038" font-family="'DejaVu Sans'">UserSetting</text>
+      <line x1="165.42" y1="315.377" x2="277.458" y2="315.377" style="stroke:#181818;stroke-width:0.5;" />
+      <text x="170.42" y="332.372" fill="#000" font-size="14" textLength="26.079" font-family="'DejaVu Sans'">Key</text>
+      <text x="170.42" y="348.669" fill="#000" font-size="14" textLength="39.532" font-family="'DejaVu Sans'">Value</text>
+      <line x1="165.42" y1="355.971" x2="277.458" y2="355.971" style="stroke:#181818;stroke-width:0.5;" />
+    </g>
+    <g class="entity" data-qualified-name="Setting" id="ent0005" data-source-line="29">
+      <rect x="564.38" y="85.037" width="82.128" height="80.594" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5" />
+      <ellipse cx="579.38" cy="101.037" rx="11" ry="11" fill="#ADD1B2" style="stroke:#181818;stroke-width:1;" />
+      <path d="M582.349,106.678 Q581.771,106.974 581.13,107.115 Q580.489,107.271 579.786,107.271 Q577.286,107.271 575.958,105.631 Q574.646,103.974 574.646,100.849 Q574.646,97.724 575.958,96.068 Q577.286,94.412 579.786,94.412 Q580.489,94.412 581.13,94.568 Q581.786,94.724 582.349,95.021 L582.349,97.74 Q581.724,97.162 581.13,96.896 Q580.536,96.615 579.911,96.615 Q578.568,96.615 577.88,97.693 Q577.193,98.756 577.193,100.849 Q577.193,102.943 577.88,104.021 Q578.568,105.084 579.911,105.084 Q580.536,105.084 581.13,104.818 Q581.724,104.537 582.349,103.959 L582.349,106.678 Z " fill="#000" />
+      <text x="593.38" y="105.884" fill="#000" font-size="14" textLength="50.128" font-family="'DejaVu Sans'">Setting</text>
+      <line x1="565.38" y1="117.037" x2="645.508" y2="117.037" style="stroke:#181818;stroke-width:0.5;" />
+      <text x="570.38" y="134.032" fill="#000" font-size="14" textLength="26.079" font-family="'DejaVu Sans'">Key</text>
+      <text x="570.38" y="150.329" fill="#000" font-size="14" textLength="39.532" font-family="'DejaVu Sans'">Value</text>
+      <line x1="565.38" y1="157.631" x2="645.508" y2="157.631" style="stroke:#181818;stroke-width:0.5;" />
+    </g>
+    <g class="entity" data-qualified-name="SettingNote" id="ent0010" data-source-line="40">
+      <path d="M450.49,303.537 L450.49,343.803 A0,0 0 0 0 450.49,343.803 L760.404,343.803 A0,0 0 0 0 760.404,343.803 L760.404,313.537 L750.404,303.537 L609.44,303.537 L605.44,166.067 L601.44,303.537 L450.49,303.537 A0,0 0 0 0 450.49,303.537" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <path d="M750.404,303.537 L750.404,313.537 L760.404,313.537 L750.404,303.537" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <text x="456.49" y="320.604" fill="#000" font-size="13" textLength="287.39" font-family="'DejaVu Sans'">A "Setting" applies to the whole installation,</text>
+      <text x="456.49" y="335.737" fill="#000" font-size="13" textLength="288.914" font-family="'DejaVu Sans'">a "UserSetting" belongs to exactly one user.</text>
+    </g>
+    <g class="link" data-entity-1="ent0001" data-entity-2="ent0002" id="lnk6" data-source-line="34" data-link-type="dependency">
+      <path d="M222.08,125.337 C247.01,125.337 268.23,125.337 287.89,125.337" style="stroke:#181818;stroke-width:1;" fill="none" id="User-to-Role" codeLine="34" />
+      <polygon points="292.89,125.337,283.89,121.337,287.89,125.337,283.89,129.337,292.89,125.337" fill="#181818" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+      <text x="239.82" y="118.404" fill="#000" font-size="13" textLength="35.369" font-family="'DejaVu Sans'">Roles</text>
+      <text x="278.53" y="120.593" fill="#000" font-size="13" font-family="'DejaVu Sans'">*</text>
+    </g>
+    <g class="link" data-entity-1="ent0002" data-entity-2="ent0002" id="lnk7" data-source-line="35" data-link-type="dependency">
+      <path d="M356.21,104.067 C374.19,99.917 390.84,107.007 390.84,125.337 C390.84,143.657 379.062,151.871 361.082,147.721" style="stroke:#181818;stroke-width:1;" fill="none" id="Role-to-Role" codeLine="35" />
+      <polygon points="356.21,146.597,364.08,152.518,361.082,147.721,365.879,144.723,356.21,146.597" fill="#181818" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+      <text x="396.84" y="129.904" fill="#000" font-size="13" textLength="144.498" font-family="'DejaVu Sans'">DirectlyInheritedRoles</text>
+      <text x="363.871" y="146.689" fill="#000" font-size="13" font-family="'DejaVu Sans'">*</text>
+    </g>
+    <g class="link" data-entity-1="ent0001" data-entity-2="ent0003" id="lnk8" data-source-line="36" data-link-type="dependency">
+      <path d="M104.51,206.787 C100.19,216.647 96.05,226.667 92.44,236.377 C86.85,251.387 83.166,263.455 79.216,278.295" style="stroke:#181818;stroke-width:1;" fill="none" id="User-to-AccessToken" codeLine="36" />
+      <polygon points="77.93,283.127,84.11,275.459,79.216,278.295,76.38,273.401,77.93,283.127" fill="#181818" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+      <text x="93.44" y="249.444" fill="#000" font-size="13" textLength="84.392" font-family="'DejaVu Sans'">AccessToken</text>
+      <text x="73.046" y="272.247" fill="#000" font-size="13" font-family="'DejaVu Sans'">*</text>
+    </g>
+    <g class="link" data-entity-1="ent0001" data-entity-2="ent0004" id="lnk9" data-source-line="37" data-link-type="dependency">
+      <path d="M175.98,206.757 C186.28,233.017 195.445,256.382 204.035,278.292" style="stroke:#181818;stroke-width:1;" fill="none" id="User-to-UserSetting" codeLine="37" />
+      <polygon points="205.86,282.947,206.299,273.108,204.035,278.292,198.851,276.028,205.86,282.947" fill="#181818" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+      <text x="193.1" y="249.444" fill="#000" font-size="13" textLength="130.324" font-family="'DejaVu Sans'">Settings of this user</text>
+      <text x="196.939" y="272.338" fill="#000" font-size="13" font-family="'DejaVu Sans'">*</text>
+    </g>
+  </g>
+</svg>

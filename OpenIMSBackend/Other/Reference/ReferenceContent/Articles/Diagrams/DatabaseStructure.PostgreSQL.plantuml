@@ -1,0 +1,69 @@
+@startuml
+title OpenIMSBackend - Database structure (PostgreSQL)
+hide circle
+skinparam linetype ortho
+
+entity "AccessToken" {
+  * Value : character varying <<PK>>
+  --
+  ExpiredMoment : timestamp without time zone <<NOT NULL>>
+  UserId : character varying <<NOT NULL>>
+}
+
+entity "RefreshToken" {
+  * Value : character varying <<PK>>
+  --
+  ExpiredMoment : timestamp without time zone <<NOT NULL>>
+  UserId : character varying <<NOT NULL>>
+}
+
+entity "Role_InheritedRoles" {
+  * InheritedRoleId : character varying <<PK>>
+  * RoleId : character varying <<PK>>
+}
+
+entity "Roles" {
+  * Id : character varying <<PK>>
+  --
+  Name : character varying <<NOT NULL>>
+}
+
+entity "Settings" {
+  * Key : character varying <<PK>>
+  --
+  Value : text <<NOT NULL>>
+}
+
+entity "User_Roles" {
+  * RoleId : character varying <<PK>>
+  * UserId : character varying <<PK>>
+}
+
+entity "Users" {
+  * Id : character varying <<PK>>
+  --
+  EMailAddress : character varying
+  Name : character varying <<NOT NULL>>
+  PasswordHash : character varying
+  RegistrationMoment : timestamp without time zone <<NOT NULL>>
+  TOTPActivated : boolean
+  TOTPSecretKey : character varying
+  UserIsActivated : boolean <<NOT NULL>>
+  UserIsLocked : boolean <<NOT NULL>>
+}
+
+entity "UserSettings" {
+  * Key : character varying <<PK>>
+  * UserId : character varying <<PK>>
+  --
+  Value : text <<NOT NULL>>
+}
+
+"AccessToken" }o--|| "Users" : UserId
+"RefreshToken" }o--|| "Users" : UserId
+"Role_InheritedRoles" }o--|| "Roles" : InheritedRoleId
+"Role_InheritedRoles" }o--|| "Roles" : RoleId
+"User_Roles" }o--|| "Roles" : RoleId
+"User_Roles" }o--|| "Users" : UserId
+"UserSettings" }o--|| "Users" : UserId
+@enduml

@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" data-diagram-type="DESCRIPTION" style="width:974px;height:440px;background:#FFFFFF;" width="974px" height="440px" viewBox="0 0 974 440" zoomAndPan="magnify" preserveAspectRatio="none" contentStyleType="text/css">
+  <defs />
+  <g font-family="sans-serif" lengthAdjust="spacing">
+    <g class="title" data-source-line="1">
+      <text x="396.141" y="22.995" fill="#000" font-size="14" textLength="175.068" font-weight="700" font-family="DejaVu Sans">Runtime-view full test</text>
+    </g>
+    <g class="entity" data-qualified-name="user" id="ent0001" data-source-line="3">
+      <ellipse cx="462.095" cy="51.297" rx="8" ry="8" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <path d="M462.095,59.297 L462.095,86.297 M449.095,67.297 L475.095,67.297 M462.095,86.297 L449.095,101.297 M462.095,86.297 L475.095,101.297" style="stroke:#181818;stroke-width:0.5;" fill="none" />
+      <text x="446.14" y="115.792" fill="#000" font-size="14" textLength="31.91" font-family="DejaVu Sans">User</text>
+    </g>
+    <g class="entity" data-qualified-name="UserNote" id="ent0002" data-source-line="5">
+      <path d="M6,189.677 L6,214.81 A0,0 0 0 0 6,214.81 L516.188,214.81 A0,0 0 0 0 516.188,214.81 L516.188,199.677 L506.188,189.677 L285.31,189.677 L445.65,91.717 L277.31,189.677 L6,189.677 A0,0 0 0 0 6,189.677" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <path d="M506.188,189.677 L506.188,199.677 L516.188,199.677 L506.188,189.677" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <text x="12" y="206.744" fill="#000" font-size="13" textLength="131.879" font-family="DejaVu Sans">The user calls https:</text>
+      <text x="143.879" y="206.744" fill="#000" font-size="13" textLength="200.833" font-style="italic" font-family="DejaVu Sans">openims.test.local:443 or http:</text>
+      <text x="344.712" y="206.744" fill="#000" font-size="13" textLength="156.476" font-family="DejaVu Sans">openims.test.local:8080</text>
+    </g>
+    <g class="entity" data-qualified-name="OpenIMS" id="ent0004" data-source-line="9">
+      <rect x="551.65" y="179.097" width="224.885" height="46.297" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5" />
+      <rect x="756.535" y="184.097" width="15" height="10" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <rect x="754.535" y="186.097" width="4" height="2" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <rect x="754.535" y="190.097" width="4" height="2" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <text x="566.65" y="212.092" fill="#000" font-size="14" textLength="184.885" font-family="DejaVu Sans">OpenIMS (:443 and :8080)</text>
+    </g>
+    <g class="entity" data-qualified-name="OpenIMSNote" id="ent0005" data-source-line="11">
+      <path d="M135.48,285.397 L135.48,340.795 A0,0 0 0 0 135.48,340.795 L762.713,340.795 A0,0 0 0 0 762.713,340.795 L762.713,295.397 L752.713,285.397 L506.72,285.397 L619.55,225.797 L498.72,285.397 L135.48,285.397 A0,0 0 0 0 135.48,285.397" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <path d="M752.713,285.397 L752.713,295.397 L762.713,295.397 L752.713,285.397" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <text x="141.48" y="302.464" fill="#000" font-size="13" textLength="397.858" font-family="DejaVu Sans">Started via "task BaseExampleStart" (or shorter: "task beu").</text>
+      <text x="141.48" y="317.597" fill="#000" font-size="13" textLength="606.233" font-family="DejaVu Sans">The domain can be changed using the commandline-parameter "--InitialDomain &lt;domain&gt;".</text>
+      <text x="141.48" y="332.729" fill="#000" font-size="13" textLength="335.524" font-family="DejaVu Sans">Backend and frontend are running in the container.</text>
+    </g>
+    <g class="entity" data-qualified-name="OpenIMSDatabase" id="ent0007" data-source-line="17">
+      <rect x="797.83" y="289.947" width="162.521" height="46.297" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5" />
+      <rect x="940.351" y="294.947" width="15" height="10" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <rect x="938.351" y="296.947" width="4" height="2" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <rect x="938.351" y="300.947" width="4" height="2" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <text x="812.83" y="322.942" fill="#000" font-size="14" textLength="122.521" font-family="DejaVu Sans">Database (:5432)</text>
+    </g>
+    <g class="entity" data-qualified-name="OpenIMSDatabaseNote" id="ent0008" data-source-line="19">
+      <path d="M804.44,400.797 L804.44,425.93 A0,0 0 0 0 804.44,425.93 L953.758,425.93 A0,0 0 0 0 953.758,425.93 L953.758,410.797 L943.758,400.797 L883.09,400.797 L879.09,336.397 L875.09,400.797 L804.44,400.797 A0,0 0 0 0 804.44,400.797" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <path d="M943.758,400.797 L943.758,410.797 L953.758,410.797 L943.758,400.797" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <text x="810.44" y="417.864" fill="#000" font-size="13" textLength="128.318" font-family="DejaVu Sans">Database-container</text>
+    </g>
+    <g class="link" data-entity-1="ent0001" data-entity-2="ent0004" id="lnk10" data-source-line="23" data-link-type="dependency">
+      <path d="M478.28,91.507 C510.11,110.307 577.305,149.995 621.745,176.235" style="stroke:#181818;stroke-width:1;" fill="none" id="user-to-OpenIMS" />
+      <polygon points="626.05,178.777,620.334,170.757,621.745,176.235,616.266,177.645,626.05,178.777" fill="#181818" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+    </g>
+    <g class="link" data-entity-1="ent0004" data-entity-2="ent0007" id="lnk11" data-source-line="24" data-link-type="dependency">
+      <path d="M708.64,225.797 C745.54,244.477 793.259,268.639 830.139,287.309" style="stroke:#181818;stroke-width:1;" fill="none" id="OpenIMS-to-OpenIMSDatabase" />
+      <polygon points="834.6,289.567,828.377,281.933,830.139,287.309,824.764,289.071,834.6,289.567" fill="#181818" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+    </g>
+  </g>
+</svg>
