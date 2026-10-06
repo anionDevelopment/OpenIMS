@@ -73,7 +73,9 @@ namespace OpenIMSBackend.Core
                     {
                         _Log.Configuration.AddLogLevel(LogLevel.Debug);
                     }
-                    runningUsually = initializationInformation.ApplicationConstants.ExecutionMode is RunProgram;
+                    // The execution-mode of a test-run does not tell whether the background-services are wanted, so a caller which
+                    // needs them asks for them with its own commandline-option.
+                    runningUsually = initializationInformation.ApplicationConstants.ExecutionMode is RunProgram || initializationInformation.CommandlineParameter.RunBackgroundProcesses;
                     string domain = string.IsNullOrWhiteSpace(initializationInformation.CommandlineParameter.InitialDomain) ? Tools.GetDefaultDomainValue(GeneralConstants.CodeUnitName) : initializationInformation.CommandlineParameter.InitialDomain;
                     initializationInformation.ApplicationConstants.CommonRoutesHostInformation = new DoNotHostCommonRoutes();
                     initializationInformation.ApplicationConstants.HostMaintenanceInformation = new HostMaintenanceRoutes()
@@ -98,6 +100,10 @@ namespace OpenIMSBackend.Core
                         },
                         MaximalLengthofRequestBodies = 500,
                         MaximalLengthOfResponseBodies = 500,
+                        RoutesWhereResponseBodyIsNotLogged = new HashSet<string>()
+                        {
+                            @"^/API/v\d+/UserController/Login$",
+                        },
                     };
                     initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.ConfigurationForExceptionManagerMiddleware = new ExceptionManagerConfiguration();
                     initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.MaintenanceRoutesInformation = new MaintenanceRoutesInformation()
