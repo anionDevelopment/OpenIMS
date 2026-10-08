@@ -126,5 +126,55 @@ namespace OpenIMSBackend.Tests.Testcases.Services.PersistenceTests
                 this.UserSettingRoundTrip();
             }
         }
+
+        [TestMethod(DisplayName = nameof(InventoryObjectRoundTripTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.IntegrationTest))]
+        public override void InventoryObjectRoundTripTest()
+        {
+            lock (TestUtilities.Utilities.LockForTests)
+            {
+                this.InventoryObjectRoundTrip();
+            }
+        }
+
+        [TestMethod(DisplayName = nameof(InventoryObjectReferencesTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.IntegrationTest))]
+        public override void InventoryObjectReferencesTest()
+        {
+            lock (TestUtilities.Utilities.LockForTests)
+            {
+                this.InventoryObjectReferences();
+            }
+        }
+
+        [TestMethod(DisplayName = nameof(RolesOfAuthorizableItemTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.IntegrationTest))]
+        public override void RolesOfAuthorizableItemTest()
+        {
+            lock (TestUtilities.Utilities.LockForTests)
+            {
+                this.RolesOfAuthorizableItem();
+            }
+        }
+
+        [TestMethod(DisplayName = nameof(SearchInventoryObjectsTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.IntegrationTest))]
+        public override void SearchInventoryObjectsTest()
+        {
+            lock (TestUtilities.Utilities.LockForTests)
+            {
+                this.SearchInventoryObjects();
+            }
+        }
+
+        [TestMethod(DisplayName = nameof(DeleteRoleTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.IntegrationTest))]
+        public override void DeleteRoleTest()
+        {
+            lock (TestUtilities.Utilities.LockForTests)
+            {
+                this.DeleteRole();
+            }
+        }
     }
 }

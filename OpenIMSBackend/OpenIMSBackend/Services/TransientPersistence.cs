@@ -2,8 +2,10 @@ using GRYLibrary.Core.APIServer.CommonAuthenticationTypes;
 using GRYLibrary.Core.APIServer.Services.Trans;
 using GRYLibrary.Core.Misc;
 using OpenIMSBackend.Core.Model.BusinessTypes;
+using OpenIMSBackend.Core.Model.PersistenceTypes;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace OpenIMSBackend.Core.Services
 {
@@ -20,6 +22,8 @@ namespace OpenIMSBackend.Core.Services
     {
         private readonly IDictionary<string/*key*/, string/*value*/> _Settings;
         private readonly IDictionary<(string/*userid*/, string/*key*/), string/*value*/> _UserSettings;
+        private readonly IDictionary<string/*id*/, InventoryObjectRecord> _InventoryObjects;
+        private readonly HashSet<(string/*roleid*/, string/*authorizableitemid*/)> _RolesOfAuthorizableItems;
         private readonly IAuthenticationServicePersistence<User> _TransientAuthenticationServicePersistence;
         private bool _LogConnectionErrors = true;
         private static readonly object _Lock = new object();
@@ -31,6 +35,8 @@ namespace OpenIMSBackend.Core.Services
             this._TransientAuthenticationServicePersistence = transientAuthenticationServicePersistence;
             this._Settings = new Dictionary<string, string>();
             this._UserSettings = new Dictionary<(string, string), string>();
+            this._InventoryObjects = new Dictionary<string, InventoryObjectRecord>();
+            this._RolesOfAuthorizableItems = new HashSet<(string, string)>();
         }
 
         /// <inheritdoc />
@@ -40,6 +46,8 @@ namespace OpenIMSBackend.Core.Services
             {
                 this._Settings.Clear();
                 this._UserSettings.Clear();
+                this._InventoryObjects.Clear();
+                this._RolesOfAuthorizableItems.Clear();
             }
         }
 
@@ -136,7 +144,12 @@ namespace OpenIMSBackend.Core.Services
         /// <inheritdoc />
         public void DeleteRoleByName(string roleName)
         {
-            this._TransientAuthenticationServicePersistence.DeleteRoleByName(roleName);
+            lock (_Lock)
+            {
+                string roleId = this._TransientAuthenticationServicePersistence.GetRoleByName(roleName).Id;
+                this._RolesOfAuthorizableItems.RemoveWhere(assignment => assignment.Item1 == roleId);
+                this._TransientAuthenticationServicePersistence.DeleteRoleByName(roleName);
+            }
         }
 
         /// <inheritdoc />
@@ -252,6 +265,154 @@ namespace OpenIMSBackend.Core.Services
             lock (_Lock)
             {
                 this._UserSettings[(userId, key)] = value;
+            }
+        }
+
+        #endregion
+
+        #region Inventory
+
+        /// <inheritdoc />
+        public void AddInventoryObject(InventoryObjectRecord inventoryObject)
+        {
+            lock (_Lock)
+            {
+                this._InventoryObjects.Add(inventoryObject.Id, Copy(inventoryObject));
+            }
+        }
+
+        /// <inheritdoc />
+        public void UpdateInventoryObject(InventoryObjectRecord inventoryObject)
+        {
+            lock (_Lock)
+            {
+                InventoryObjectRecord storedObject = this._InventoryObjects[inventoryObject.Id];
+                storedObject.Name = inventoryObject.Name;
+                storedObject.Description = inventoryObject.Description;
+                storedObject.ParentId = inventoryObject.ParentId;
+                storedObject.RealPlaceId = inventoryObject.RealPlaceId;
+            }
+        }
+
+        /// <inheritdoc />
+        public void RemoveInventoryObject(string inventoryObjectId)
+        {
+            lock (_Lock)
+            {
+                this._RolesOfAuthorizableItems.RemoveWhere(assignment => assignment.Item2 == inventoryObjectId);
+                this._InventoryObjects.Remove(inventoryObjectId);
+            }
+        }
+
+        /// <inheritdoc />
+        public bool InventoryObjectExists(string inventoryObjectId)
+        {
+            lock (_Lock)
+            {
+                return this._InventoryObjects.ContainsKey(inventoryObjectId);
+            }
+        }
+
+        /// <inheritdoc />
+        public InventoryObjectRecord GetInventoryObject(string inventoryObjectId)
+        {
+            lock (_Lock)
+            {
+                return Copy(this._InventoryObjects[inventoryObjectId]);
+            }
+        }
+
+        /// <inheritdoc />
+        public IList<InventoryObjectRecord> GetAllInventoryObjects()
+        {
+            lock (_Lock)
+            {
+                return this._InventoryObjects.Values.Select(Copy).ToList();
+            }
+        }
+
+        /// <inheritdoc />
+        public bool InventoryObjectHasChildren(string inventoryObjectId)
+        {
+            lock (_Lock)
+            {
+                return this._InventoryObjects.Values.Any(inventoryObject => inventoryObject.ParentId == inventoryObjectId);
+            }
+        }
+
+        /// <inheritdoc />
+        public bool InventoryObjectIsUsedAsRealPlace(string inventoryObjectId)
+        {
+            lock (_Lock)
+            {
+                return this._InventoryObjects.Values.Any(inventoryObject => inventoryObject.RealPlaceId == inventoryObjectId);
+            }
+        }
+
+        /// <inheritdoc />
+        public IList<InventoryObjectRecord> SearchInventoryObjects(string searchText, ISet<InventoryObjectType> types, int maximalAmountOfResults)
+        {
+            lock (_Lock)
+            {
+                return this._InventoryObjects.Values
+                    .Where(inventoryObject => types.Contains(inventoryObject.Type) && inventoryObject.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase))
+                    .OrderBy(inventoryObject => inventoryObject.Name, StringComparer.Ordinal)
+                    .ThenBy(inventoryObject => inventoryObject.Id, StringComparer.Ordinal)
+                    .Take(maximalAmountOfResults)
+                    .Select(Copy)
+                    .ToList();
+            }
+        }
+
+        /// <summary>
+        /// Returns a copy, so that a caller who changes a returned record does not change the stored one without
+        /// calling <see cref="UpdateInventoryObject"/>. This is how the database-persistence behaves as well.
+        /// </summary>
+        private static InventoryObjectRecord Copy(InventoryObjectRecord inventoryObject)
+        {
+            return new InventoryObjectRecord(inventoryObject.Id, inventoryObject.Type, inventoryObject.Name, inventoryObject.Description, inventoryObject.ParentId, inventoryObject.RealPlaceId);
+        }
+
+        #endregion
+
+        #region Authorization of authorizable items
+
+        /// <inheritdoc />
+        public void AddRoleToAuthorizableItem(string roleId, string authorizableItemId)
+        {
+            lock (_Lock)
+            {
+                if (!this._RolesOfAuthorizableItems.Add((roleId, authorizableItemId)))
+                {
+                    throw new InvalidOperationException($"The role with id '{roleId}' is already assigned to the authorizable item with id '{authorizableItemId}'.");
+                }
+            }
+        }
+
+        /// <inheritdoc />
+        public void RemoveRoleFromAuthorizableItem(string roleId, string authorizableItemId)
+        {
+            lock (_Lock)
+            {
+                this._RolesOfAuthorizableItems.Remove((roleId, authorizableItemId));
+            }
+        }
+
+        /// <inheritdoc />
+        public ISet<string> GetRoleIdsOfAuthorizableItem(string authorizableItemId)
+        {
+            lock (_Lock)
+            {
+                return this._RolesOfAuthorizableItems.Where(assignment => assignment.Item2 == authorizableItemId).Select(assignment => assignment.Item1).ToHashSet();
+            }
+        }
+
+        /// <inheritdoc />
+        public ISet<string> GetAuthorizableItemIdsOfRole(string roleId)
+        {
+            lock (_Lock)
+            {
+                return this._RolesOfAuthorizableItems.Where(assignment => assignment.Item1 == roleId).Select(assignment => assignment.Item2).ToHashSet();
             }
         }
 

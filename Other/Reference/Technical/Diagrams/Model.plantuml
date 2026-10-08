@@ -43,4 +43,57 @@ note as SettingNote
 end note
 Setting .. SettingNote
 
+package "Inventory" {
+  interface IAuthorizableItem {
+    Id
+  }
+
+  interface IInventoryObject {
+    Name
+    Description
+  }
+
+  interface IRealPlace {
+    Id
+  }
+
+  interface IContainee
+
+  interface IContainer {
+    Containees
+  }
+
+  class Location
+  class Building
+  class Area
+  class Container
+  class Item {
+    RealPlace
+  }
+
+  IAuthorizableItem <|-- IInventoryObject
+  IInventoryObject <|-- IContainee
+  IInventoryObject <|-- IContainer
+  IRealPlace <|-- IContainer
+  IInventoryObject <|.. Location
+  IInventoryObject <|.. Building
+  IContainer <|.. Area
+  IContainer <|.. Container
+  IContainee <|.. Container
+  IContainee <|.. Item
+
+  Location *--> "*" Building : Buildings
+  Location *--> "*" Area : Areas\n(for example a yard)
+  Building *--> "*" Area : Areas\n(rooms)
+  IContainer *--> "*" IContainee : Containees\n(target place)
+  Item --> "1" IRealPlace : RealPlace\n(real place)
+
+  note as InventoryNote
+    Strict hierarchy: location -> building -> area -> container (any depth) -> item
+    and location -> area. Every object is in exactly one place, there are no cycles.
+  end note
+}
+
+Role "*" -- "*" IAuthorizableItem : has access to\n(inherited at runtime by\neverything which is contained)
+
 @enduml

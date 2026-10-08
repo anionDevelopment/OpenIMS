@@ -31,7 +31,7 @@ namespace OpenIMSBackend.Tests.Testcases.Services
         /// Builds a business-logic-service with a transient persistence and the roles which the initialization
         /// would create, so that a testcase can register a user without starting the whole server.
         /// </summary>
-        private static (IBusinessLogicService businessLogicService, IPersistence persistence, CodeUnitSpecificConfiguration configuration, IAuthenticationService<Core.Model.BusinessTypes.User> authenticationService) CreateSubjectUnderTest()
+        internal static (IBusinessLogicService businessLogicService, IPersistence persistence, CodeUnitSpecificConfiguration configuration, IAuthenticationService<Core.Model.BusinessTypes.User> authenticationService) CreateSubjectUnderTest()
         {
             ITimeService timeService = new TimeService();
             TransientAuthenticationServicePersistence<Core.Model.BusinessTypes.User> authenticationPersistence = new TransientAuthenticationServicePersistence<Core.Model.BusinessTypes.User>(timeService);

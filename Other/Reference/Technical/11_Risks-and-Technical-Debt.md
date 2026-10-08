@@ -21,4 +21,13 @@ Change it (or pass a real password on the first start) before the installation i
 
 ## Technical debts
 
-Currently there are no technical debts.
+### Reading the inventory loads the whole inventory
+
+`IBusinessLogicService.GetLocation` and `GetAllLocations` load all inventory-objects and build the complete tree, because the real place of an item can be in another location.
+This is simple and correct, but the effort grows with the size of the whole inventory and not with the size of the requested part.
+If the inventory becomes large, reading has to be restricted (for example by loading only a subtree and resolving the real places separately).
+
+### Computing the access walks up the hierarchy
+
+`IBusinessLogicService.UserHasAccess` reads the assigned groups of every object from the requested object up to its location, one query per level.
+This is fast for the usual depth of the hierarchy, but checking the access for many objects at once (for example for a list) should be done with one query instead.

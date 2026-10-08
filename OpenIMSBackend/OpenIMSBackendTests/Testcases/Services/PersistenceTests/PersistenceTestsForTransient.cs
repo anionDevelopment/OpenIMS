@@ -94,5 +94,40 @@ namespace OpenIMSBackend.Tests.Testcases.Services.PersistenceTests
         {
             this.UserSettingRoundTrip();
         }
+
+        [TestMethod(DisplayName = nameof(InventoryObjectRoundTripTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
+        public override void InventoryObjectRoundTripTest()
+        {
+            this.InventoryObjectRoundTrip();
+        }
+
+        [TestMethod(DisplayName = nameof(InventoryObjectReferencesTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
+        public override void InventoryObjectReferencesTest()
+        {
+            this.InventoryObjectReferences();
+        }
+
+        [TestMethod(DisplayName = nameof(RolesOfAuthorizableItemTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
+        public override void RolesOfAuthorizableItemTest()
+        {
+            this.RolesOfAuthorizableItem();
+        }
+
+        [TestMethod(DisplayName = nameof(SearchInventoryObjectsTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
+        public override void SearchInventoryObjectsTest()
+        {
+            this.SearchInventoryObjects();
+        }
+
+        [TestMethod(DisplayName = nameof(DeleteRoleTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
+        public override void DeleteRoleTest()
+        {
+            this.DeleteRole();
+        }
     }
 }

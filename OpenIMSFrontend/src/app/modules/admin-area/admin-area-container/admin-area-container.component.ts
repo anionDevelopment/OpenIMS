@@ -24,6 +24,10 @@ export class AdminAreaContainerComponent {
     this.router.navigate(['admin', 'users']);
   }
 
+  onGroupsClick() {
+    this.router.navigate(['admin', 'groups']);
+  }
+
   onSettingsClick() {
     this.router.navigate(['admin', 'settings']);
   }
@@ -42,6 +46,9 @@ export class AdminAreaContainerComponent {
       }
       case "users": {
         return "Users";
+      }
+      case "groups": {
+        return "Groups";
       }
       case "settings": {
         return "Settings";

@@ -87,5 +87,125 @@ namespace OpenIMSBackend.Core.Services
         public void SetThemeOfUser(string userId, string theme);
 
         #endregion
+
+        #region Inventory
+
+        // The inventory is a strict hierarchy which represents the physical world:
+        // location -> building -> area -> container (any depth) -> item, and location -> area for an area which is
+        // not in a building (for example a yard).
+        // Every building is in exactly one location, every area is in exactly one location or building, every
+        // container and every item is in exactly one area or container, and there are no cycles. Every method here keeps these rules, so they can not be violated.
+        // An id which does not exist is answered with a BadRequestException with the status-code 404, a violation
+        // of a rule with a BadRequestException with the status-code 400.
+
+        /// <summary>Creates a new location.</summary>
+        /// <returns>The id of the created location.</returns>
+        public string CreateLocation(string name, string description);
+
+        /// <summary>Creates a new building in the given location.</summary>
+        /// <returns>The id of the created building.</returns>
+        public string CreateBuilding(string locationId, string name, string description);
+
+        /// <summary>Creates a new area (for example a room of a building or a yard of a location) in the given location or building.</summary>
+        /// <param name="parentId">The id of the location or building which contains the new area.</param>
+        /// <returns>The id of the created area.</returns>
+        public string CreateArea(string parentId, string name, string description);
+
+        /// <summary>Creates a new container in the given area or container.</summary>
+        /// <param name="parentContainerId">The id of the area or container which contains the new container.</param>
+        /// <returns>The id of the created container.</returns>
+        public string CreateContainer(string parentContainerId, string name, string description);
+
+        /// <summary>Creates a new item.</summary>
+        /// <param name="parentContainerId">The id of the area or container which contains the new item. This is the place where the item belongs to.</param>
+        /// <param name="realPlaceId">The id of the place where the item actually is.</param>
+        /// <returns>The id of the created item.</returns>
+        public string CreateItem(string parentContainerId, string realPlaceId, string name, string description);
+
+        /// <summary>Changes name and description of the given inventory-object (location, building, area, container or item).</summary>
+        public void UpdateInventoryObject(string inventoryObjectId, string name, string description);
+
+        /// <summary>Moves the given building into another location.</summary>
+        public void MoveBuilding(string buildingId, string targetLocationId);
+
+        /// <summary>Moves the given area into another location or building.</summary>
+        public void MoveArea(string areaId, string targetId);
+
+        /// <summary>Moves the given container or item into another area or container, so that this becomes its new target place. A container can not be moved into itself or into one of the containers it contains.</summary>
+        public void MoveContainee(string containeeId, string targetContainerId);
+
+        /// <summary>Sets the place where the given item actually is.</summary>
+        public void SetRealPlaceOfItem(string itemId, string realPlaceId);
+
+        /// <summary>Deletes the given inventory-object together with the groups assigned to it. Only an object which contains nothing and where no item actually is can be deleted.</summary>
+        public void DeleteInventoryObject(string inventoryObjectId);
+
+        /// <summary>Returns all locations, each with its complete hierarchy.</summary>
+        public IList<Location> GetAllLocations();
+
+        /// <summary>Returns the given location with its complete hierarchy.</summary>
+        public Location GetLocation(string locationId);
+
+        /// <summary>
+        /// Returns the inventory-objects of the given types whose name contains the given text (ignoring the case),
+        /// ordered by name and limited to <see cref="BusinessLogicService.MaximalAmountOfSearchResults"/> results. It
+        /// is meant for a selection-list which loads its entries while the user types. Only an administrator may do
+        /// this, because the result is not restricted to the objects the requesting user has access to.
+        /// </summary>
+        /// <param name="requesterUserId">The id of the user requesting the operation.</param>
+        /// <param name="searchText">The text which the name has to contain. It is taken literally. An empty text matches every name.</param>
+        /// <param name="typeNames">The types of the objects which are searched: "Location", "Building", "Area", "Container" and/or "Item". At least one type is required.</param>
+        /// <returns>The id and the name of every found object.</returns>
+        public IList<IdLabelDTO> SearchInventoryObjects(string requesterUserId, string searchText, ISet<string> typeNames);
+
+        #endregion
+
+        #region Authorization of authorizable items
+
+        // A group is a role (GRYLibrary.Core.APIServer.CommonDBTypes.Role). Groups can be assigned to authorizable
+        // items (currently the inventory-objects); the members of an assigned group have read-access to the item: they
+        // can see it and what is in it.
+        // Only the direct assignments are stored. The access is inherited at runtime: who has access to an object
+        // has access to everything which is contained in it (directly or indirectly) as well.
+
+        /// <summary>Creates a new group (role) which has no members and is assigned to nothing. Only an administrator may do this.</summary>
+        /// <param name="requesterUserId">The id of the user requesting the operation.</param>
+        /// <param name="groupName">The name of the new group. It must not be empty, must not start or end with whitespace and must not be used by another group yet.</param>
+        public void CreateGroup(string requesterUserId, string groupName);
+
+        /// <summary>Deletes the given group together with its memberships and its assignments to authorizable items. The groups which OpenIMS needs itself (users and administrators) and a group which another group inherits can not be deleted. Only an administrator may do this.</summary>
+        /// <param name="requesterUserId">The id of the user requesting the operation.</param>
+        /// <param name="groupName">The name of the group.</param>
+        public void DeleteGroup(string requesterUserId, string groupName);
+
+        /// <summary>Returns the authorizable items to which the given group is directly assigned (without the items which are only accessible because they are contained in one of them), ordered by their name. Only an administrator may do this.</summary>
+        /// <param name="requesterUserId">The id of the user requesting the operation.</param>
+        /// <param name="groupName">The name of the group.</param>
+        /// <returns>The id and the name of every assigned item.</returns>
+        public IList<IdLabelDTO> GetAuthorizableItemsOfGroup(string requesterUserId, string groupName);
+
+        /// <summary>Assigns the given group to the given authorizable item. Assigning a group which is already assigned changes nothing. Only an administrator may do this.</summary>
+        /// <param name="requesterUserId">The id of the user requesting the operation.</param>
+        /// <param name="groupName">The name of the group (role).</param>
+        /// <param name="authorizableItemId">The id of the authorizable item.</param>
+        public void AssignGroupToAuthorizableItem(string requesterUserId, string groupName, string authorizableItemId);
+
+        /// <summary>Removes the assignment of the given group to the given authorizable item. Removing a group which is not assigned changes nothing. Only an administrator may do this.</summary>
+        /// <param name="requesterUserId">The id of the user requesting the operation.</param>
+        /// <param name="groupName">The name of the group (role).</param>
+        /// <param name="authorizableItemId">The id of the authorizable item.</param>
+        public void RemoveGroupFromAuthorizableItem(string requesterUserId, string groupName, string authorizableItemId);
+
+        /// <summary>Returns the names of the groups which are directly assigned to the given authorizable item (without the groups whose access is inherited from a containing object). Only an administrator may do this.</summary>
+        /// <param name="requesterUserId">The id of the user requesting the operation.</param>
+        /// <param name="authorizableItemId">The id of the authorizable item.</param>
+        public ISet<string> GetGroupsOfAuthorizableItem(string requesterUserId, string authorizableItemId);
+
+        /// <summary>Returns whether the given user has (read-)access to the given authorizable item: whether at least one group of the user (including the groups which the groups of the user inherit) is assigned to the item itself or to an object which contains it directly or indirectly.</summary>
+        /// <param name="userId">The id of the user.</param>
+        /// <param name="authorizableItemId">The id of the authorizable item.</param>
+        public bool UserHasAccess(string userId, string authorizableItemId);
+
+        #endregion
     }
 }

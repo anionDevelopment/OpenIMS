@@ -23,7 +23,7 @@ namespace OpenIMSBackend.Core.Services
     /// further database-type a matter of adding a folder of statements and of migrations.
     /// </para>
     /// </summary>
-    public sealed class DatabasePersistence : IInitializable, IPersistence
+    public sealed partial class DatabasePersistence : IInitializable, IPersistence
     {
         private readonly ISQLProvider _SQLProvider;
         private static readonly object _Lock = new object();
@@ -363,7 +363,13 @@ namespace OpenIMSBackend.Core.Services
         /// <inheritdoc />
         public void DeleteRoleByName(string roleName)
         {
-            throw new NotImplementedException();
+            Role role = this.GetRoleByName(roleName);
+            this.RunTransaction(nameof(DeleteRoleByName) + "_" + role.Id, true, (command) =>
+            {
+                command.CommandText = this._SQLProvider.GetScriptDeleteRole();
+                command.Parameters.Add(this.GetParameter("RoleId", role.Id));
+                command.ExecuteNonQuery();
+            });
         }
 
         /// <inheritdoc />

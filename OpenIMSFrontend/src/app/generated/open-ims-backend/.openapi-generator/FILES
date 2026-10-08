@@ -13,6 +13,7 @@ git_push.sh
 index.ts
 model/accessToken.ts
 model/generalSettingsDTO.ts
+model/idLabelDTO.ts
 model/models.ts
 model/stringValueDTO.ts
 model/userInformationDTO.ts

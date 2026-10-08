@@ -3,6 +3,7 @@ using GRYLibrary.Core.APIServer.CommonDBTypes;
 using GRYLibrary.Core.APIServer.Services.Interfaces;
 using GRYLibrary.Core.APIServer.Services.OtherServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenIMSBackend.Core.Model.PersistenceTypes;
 using OpenIMSBackend.Core.Services;
 using OpenIMSBackend.Tests.TestUtilities;
 using System;
@@ -241,6 +242,157 @@ namespace OpenIMSBackend.Tests.Testcases.Services.PersistenceTests
             Assert.IsNull(persistence.GetUserSetting(userB.Id, "Theme"), "The setting of one user must not be visible for another user.");
             persistence.SetUserSetting(userA.Id, "Theme", "light");
             Assert.AreEqual("light", persistence.GetUserSetting(userA.Id, "Theme"));
+        }
+
+        public abstract void InventoryObjectRoundTripTest();
+        public void InventoryObjectRoundTrip()
+        {
+            ITimeService timeService = new TimeService();
+            using PersistenceDisposable persistenceDisposable = this.GetPersistence(timeService);
+            IPersistence persistence = persistenceDisposable.Persistence;
+
+            //arrange
+            InventoryObjectRecord location = new InventoryObjectRecord("location-1", InventoryObjectType.Location, "Location", "A description", null, null);
+            InventoryObjectRecord area = new InventoryObjectRecord("area-1", InventoryObjectType.Area, "Area", string.Empty, location.Id, null);
+            InventoryObjectRecord item = new InventoryObjectRecord("item-1", InventoryObjectType.Item, "Item", string.Empty, area.Id, area.Id);
+
+            //act
+            persistence.AddInventoryObject(location);
+            persistence.AddInventoryObject(area);
+            persistence.AddInventoryObject(item);
+
+            //assert
+            Assert.IsTrue(persistence.InventoryObjectExists(item.Id));
+            Assert.IsFalse(persistence.InventoryObjectExists("does-not-exist"));
+            InventoryObjectRecord loadedLocation = persistence.GetInventoryObject(location.Id);
+            Assert.AreEqual(InventoryObjectType.Location, loadedLocation.Type);
+            Assert.AreEqual("Location", loadedLocation.Name);
+            Assert.AreEqual("A description", loadedLocation.Description);
+            Assert.IsNull(loadedLocation.ParentId);
+            Assert.IsNull(loadedLocation.RealPlaceId);
+            InventoryObjectRecord loadedItem = persistence.GetInventoryObject(item.Id);
+            Assert.AreEqual(InventoryObjectType.Item, loadedItem.Type);
+            Assert.AreEqual(area.Id, loadedItem.ParentId);
+            Assert.AreEqual(area.Id, loadedItem.RealPlaceId);
+            Assert.HasCount(3, persistence.GetAllInventoryObjects());
+
+            //act
+            loadedItem.Name = "Renamed item";
+            loadedItem.Description = "Changed description";
+            persistence.UpdateInventoryObject(loadedItem);
+
+            //assert
+            InventoryObjectRecord updatedItem = persistence.GetInventoryObject(item.Id);
+            Assert.AreEqual("Renamed item", updatedItem.Name);
+            Assert.AreEqual("Changed description", updatedItem.Description);
+        }
+
+        public abstract void InventoryObjectReferencesTest();
+        public void InventoryObjectReferences()
+        {
+            ITimeService timeService = new TimeService();
+            using PersistenceDisposable persistenceDisposable = this.GetPersistence(timeService);
+            IPersistence persistence = persistenceDisposable.Persistence;
+
+            //arrange
+            persistence.AddInventoryObject(new InventoryObjectRecord("location-1", InventoryObjectType.Location, "Location", string.Empty, null, null));
+            persistence.AddInventoryObject(new InventoryObjectRecord("area-1", InventoryObjectType.Area, "Area", string.Empty, "location-1", null));
+            persistence.AddInventoryObject(new InventoryObjectRecord("container-1", InventoryObjectType.Container, "Container", string.Empty, "area-1", null));
+            persistence.AddInventoryObject(new InventoryObjectRecord("item-1", InventoryObjectType.Item, "Item", string.Empty, "area-1", "container-1"));
+
+            //act + assert
+            Assert.IsTrue(persistence.InventoryObjectHasChildren("area-1"));
+            Assert.IsFalse(persistence.InventoryObjectHasChildren("container-1"));
+            Assert.IsTrue(persistence.InventoryObjectIsUsedAsRealPlace("container-1"));
+            Assert.IsFalse(persistence.InventoryObjectIsUsedAsRealPlace("area-1"));
+
+            persistence.RemoveInventoryObject("item-1");
+            Assert.IsFalse(persistence.InventoryObjectExists("item-1"));
+            Assert.IsFalse(persistence.InventoryObjectIsUsedAsRealPlace("container-1"));
+        }
+
+        public abstract void RolesOfAuthorizableItemTest();
+        public void RolesOfAuthorizableItem()
+        {
+            ITimeService timeService = new TimeService();
+            using PersistenceDisposable persistenceDisposable = this.GetPersistence(timeService);
+            IPersistence persistence = persistenceDisposable.Persistence;
+
+            //arrange
+            Role roleA = new Role() { Id = Guid.NewGuid().ToString(), Name = "GroupA", DirectlyInheritedRoles = new HashSet<Role>() };
+            Role roleB = new Role() { Id = Guid.NewGuid().ToString(), Name = "GroupB", DirectlyInheritedRoles = new HashSet<Role>() };
+            persistence.AddRole(roleA);
+            persistence.AddRole(roleB);
+            persistence.AddInventoryObject(new InventoryObjectRecord("location-1", InventoryObjectType.Location, "Location", string.Empty, null, null));
+            persistence.AddInventoryObject(new InventoryObjectRecord("location-2", InventoryObjectType.Location, "Location 2", string.Empty, null, null));
+
+            //act
+            persistence.AddRoleToAuthorizableItem(roleA.Id, "location-1");
+            persistence.AddRoleToAuthorizableItem(roleB.Id, "location-1");
+            persistence.AddRoleToAuthorizableItem(roleA.Id, "location-2");
+
+            //assert
+            CollectionAssert.AreEquivalent(new List<string>() { roleA.Id, roleB.Id }, persistence.GetRoleIdsOfAuthorizableItem("location-1").ToList());
+            persistence.RemoveRoleFromAuthorizableItem(roleB.Id, "location-1");
+            CollectionAssert.AreEquivalent(new List<string>() { roleA.Id }, persistence.GetRoleIdsOfAuthorizableItem("location-1").ToList());
+            CollectionAssert.AreEquivalent(new List<string>() { "location-1", "location-2" }, persistence.GetAuthorizableItemIdsOfRole(roleA.Id).ToList());
+            //removing an object removes its assignments as well, but not the assignments of other objects.
+            persistence.RemoveInventoryObject("location-1");
+            Assert.IsEmpty(persistence.GetRoleIdsOfAuthorizableItem("location-1"));
+            CollectionAssert.AreEquivalent(new List<string>() { roleA.Id }, persistence.GetRoleIdsOfAuthorizableItem("location-2").ToList());
+        }
+
+        public abstract void SearchInventoryObjectsTest();
+        public void SearchInventoryObjects()
+        {
+            ITimeService timeService = new TimeService();
+            using PersistenceDisposable persistenceDisposable = this.GetPersistence(timeService);
+            IPersistence persistence = persistenceDisposable.Persistence;
+
+            //arrange
+            persistence.AddInventoryObject(new InventoryObjectRecord("location-1", InventoryObjectType.Location, "Main site", string.Empty, null, null));
+            persistence.AddInventoryObject(new InventoryObjectRecord("area-1", InventoryObjectType.Area, "Store room", string.Empty, "location-1", null));
+            persistence.AddInventoryObject(new InventoryObjectRecord("container-1", InventoryObjectType.Container, "Big box", string.Empty, "area-1", null));
+            persistence.AddInventoryObject(new InventoryObjectRecord("container-2", InventoryObjectType.Container, "small box", string.Empty, "area-1", null));
+            persistence.AddInventoryObject(new InventoryObjectRecord("container-3", InventoryObjectType.Container, "Box_100%", string.Empty, "area-1", null));
+            persistence.AddInventoryObject(new InventoryObjectRecord("item-1", InventoryObjectType.Item, "Box-cutter", string.Empty, "area-1", "area-1"));
+            ISet<InventoryObjectType> containersAndAreas = new HashSet<InventoryObjectType>() { InventoryObjectType.Container, InventoryObjectType.Area };
+
+            //act + assert
+            CollectionAssert.AreEquivalent(new List<string>() { "container-1", "container-2", "container-3" }, persistence.SearchInventoryObjects("BOX", containersAndAreas, 10).Select(result => result.Id).ToList(), "The search ignores the case and only returns the requested types.");
+            CollectionAssert.AreEquivalent(new List<string>() { "container-3" }, persistence.SearchInventoryObjects("_100%", containersAndAreas, 10).Select(result => result.Id).ToList(), "Wildcard-characters of like are taken literally.");
+            CollectionAssert.AreEquivalent(new List<string>() { "area-1", "container-1", "container-2", "container-3" }, persistence.SearchInventoryObjects(string.Empty, containersAndAreas, 10).Select(result => result.Id).ToList(), "An empty text matches every name.");
+            Assert.HasCount(2, persistence.SearchInventoryObjects("box", containersAndAreas, 2), "The amount of results is limited.");
+            Assert.IsEmpty(persistence.SearchInventoryObjects("does not exist", containersAndAreas, 10));
+            InventoryObjectRecord found = persistence.SearchInventoryObjects("cutter", new HashSet<InventoryObjectType>() { InventoryObjectType.Item }, 10).Single();
+            Assert.AreEqual("Box-cutter", found.Name);
+            Assert.AreEqual(InventoryObjectType.Item, found.Type);
+        }
+
+        public abstract void DeleteRoleTest();
+        public void DeleteRole()
+        {
+            ITimeService timeService = new TimeService();
+            using PersistenceDisposable persistenceDisposable = this.GetPersistence(timeService);
+            IPersistence persistence = persistenceDisposable.Persistence;
+
+            //arrange
+            Core.Model.BusinessTypes.User user = CreateUser("judy", timeService);
+            persistence.AddUser(user);
+            Role role = new Role() { Id = Guid.NewGuid().ToString(), Name = "Warehouse", DirectlyInheritedRoles = new HashSet<Role>() };
+            persistence.AddRole(role);
+            persistence.AddRoleToUser(user.Id, role.Id);
+            persistence.AddInventoryObject(new InventoryObjectRecord("location-1", InventoryObjectType.Location, "Location", string.Empty, null, null));
+            persistence.AddRoleToAuthorizableItem(role.Id, "location-1");
+
+            //act
+            persistence.DeleteRoleByName(role.Name);
+
+            //assert
+            Assert.IsFalse(persistence.RoleExists(role.Name));
+            Assert.IsFalse(persistence.GetUserById(user.Id).Roles.Any(roleOfUser => roleOfUser.Id == role.Id), "The members lose the deleted role.");
+            Assert.IsEmpty(persistence.GetRoleIdsOfAuthorizableItem("location-1"));
+            Assert.IsTrue(persistence.InventoryObjectExists("location-1"), "Deleting a role must not delete the objects it was assigned to.");
         }
     }
 }

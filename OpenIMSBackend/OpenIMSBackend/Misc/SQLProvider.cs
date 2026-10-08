@@ -141,6 +141,12 @@ namespace OpenIMSBackend.Core.Misc
             return this.LoadSQLScript("AddDirectlyInheritedRoles");
         }
 
+        /// <inheritdoc />
+        public string GetScriptDeleteRole()
+        {
+            return this.LoadSQLScript("DeleteRole");
+        }
+
         #endregion
 
         #region AccessToken
@@ -195,6 +201,98 @@ namespace OpenIMSBackend.Core.Misc
         public string GetScriptSetUserSetting()
         {
             return this.LoadSQLScript("SetUserSetting");
+        }
+
+        #endregion
+
+        #region Inventory
+
+        /// <inheritdoc />
+        public string GetScriptAddInventoryObject()
+        {
+            return this.LoadSQLScript("AddInventoryObject");
+        }
+
+        /// <inheritdoc />
+        public string GetScriptUpdateInventoryObject()
+        {
+            return this.LoadSQLScript("UpdateInventoryObject");
+        }
+
+        /// <inheritdoc />
+        public string GetScriptRemoveInventoryObject()
+        {
+            return this.LoadSQLScript("RemoveInventoryObject");
+        }
+
+        /// <inheritdoc />
+        public string GetScriptInventoryObjectExists()
+        {
+            return this.LoadSQLScript("InventoryObjectExists");
+        }
+
+        /// <inheritdoc />
+        public string GetScriptGetInventoryObject()
+        {
+            return this.LoadSQLScript("GetInventoryObject");
+        }
+
+        /// <inheritdoc />
+        public string GetScriptGetAllInventoryObjects()
+        {
+            return this.LoadSQLScript("GetAllInventoryObjects");
+        }
+
+        /// <inheritdoc />
+        public string GetScriptInventoryObjectHasChildren()
+        {
+            return this.LoadSQLScript("InventoryObjectHasChildren");
+        }
+
+        /// <inheritdoc />
+        public string GetScriptInventoryObjectIsUsedAsRealPlace()
+        {
+            return this.LoadSQLScript("InventoryObjectIsUsedAsRealPlace");
+        }
+
+        /// <inheritdoc />
+        public string GetScriptSearchInventoryObjects()
+        {
+            return this.LoadSQLScript("SearchInventoryObjects");
+        }
+
+        #endregion
+
+        #region Authorization of authorizable items
+
+        /// <inheritdoc />
+        public string GetScriptAddRoleToAuthorizableItem()
+        {
+            return this.LoadSQLScript("AddRoleToAuthorizableItem");
+        }
+
+        /// <inheritdoc />
+        public string GetScriptRemoveRoleFromAuthorizableItem()
+        {
+            return this.LoadSQLScript("RemoveRoleFromAuthorizableItem");
+        }
+
+        /// <inheritdoc />
+        public string GetScriptRemoveAllRolesFromAuthorizableItem()
+        {
+            return this.LoadSQLScript("RemoveAllRolesFromAuthorizableItem");
+        }
+
+        /// <inheritdoc />
+        public string GetScriptGetRoleIdsOfAuthorizableItem()
+        {
+            return this.LoadSQLScript("GetRoleIdsOfAuthorizableItem");
+        }
+
+        /// <inheritdoc />
+        public string GetScriptGetAuthorizableItemIdsOfRole()
+        {
+            return this.LoadSQLScript("GetAuthorizableItemIdsOfRole");
         }
 
         #endregion

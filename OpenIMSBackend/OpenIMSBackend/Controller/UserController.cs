@@ -177,6 +177,34 @@ namespace OpenIMSBackend.Core.Controller
             return this.Ok();
         }
 
+        /// <summary>Creates a new group (role) which has no members and is assigned to nothing. Requires administrator privileges.</summary>
+        /// <param name="groupName">The name of the new group.</param>
+        /// <returns>200 OK on success.</returns>
+        [Authenticate]
+        [Authorize(CodeUnitSpecificConstants.RolenameAdmins)]
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(void))]
+        [Route(nameof(CreateGroup))]
+        public IActionResult CreateGroup([FromBody] StringValueDTO groupName)
+        {
+            this._BusinessLogicService.CreateGroup(this.GetUser().Id, groupName.Value);
+            return this.Ok();
+        }
+
+        /// <summary>Deletes the given group together with its memberships and its assignments to inventory-objects. Requires administrator privileges.</summary>
+        /// <param name="groupName">The name of the group.</param>
+        /// <returns>200 OK on success.</returns>
+        [Authenticate]
+        [Authorize(CodeUnitSpecificConstants.RolenameAdmins)]
+        [HttpDelete]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(void))]
+        [Route(nameof(DeleteGroup))]
+        public IActionResult DeleteGroup([FromQuery] string groupName)
+        {
+            this._BusinessLogicService.DeleteGroup(this.GetUser().Id, groupName);
+            return this.Ok();
+        }
+
         private User GetUser()
         {
             return Tools.GetUser(this.User, this._AuthenticationService);

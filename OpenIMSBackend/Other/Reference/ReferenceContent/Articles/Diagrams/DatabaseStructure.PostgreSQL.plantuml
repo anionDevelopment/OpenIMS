@@ -10,11 +10,26 @@ entity "AccessToken" {
   UserId : character varying <<NOT NULL>>
 }
 
+entity "InventoryObjects" {
+  * Id : character varying <<PK>>
+  --
+  Description : text <<NOT NULL>>
+  Name : character varying <<NOT NULL>>
+  ParentId : character varying
+  RealPlaceId : character varying
+  Type : character varying <<NOT NULL>>
+}
+
 entity "RefreshToken" {
   * Value : character varying <<PK>>
   --
   ExpiredMoment : timestamp without time zone <<NOT NULL>>
   UserId : character varying <<NOT NULL>>
+}
+
+entity "Role_AuthorizableItems" {
+  * AuthorizableItemId : character varying <<PK>>
+  * RoleId : character varying <<PK>>
 }
 
 entity "Role_InheritedRoles" {
@@ -30,6 +45,13 @@ entity "Roles" {
 
 entity "Settings" {
   * Key : character varying <<PK>>
+  --
+  Value : text <<NOT NULL>>
+}
+
+entity "UserSettings" {
+  * Key : character varying <<PK>>
+  * UserId : character varying <<PK>>
   --
   Value : text <<NOT NULL>>
 }
@@ -52,18 +74,15 @@ entity "Users" {
   UserIsLocked : boolean <<NOT NULL>>
 }
 
-entity "UserSettings" {
-  * Key : character varying <<PK>>
-  * UserId : character varying <<PK>>
-  --
-  Value : text <<NOT NULL>>
-}
-
 "AccessToken" }o--|| "Users" : UserId
+"InventoryObjects" }o--|| "InventoryObjects" : ParentId
+"InventoryObjects" }o--|| "InventoryObjects" : RealPlaceId
 "RefreshToken" }o--|| "Users" : UserId
+"Role_AuthorizableItems" }o--|| "InventoryObjects" : AuthorizableItemId
+"Role_AuthorizableItems" }o--|| "Roles" : RoleId
 "Role_InheritedRoles" }o--|| "Roles" : InheritedRoleId
 "Role_InheritedRoles" }o--|| "Roles" : RoleId
+"UserSettings" }o--|| "Users" : UserId
 "User_Roles" }o--|| "Roles" : RoleId
 "User_Roles" }o--|| "Users" : UserId
-"UserSettings" }o--|| "Users" : UserId
 @enduml

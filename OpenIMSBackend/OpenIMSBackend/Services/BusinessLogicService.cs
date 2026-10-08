@@ -15,7 +15,7 @@ using System.Linq;
 
 namespace OpenIMSBackend.Core.Services
 {
-    public class BusinessLogicService : IBusinessLogicService
+    public partial class BusinessLogicService : IBusinessLogicService
     {
         private static readonly object _LockObject = new object();
         private readonly IPersistedAPIServerConfiguration<CodeUnitSpecificConfiguration> _Configuration;

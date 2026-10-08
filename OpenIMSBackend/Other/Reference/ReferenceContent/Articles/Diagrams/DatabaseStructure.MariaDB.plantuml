@@ -5,59 +5,39 @@ skinparam linetype ortho
 
 entity "AccessToken" {
   * Value : varchar <<PK>>
-  * Value : varchar <<PK>>
-  * Value : varchar <<PK>>
-  * Value : varchar <<PK>>
-  * Value : varchar <<PK>>
-  * Value : varchar <<PK>>
-  * Value : varchar <<PK>>
-  * Value : varchar <<PK>>
   --
   ExpiredMoment : datetime <<NOT NULL>>
   UserId : varchar <<NOT NULL>>
+}
+
+entity "InventoryObjects" {
+  * Id : varchar <<PK>>
+  --
+  Description : longtext <<NOT NULL>>
+  Name : varchar <<NOT NULL>>
+  ParentId : varchar
+  RealPlaceId : varchar
+  Type : varchar <<NOT NULL>>
 }
 
 entity "RefreshToken" {
   * Value : varchar <<PK>>
-  * Value : varchar <<PK>>
-  * Value : varchar <<PK>>
-  * Value : varchar <<PK>>
-  * Value : varchar <<PK>>
-  * Value : varchar <<PK>>
-  * Value : varchar <<PK>>
-  * Value : varchar <<PK>>
   --
   ExpiredMoment : datetime <<NOT NULL>>
   UserId : varchar <<NOT NULL>>
 }
 
+entity "Role_AuthorizableItems" {
+  * AuthorizableItemId : varchar <<PK>>
+  * RoleId : varchar <<PK>>
+}
+
 entity "Role_InheritedRoles" {
   * InheritedRoleId : varchar <<PK>>
-  * InheritedRoleId : varchar <<PK>>
-  * InheritedRoleId : varchar <<PK>>
-  * InheritedRoleId : varchar <<PK>>
-  * InheritedRoleId : varchar <<PK>>
-  * InheritedRoleId : varchar <<PK>>
-  * InheritedRoleId : varchar <<PK>>
-  * InheritedRoleId : varchar <<PK>>
-  * RoleId : varchar <<PK>>
-  * RoleId : varchar <<PK>>
-  * RoleId : varchar <<PK>>
-  * RoleId : varchar <<PK>>
-  * RoleId : varchar <<PK>>
-  * RoleId : varchar <<PK>>
-  * RoleId : varchar <<PK>>
   * RoleId : varchar <<PK>>
 }
 
 entity "Roles" {
-  * Id : varchar <<PK>>
-  * Id : varchar <<PK>>
-  * Id : varchar <<PK>>
-  * Id : varchar <<PK>>
-  * Id : varchar <<PK>>
-  * Id : varchar <<PK>>
-  * Id : varchar <<PK>>
   * Id : varchar <<PK>>
   --
   Name : varchar <<NOT NULL>>
@@ -65,44 +45,23 @@ entity "Roles" {
 
 entity "Settings" {
   * Key : varchar <<PK>>
+  --
+  Value : longtext <<NOT NULL>>
+}
+
+entity "UserSettings" {
   * Key : varchar <<PK>>
-  * Key : varchar <<PK>>
-  * Key : varchar <<PK>>
-  * Key : varchar <<PK>>
-  * Key : varchar <<PK>>
-  * Key : varchar <<PK>>
-  * Key : varchar <<PK>>
+  * UserId : varchar <<PK>>
   --
   Value : longtext <<NOT NULL>>
 }
 
 entity "User_Roles" {
   * RoleId : varchar <<PK>>
-  * RoleId : varchar <<PK>>
-  * RoleId : varchar <<PK>>
-  * RoleId : varchar <<PK>>
-  * RoleId : varchar <<PK>>
-  * RoleId : varchar <<PK>>
-  * RoleId : varchar <<PK>>
-  * RoleId : varchar <<PK>>
-  * UserId : varchar <<PK>>
-  * UserId : varchar <<PK>>
-  * UserId : varchar <<PK>>
-  * UserId : varchar <<PK>>
-  * UserId : varchar <<PK>>
-  * UserId : varchar <<PK>>
-  * UserId : varchar <<PK>>
   * UserId : varchar <<PK>>
 }
 
 entity "Users" {
-  * Id : varchar <<PK>>
-  * Id : varchar <<PK>>
-  * Id : varchar <<PK>>
-  * Id : varchar <<PK>>
-  * Id : varchar <<PK>>
-  * Id : varchar <<PK>>
-  * Id : varchar <<PK>>
   * Id : varchar <<PK>>
   --
   EMailAddress : varchar
@@ -115,81 +74,15 @@ entity "Users" {
   UserIsLocked : tinyint <<NOT NULL>>
 }
 
-entity "UserSettings" {
-  * Key : varchar <<PK>>
-  * Key : varchar <<PK>>
-  * Key : varchar <<PK>>
-  * Key : varchar <<PK>>
-  * Key : varchar <<PK>>
-  * Key : varchar <<PK>>
-  * Key : varchar <<PK>>
-  * Key : varchar <<PK>>
-  * UserId : varchar <<PK>>
-  * UserId : varchar <<PK>>
-  * UserId : varchar <<PK>>
-  * UserId : varchar <<PK>>
-  * UserId : varchar <<PK>>
-  * UserId : varchar <<PK>>
-  * UserId : varchar <<PK>>
-  * UserId : varchar <<PK>>
-  --
-  Value : longtext <<NOT NULL>>
-}
-
-"AccessToken" }o--|| "AccessToken" : UserId
-"AccessToken" }o--|| "RefreshToken" : UserId
-"AccessToken" }o--|| "Role_InheritedRoles" : UserId
-"AccessToken" }o--|| "Roles" : UserId
-"AccessToken" }o--|| "Settings" : UserId
-"AccessToken" }o--|| "User_Roles" : UserId
 "AccessToken" }o--|| "Users" : UserId
-"AccessToken" }o--|| "UserSettings" : UserId
-"RefreshToken" }o--|| "AccessToken" : UserId
-"RefreshToken" }o--|| "RefreshToken" : UserId
-"RefreshToken" }o--|| "Role_InheritedRoles" : UserId
-"RefreshToken" }o--|| "Roles" : UserId
-"RefreshToken" }o--|| "Settings" : UserId
-"RefreshToken" }o--|| "User_Roles" : UserId
+"InventoryObjects" }o--|| "InventoryObjects" : ParentId
+"InventoryObjects" }o--|| "InventoryObjects" : RealPlaceId
 "RefreshToken" }o--|| "Users" : UserId
-"RefreshToken" }o--|| "UserSettings" : UserId
-"Role_InheritedRoles" }o--|| "AccessToken" : InheritedRoleId
-"Role_InheritedRoles" }o--|| "RefreshToken" : InheritedRoleId
-"Role_InheritedRoles" }o--|| "Role_InheritedRoles" : InheritedRoleId
+"Role_AuthorizableItems" }o--|| "InventoryObjects" : AuthorizableItemId
+"Role_AuthorizableItems" }o--|| "Roles" : RoleId
 "Role_InheritedRoles" }o--|| "Roles" : InheritedRoleId
-"Role_InheritedRoles" }o--|| "Settings" : InheritedRoleId
-"Role_InheritedRoles" }o--|| "User_Roles" : InheritedRoleId
-"Role_InheritedRoles" }o--|| "Users" : InheritedRoleId
-"Role_InheritedRoles" }o--|| "UserSettings" : InheritedRoleId
-"Role_InheritedRoles" }o--|| "AccessToken" : RoleId
-"Role_InheritedRoles" }o--|| "RefreshToken" : RoleId
-"Role_InheritedRoles" }o--|| "Role_InheritedRoles" : RoleId
 "Role_InheritedRoles" }o--|| "Roles" : RoleId
-"Role_InheritedRoles" }o--|| "Settings" : RoleId
-"Role_InheritedRoles" }o--|| "User_Roles" : RoleId
-"Role_InheritedRoles" }o--|| "Users" : RoleId
-"Role_InheritedRoles" }o--|| "UserSettings" : RoleId
-"User_Roles" }o--|| "AccessToken" : RoleId
-"User_Roles" }o--|| "RefreshToken" : RoleId
-"User_Roles" }o--|| "Role_InheritedRoles" : RoleId
-"User_Roles" }o--|| "Roles" : RoleId
-"User_Roles" }o--|| "Settings" : RoleId
-"User_Roles" }o--|| "User_Roles" : RoleId
-"User_Roles" }o--|| "Users" : RoleId
-"User_Roles" }o--|| "UserSettings" : RoleId
-"User_Roles" }o--|| "AccessToken" : UserId
-"User_Roles" }o--|| "RefreshToken" : UserId
-"User_Roles" }o--|| "Role_InheritedRoles" : UserId
-"User_Roles" }o--|| "Roles" : UserId
-"User_Roles" }o--|| "Settings" : UserId
-"User_Roles" }o--|| "User_Roles" : UserId
-"User_Roles" }o--|| "Users" : UserId
-"User_Roles" }o--|| "UserSettings" : UserId
-"UserSettings" }o--|| "AccessToken" : UserId
-"UserSettings" }o--|| "RefreshToken" : UserId
-"UserSettings" }o--|| "Role_InheritedRoles" : UserId
-"UserSettings" }o--|| "Roles" : UserId
-"UserSettings" }o--|| "Settings" : UserId
-"UserSettings" }o--|| "User_Roles" : UserId
 "UserSettings" }o--|| "Users" : UserId
-"UserSettings" }o--|| "UserSettings" : UserId
+"User_Roles" }o--|| "Roles" : RoleId
+"User_Roles" }o--|| "Users" : UserId
 @enduml

@@ -163,6 +163,213 @@
         }
       }
     },
+    "/API/v0/OpenIMSBackend/SearchInventoryObjects": {
+      "get": {
+        "tags": [
+          "OpenIMSBackend"
+        ],
+        "summary": "Searches the inventory-objects of the given types whose name contains the given text (ignoring the case). The amount of results is limited, so this is meant to be called while the user types. Requires administrator privileges.",
+        "parameters": [
+          {
+            "name": "searchText",
+            "in": "query",
+            "description": "The text which the name has to contain. An empty text matches every name.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "types",
+            "in": "query",
+            "description": "The types of the objects which are searched: \"Location\", \"Building\", \"Area\", \"Container\" and/or \"Item\".",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IdLabelDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IdLabelDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IdLabelDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v0/OpenIMSBackend/GetAuthorizableItemsOfGroup": {
+      "get": {
+        "tags": [
+          "OpenIMSBackend"
+        ],
+        "summary": "Returns the inventory-objects to which the given group is directly assigned. Requires administrator privileges.",
+        "parameters": [
+          {
+            "name": "groupName",
+            "in": "query",
+            "description": "The name of the group.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IdLabelDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IdLabelDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IdLabelDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v0/OpenIMSBackend/AssignGroupToAuthorizableItem": {
+      "put": {
+        "tags": [
+          "OpenIMSBackend"
+        ],
+        "summary": "Assigns the given group to the given inventory-object, so that its members get read-access to the object and to everything which is in it. Requires administrator privileges.",
+        "parameters": [
+          {
+            "name": "groupName",
+            "in": "query",
+            "description": "The name of the group.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "authorizableItemId",
+            "in": "query",
+            "description": "The id of the inventory-object.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/v0/OpenIMSBackend/RemoveGroupFromAuthorizableItem": {
+      "put": {
+        "tags": [
+          "OpenIMSBackend"
+        ],
+        "summary": "Removes the assignment of the given group to the given inventory-object. Requires administrator privileges.",
+        "parameters": [
+          {
+            "name": "groupName",
+            "in": "query",
+            "description": "The name of the group.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "authorizableItemId",
+            "in": "query",
+            "description": "The id of the inventory-object.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/API/v0/UserController/Login": {
       "put": {
         "tags": [
@@ -651,6 +858,82 @@
           }
         }
       }
+    },
+    "/API/v0/UserController/CreateGroup": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Creates a new group (role) which has no members and is assigned to nothing. Requires administrator privileges.",
+        "parameters": [
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The name of the new group.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StringValueDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StringValueDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StringValueDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/v0/UserController/DeleteGroup": {
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Deletes the given group together with its memberships and its assignments to inventory-objects. Requires administrator privileges.",
+        "parameters": [
+          {
+            "name": "groupName",
+            "in": "query",
+            "description": "The name of the group.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -683,6 +966,21 @@
         },
         "additionalProperties": false,
         "description": "Data transfer object for the general (admin-configurable) OpenIMS-settings."
+      },
+      "IdLabelDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "label": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Identifies an object by its id and describes it by a human-readable label, for example as an entry of a selection-list."
       },
       "StringValueDTO": {
         "type": "object",

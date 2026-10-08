@@ -5,6 +5,7 @@
       <button mat-button [disabled]="false" (click)="onUserAreaClick()">{{getSiteTitle("user")}}</button>
       <button mat-button [disabled]="activeSite=='Dashboard'" (click)="onDashboardClick()">{{getSiteTitle("dashboard")}}</button>
       <button mat-button [disabled]="activeSite=='Users'" (click)="onUsersClick()">{{getSiteTitle("users")}}</button>
+      <button mat-button [disabled]="activeSite=='Groups'" (click)="onGroupsClick()">{{getSiteTitle("groups")}}</button>
       <button mat-button [disabled]="activeSite=='Settings'" (click)="onSettingsClick()">{{getSiteTitle("settings")}}</button>
     </div>
   </div>

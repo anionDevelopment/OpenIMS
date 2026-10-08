@@ -31,8 +31,39 @@ See the general [product reference](./Other/Reference/Reference.md).
 - ✅ Role-based authorization. Every user has the role `Users`, an administrator additionally has `Administrators`, which inherits `Users`.
 - ✅ Store the color-scheme (system, light or dark) per user, so the choice applies again after a new login and on another device.
 - ✅ Support PostgreSQL and MariaDB as persistence, plus a transient (in-memory) persistence for testcases and demonstrations.
+- ✅ Model the inventory as a hierarchy of locations, buildings, areas, containers and items in the backend, including the distinction between the place where an item belongs to and the place where it actually is (see [Inventory-model](#inventory-model)).
+- ✅ Grant groups read-access to parts of the inventory; the access applies to everything which is contained. An administrator manages the groups (create, delete, assign inventory-objects) on the page "Groups" of the admin-area and the members of the groups on the page "Users".
+- ❌ Endpoints and user-interface for the inventory are not implemented yet.
+- ❌ The operations of the inventory do not check the access of the requesting user yet (the access can already be computed, but it is not specified yet which operation requires which access).
 
-The business-functionality of an inventory-management-system is not implemented yet.
+## Inventory-model
+
+OpenIMS represents the physical world: every object of the inventory-model stands for a real, physical thing.
+
+| Type        | Represents | Examples |
+| ----------- | ---------- | -------- |
+| `Location`  | A site which contains buildings and areas. | A company-site, a property. |
+| `Building`  | A building. It is always in exactly one location and consists of areas. | An office-building, a warehouse. |
+| `Area`      | A place where things are kept: a room of a building, or an area of a location outside of a building. | A room, a yard, a terrace. |
+| `Container` | Anything which contains other things. It is in an area or in another container. | A cupboard, a shelf, a euro-box. |
+| `Item`      | A single thing which is inventoried. It is in an area or in a container. | A drill, a laptop. |
+
+The model is a strict hierarchy (location → building → area → container → … → item, and location → area), just as in the physical world:
+
+- Everything is in exactly one place: a building in one location, an area in one location or building, a container or an item in one area or container.
+- Ultimately every container and every item is in an area, every area is in a building or a location, and every building is in a location.
+- Nothing can be in itself, neither directly nor indirectly.
+
+For an item, OpenIMS distinguishes two places:
+
+- The **target place** is the building or container which contains the item in the model: where the item belongs to.
+- The **real place** is where the item actually is at the moment (for example because it was put back in the wrong cupboard or is temporarily used in another room). Currently every area and every container can be a real place; further kinds of real places are planned.
+
+Both are the same as long as the item is where it belongs.
+
+Access to the inventory is granted to groups: a group can be assigned to any location, building, area, container or item, and its members then have read-access to that object and to everything which is contained in it (they can see which items are where).
+
+See the [technical documentation](./Other/Reference/Technical/04_Solution-Strategy.md#inventory) for details.
 
 ## Getting Started
 

@@ -15,6 +15,15 @@ const selectorsOfVolatileElements: string[] = ['app-footer'];
  */
 export async function expectPageToLookLikeBaseline(page: Page, route: string, baselineName: string): Promise<void> {
     await openPageInReproducibleState(page, route);
+    await expectCurrentPageToLookLikeBaseline(page, baselineName);
+}
+
+/*
+ * Compares the screenshot of the page in its current state with the baseline-screenshot. This is meant for a page
+ * which has to be brought into a certain state by an interaction (for example by opening a dropdown) after it was
+ * opened with openPageInReproducibleState and before it is compared.
+ */
+export async function expectCurrentPageToLookLikeBaseline(page: Page, baselineName: string): Promise<void> {
     await expect(page).toHaveScreenshot(`${baselineName}.png`, {
         fullPage: true,
         caret: 'hide',
@@ -44,7 +53,7 @@ const requiredFont = '16px Roboto';
  * Navigates to the given route and waits until the page is rendered completely.
  * Without this waiting the screenshots would be flaky.
  */
-async function openPageInReproducibleState(page: Page, route: string): Promise<void> {
+export async function openPageInReproducibleState(page: Page, route: string): Promise<void> {
     await page.goto(route, { waitUntil: 'networkidle' });
     await page.evaluate(() => document.fonts.ready);
     /*

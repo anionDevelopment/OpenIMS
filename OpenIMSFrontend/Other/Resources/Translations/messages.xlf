@@ -116,7 +116,7 @@
     </unit>
     <unit id="login_failed">
       <notes>
-        <note category="location">src/app/modules/home-page/login-form/login-form.component.html:14,17</note>
+        <note category="location">src/app/modules/home-page/login-form/login-form.component.html:14,16</note>
       </notes>
       <segment>
         <source>Login failed. Please check username and password.</source>

@@ -21,6 +21,18 @@ components:
           description: Whether a new user-account can be created at all.
           type: boolean
       type: object
+    IdLabelDTO:
+      additionalProperties: false
+      description: Identifies an object by its id and describes it by a human-readable
+        label, for example as an entry of a selection-list.
+      properties:
+        id:
+          nullable: true
+          type: string
+        label:
+          nullable: true
+          type: string
+      type: object
     StringValueDTO:
       additionalProperties: false
       description: Transports a single string-value, so that an endpoint which only
@@ -110,6 +122,70 @@ paths:
           description: OK
       tags:
       - MaintenanceRoutes
+  /API/v0/OpenIMSBackend/AssignGroupToAuthorizableItem:
+    put:
+      parameters:
+      - description: The name of the group.
+        in: query
+        name: groupName
+        schema:
+          type: string
+      - description: The id of the inventory-object.
+        in: query
+        name: authorizableItemId
+        schema:
+          type: string
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+      summary: Assigns the given group to the given inventory-object, so that its
+        members get read-access to the object and to everything which is in it. Requires
+        administrator privileges.
+      tags:
+      - OpenIMSBackend
+  /API/v0/OpenIMSBackend/GetAuthorizableItemsOfGroup:
+    get:
+      parameters:
+      - description: The name of the group.
+        in: query
+        name: groupName
+        schema:
+          type: string
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IdLabelDTO'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IdLabelDTO'
+                type: array
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IdLabelDTO'
+                type: array
+          description: OK
+      summary: Returns the inventory-objects to which the given group is directly
+        assigned. Requires administrator privileges.
+      tags:
+      - OpenIMSBackend
   /API/v0/OpenIMSBackend/GetGeneralSettings:
     get:
       parameters:
@@ -134,6 +210,79 @@ paths:
           description: OK
       summary: Returns the general settings of this installation. Requires administrator
         privileges.
+      tags:
+      - OpenIMSBackend
+  /API/v0/OpenIMSBackend/RemoveGroupFromAuthorizableItem:
+    put:
+      parameters:
+      - description: The name of the group.
+        in: query
+        name: groupName
+        schema:
+          type: string
+      - description: The id of the inventory-object.
+        in: query
+        name: authorizableItemId
+        schema:
+          type: string
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+      summary: Removes the assignment of the given group to the given inventory-object.
+        Requires administrator privileges.
+      tags:
+      - OpenIMSBackend
+  /API/v0/OpenIMSBackend/SearchInventoryObjects:
+    get:
+      parameters:
+      - description: The text which the name has to contain. An empty text matches
+          every name.
+        in: query
+        name: searchText
+        schema:
+          type: string
+      - description: 'The types of the objects which are searched: "Location", "Building",
+          "Area", "Container" and/or "Item".'
+        in: query
+        name: types
+        schema:
+          items:
+            type: string
+          type: array
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IdLabelDTO'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IdLabelDTO'
+                type: array
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IdLabelDTO'
+                type: array
+          description: OK
+      summary: Searches the inventory-objects of the given types whose name contains
+        the given text (ignoring the case). The amount of results is limited, so this
+        is meant to be called while the user types. Requires administrator privileges.
       tags:
       - OpenIMSBackend
   /API/v0/OpenIMSBackend/SetGeneralSettings:
@@ -164,6 +313,55 @@ paths:
         privileges.
       tags:
       - OpenIMSBackend
+  /API/v0/UserController/CreateGroup:
+    post:
+      parameters:
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/StringValueDTO'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StringValueDTO'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/StringValueDTO'
+        description: The name of the new group.
+      responses:
+        '200':
+          description: OK
+      summary: Creates a new group (role) which has no members and is assigned to
+        nothing. Requires administrator privileges.
+      tags:
+      - User
+  /API/v0/UserController/DeleteGroup:
+    delete:
+      parameters:
+      - description: The name of the group.
+        in: query
+        name: groupName
+        schema:
+          type: string
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+      summary: Deletes the given group together with its memberships and its assignments
+        to inventory-objects. Requires administrator privileges.
+      tags:
+      - User
   /API/v0/UserController/GetAllRoles:
     get:
       parameters:

@@ -29,6 +29,7 @@ namespace OpenIMSBackend.Core.Services
         string GetScriptGetDirectlyInheritedRoleIds();
         string GetScriptDeleteDirectlyInheritedRoles();
         string GetScriptAddDirectlyInheritedRoles();
+        string GetScriptDeleteRole();
         #endregion
 
         #region AccessToken
@@ -43,6 +44,26 @@ namespace OpenIMSBackend.Core.Services
         string GetScriptSetSetting();
         string GetScriptGetUserSetting();
         string GetScriptSetUserSetting();
+        #endregion
+
+        #region Inventory
+        string GetScriptAddInventoryObject();
+        string GetScriptUpdateInventoryObject();
+        string GetScriptRemoveInventoryObject();
+        string GetScriptInventoryObjectExists();
+        string GetScriptGetInventoryObject();
+        string GetScriptGetAllInventoryObjects();
+        string GetScriptInventoryObjectHasChildren();
+        string GetScriptInventoryObjectIsUsedAsRealPlace();
+        string GetScriptSearchInventoryObjects();
+        #endregion
+
+        #region Authorization of authorizable items
+        string GetScriptAddRoleToAuthorizableItem();
+        string GetScriptRemoveRoleFromAuthorizableItem();
+        string GetScriptRemoveAllRolesFromAuthorizableItem();
+        string GetScriptGetRoleIdsOfAuthorizableItem();
+        string GetScriptGetAuthorizableItemIdsOfRole();
         #endregion
     }
 }
