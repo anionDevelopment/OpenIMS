@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en-US">
+  <file id="ngi18n" original="ng.template">
+    <unit id="admin_menu_label">
+      <notes>
+        <note category="location">src/app/modules/admin-area/admin-area-container/admin-area-container.component.html:4,5</note>
+      </notes>
+      <segment state="initial">
+        <source>Admin-menu:</source>
+        <target>Admin-menu:</target>
+      </segment>
+    </unit>
+    <unit id="admin_dashboard">
+      <notes>
+        <note category="location">src/app/modules/admin-area/admin-dashboard/admin-dashboard.component.html:3,4</note>
+      </notes>
+      <segment state="initial">
+        <source>Admin dashboard</source>
+        <target>Admin dashboard</target>
+      </segment>
+    </unit>
+    <unit id="settings">
+      <notes>
+        <note category="location">src/app/modules/admin-area/admin-settings/admin-settings.component.html:3,4</note>
+        <note category="location">src/app/modules/user-area/user-settings/user-settings.component.html:3,4</note>
+      </notes>
+      <segment state="initial">
+        <source>settings</source>
+        <target>settings</target>
+      </segment>
+    </unit>
+    <unit id="setting_registration_is_enabled">
+      <notes>
+        <note category="location">src/app/modules/admin-area/admin-settings/admin-settings.component.html:5,7</note>
+      </notes>
+      <segment state="initial">
+        <source>Allow the creation of new user-accounts</source>
+        <target>Allow the creation of new user-accounts</target>
+      </segment>
+    </unit>
+    <unit id="admin_user_placeholder">
+      <notes>
+        <note category="location">src/app/modules/admin-area/user/user.component.html:2,3</note>
+      </notes>
+      <segment state="initial">
+        <source>user works!</source>
+        <target>user works!</target>
+      </segment>
+    </unit>
+    <unit id="users">
+      <notes>
+        <note category="location">src/app/modules/admin-area/users-list/users-list.component.html:3,4</note>
+      </notes>
+      <segment state="initial">
+        <source>Users</source>
+        <target>Users</target>
+      </segment>
+    </unit>
+    <unit id="users_col_name">
+      <notes>
+        <note category="location">src/app/modules/admin-area/users-list/users-list.component.html:7,8</note>
+      </notes>
+      <segment state="initial">
+        <source>Name</source>
+        <target>Name</target>
+      </segment>
+    </unit>
+    <unit id="hint_not_authenticated">
+      <notes>
+        <note category="location">src/app/modules/home-page/hint-not-authenticated/hint-not-authenticated.component.html:2,3</note>
+      </notes>
+      <segment state="initial">
+        <source>You must be authenticated for this action.</source>
+        <target>You must be authenticated for this action.</target>
+      </segment>
+    </unit>
+    <unit id="hint_not_authorized">
+      <notes>
+        <note category="location">src/app/modules/home-page/hint-not-authorized/hint-not-authorized.component.html:2,3</note>
+      </notes>
+      <segment state="initial">
+        <source>You are not authorized for this action.</source>
+        <target>You are not authorized for this action.</target>
+      </segment>
+    </unit>
+    <unit id="hint_not_found">
+      <notes>
+        <note category="location">src/app/modules/home-page/hint-not-found/hint-not-found.component.html:3,4</note>
+      </notes>
+      <segment state="initial">
+        <source>Site not found</source>
+        <target>Site not found</target>
+      </segment>
+    </unit>
+    <unit id="username">
+      <notes>
+        <note category="location">src/app/modules/home-page/login-form/login-form.component.html:3,4</note>
+      </notes>
+      <segment state="initial">
+        <source>Username</source>
+        <target>Username</target>
+      </segment>
+    </unit>
+    <unit id="login_username_placeholder">
+      <notes>
+        <note category="location">src/app/modules/home-page/login-form/login-form.component.html:4</note>
+      </notes>
+      <segment state="initial">
+        <source>Example: johndoe</source>
+        <target>Example: johndoe</target>
+      </segment>
+    </unit>
+    <unit id="password">
+      <notes>
+        <note category="location">src/app/modules/home-page/login-form/login-form.component.html:8,9</note>
+      </notes>
+      <segment state="initial">
+        <source>Password</source>
+        <target>Password</target>
+      </segment>
+    </unit>
+    <unit id="login_button">
+      <notes>
+        <note category="location">src/app/modules/home-page/login-form/login-form.component.html:12,13</note>
+      </notes>
+      <segment state="initial">
+        <source>Login</source>
+        <target>Login</target>
+      </segment>
+    </unit>
+    <unit id="login_failed">
+      <notes>
+        <note category="location">src/app/modules/home-page/login-form/login-form.component.html:14,15</note>
+      </notes>
+      <segment state="initial">
+        <source>Login failed. Please check username and password.</source>
+        <target>Login failed. Please check username and password.</target>
+      </segment>
+    </unit>
+    <unit id="user_menu_label">
+      <notes>
+        <note category="location">src/app/modules/user-area/user-area-container/user-area-container.component.html:4,5</note>
+      </notes>
+      <segment state="initial">
+        <source>User-menu:</source>
+        <target>User-menu:</target>
+      </segment>
+    </unit>
+    <unit id="hello_user">
+      <notes>
+        <note category="location">src/app/modules/user-area/user-dashboard/user-dashboard.component.html:4,5</note>
+        <note category="location">src/app/modules/user-area/user-icon/user-icon.component.html:6,7</note>
+      </notes>
+      <segment state="initial">
+        <source>Hello</source>
+        <target>Hello</target>
+      </segment>
+    </unit>
+    <unit id="logout">
+      <notes>
+        <note category="location">src/app/modules/user-area/user-icon/user-icon.component.html:9,10</note>
+      </notes>
+      <segment state="initial">
+        <source>Logout</source>
+        <target>Logout</target>
+      </segment>
+    </unit>
+    <unit id="user.settings.colorscheme">
+      <notes>
+        <note category="location">src/app/modules/user-area/user-settings/user-settings.component.html:5,6</note>
+      </notes>
+      <segment state="initial">
+        <source>Color scheme</source>
+        <target>Color scheme</target>
+      </segment>
+    </unit>
+    <unit id="user.settings.language">
+      <notes>
+        <note category="location">src/app/modules/user-area/user-settings/user-settings.component.html:9,10</note>
+      </notes>
+      <segment state="initial">
+        <source>Language</source>
+        <target>Language</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

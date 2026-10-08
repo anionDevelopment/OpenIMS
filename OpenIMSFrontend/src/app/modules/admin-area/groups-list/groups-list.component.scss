@@ -1,0 +1,25 @@
+.create-group {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 16px;
+}
+.groups-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 32px;
+}
+.items {
+    list-style: none;
+    padding-left: 0;
+}
+.items li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+.action-failed {
+    color: var(--mat-sys-error);
+}

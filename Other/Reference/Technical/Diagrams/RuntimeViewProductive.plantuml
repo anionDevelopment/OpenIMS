@@ -1,0 +1,27 @@
+@startuml RuntimeViewProductive
+title Runtime-view Productive
+
+actor "User" as user
+note as UserNote
+  The user calls https://<domain>:443 or http://<domain>:8080
+end note
+user .. UserNote
+
+[OpenIMS (:443 and :8080)] as OpenIMS
+note as OpenIMSNote
+    Started by container-engine (for example docker).
+    The domain can be set using the commandline-parameter "--InitialDomain <domain>".
+    Backend and frontend are running in the container.
+end note
+OpenIMS .. OpenIMSNote
+
+[Database (:5432 or :3306)] as OpenIMSDatabase
+note as OpenIMSDatabaseNote
+    Database-container
+    Port can be changed of course but must be updated in the connection-string in the OpenIMS-configuration.
+end note 
+OpenIMSDatabase .. OpenIMSDatabaseNote
+
+user --> OpenIMS
+OpenIMS --> OpenIMSDatabase
+@enduml

@@ -1,0 +1,11 @@
+<mat-form-field class="selector">
+  <mat-label i18n="@@inventory_object_selector_label">Search an object</mat-label>
+  <input type="text" matInput [formControl]="searchInput" [matAutocomplete]="autocomplete">
+  <mat-autocomplete #autocomplete="matAutocomplete" [displayWith]="displayLabel" (optionSelected)="onOptionSelected($event)">
+    @for (entry of searchResults$ | async; track entry.id) {
+    <mat-option [value]="entry">{{entry.label}}</mat-option>
+    } @empty {
+    <mat-option disabled i18n="@@inventory_object_selector_no_result">No matching object found</mat-option>
+    }
+  </mat-autocomplete>
+</mat-form-field>

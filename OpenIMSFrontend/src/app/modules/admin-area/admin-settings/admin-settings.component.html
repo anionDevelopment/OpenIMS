@@ -1,0 +1,8 @@
+<app-frame-work>
+  <app-admin-area-container>
+    <h2 i18n="@@settings">settings</h2>
+    <div class="setting-row">
+      <mat-slide-toggle [checked]="registrationIsEnabled" (change)="onRegistrationIsEnabledChanged($event.checked)" i18n="@@setting_registration_is_enabled">Allow the creation of new user-accounts</mat-slide-toggle>
+    </div>
+  </app-admin-area-container>
+</app-frame-work>

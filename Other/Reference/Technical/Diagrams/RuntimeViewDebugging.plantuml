@@ -1,0 +1,35 @@
+@startuml RuntimeViewDebugging
+title Runtime-view Debugging
+
+actor "User" as user
+note as UserNote
+  The user calls https://openimstest.local:443
+end note
+user .. UserNote
+
+[ReverseProxy (:443)] as ReverseProxy
+note as ReverseProxyNote
+    Started via "task LocaltestserviceReverseProxyStart" (or shorter: "task lru").
+    The reverse-proxy is running von :443.
+    The reverse-proxy redirects frontend-calls to http://127.0.0.1:4200
+    and backend-calls to http://127.0.0.1:80
+end note 
+ReverseProxy .. ReverseProxyNote
+
+[Backend (:80)] as Backend
+note as BackendNote
+  Started in the IDE and listens on :80.
+end note
+Backend .. BackendNote
+
+[Frontend (:4200)] as Frontend
+note as FrontendNote
+  Started in the IDE or via "task RunFrontend" (or shorter: "task rf") and listens on :4200
+end note
+Frontend .. FrontendNote 
+
+user --> ReverseProxy
+ReverseProxy --> Backend
+ReverseProxy --> Frontend
+
+@enduml

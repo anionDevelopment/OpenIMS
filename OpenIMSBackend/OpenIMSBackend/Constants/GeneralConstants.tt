@@ -1,0 +1,18 @@
+﻿<#@ output extension=".cs" #>
+<#@ template language="C#" #>
+<#@ assembly name="System.IO" #>
+<#@ parameter type="System.String" name="repositoryFolder" #>
+<#@ parameter type="System.String" name="codeUnitName" #>
+<#@ parameter type="System.String" name="gryLibraryDLLFile" #>
+<#
+System.Reflection.Assembly gryLibraryAssembly = System.Reflection.Assembly.LoadFrom(gryLibraryDLLFile);
+Type functionsForCommonProjectStructureType = gryLibraryAssembly.GetType("GRYLibrary.Core.Misc.TextTransformUtilities.FunctionsForCommonProjectStructure");
+string generatedConstants = (string) functionsForCommonProjectStructureType.GetMethod("GenerateConstants").Invoke(null, new object[]{repositoryFolder, codeUnitName, false});
+#>
+namespace <#=codeUnitName#>.Core.Constants
+{
+    internal static class GeneralConstants
+    {
+    <#= generatedConstants #>
+    }
+}

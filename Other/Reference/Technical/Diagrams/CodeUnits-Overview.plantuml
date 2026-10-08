@@ -1,0 +1,27 @@
+@startuml CodeUnits-Overview
+skinparam defaultFontName "DejaVu Sans"
+title CodeUnits of OpenIMS
+
+[OpenIMSBackend]
+note as OpenIMSBackendNote
+  OpenIMSBackend is the backend of OpenIMS.
+end note
+OpenIMSBackend .. OpenIMSBackendNote
+
+[OpenIMSFrontend]
+note as OpenIMSFrontendNote
+  OpenIMSFrontend is the frontend of OpenIMS.
+end note
+OpenIMSFrontend .. OpenIMSFrontendNote
+
+[OpenIMS]
+note as OpenIMSNote
+  OpenIMS is an open source inventory-management-system.
+end note
+OpenIMS .. OpenIMSNote
+
+OpenIMSFrontend --> OpenIMSBackend
+OpenIMS --> OpenIMSBackend
+OpenIMS --> OpenIMSFrontend
+
+@enduml

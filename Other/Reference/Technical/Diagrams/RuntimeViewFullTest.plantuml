@@ -1,0 +1,26 @@
+@startuml RuntimeViewFullTest
+title Runtime-view full test
+
+actor "User" as user
+note as UserNote
+  The user calls https://openims.test.local:443 or http://openims.test.local:8080
+end note
+user .. UserNote
+
+[OpenIMS (:443 and :8080)] as OpenIMS
+note as OpenIMSNote
+    Started via "task BaseExampleStart" (or shorter: "task beu").
+    The domain can be changed using the commandline-parameter "--InitialDomain <domain>".
+    Backend and frontend are running in the container.
+end note 
+OpenIMS .. OpenIMSNote
+
+[Database (:5432)] as OpenIMSDatabase
+note as OpenIMSDatabaseNote
+    Database-container
+end note 
+OpenIMSDatabase .. OpenIMSDatabaseNote
+
+user --> OpenIMS
+OpenIMS --> OpenIMSDatabase
+@enduml

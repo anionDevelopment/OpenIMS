@@ -1,0 +1,16 @@
+<form [formGroup]="form" (ngSubmit)="login()">
+  <mat-form-field>
+    <mat-label i18n="@@username">Username</mat-label>
+    <input type="text" matInput placeholder="Example: johndoe" i18n-placeholder="@@login_username_placeholder" formControlName="username">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label i18n="@@password">Password</mat-label>
+    <input type="password" matInput formControlName="password">
+  </mat-form-field>
+  <br>
+  <button mat-flat-button i18n="@@login_button">Login</button>
+  @if (loginFailed) {
+  <p class="login-failed" i18n="@@login_failed">Login failed. Please check username and password.</p>
+  }
+</form>

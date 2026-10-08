@@ -1,0 +1,88 @@
+@startuml
+title OpenIMSBackend - Database structure (MariaDB)
+hide circle
+skinparam linetype ortho
+
+entity "AccessToken" {
+  * Value : varchar <<PK>>
+  --
+  ExpiredMoment : datetime <<NOT NULL>>
+  UserId : varchar <<NOT NULL>>
+}
+
+entity "InventoryObjects" {
+  * Id : varchar <<PK>>
+  --
+  Description : longtext <<NOT NULL>>
+  Name : varchar <<NOT NULL>>
+  ParentId : varchar
+  RealPlaceId : varchar
+  Type : varchar <<NOT NULL>>
+}
+
+entity "RefreshToken" {
+  * Value : varchar <<PK>>
+  --
+  ExpiredMoment : datetime <<NOT NULL>>
+  UserId : varchar <<NOT NULL>>
+}
+
+entity "Role_AuthorizableItems" {
+  * AuthorizableItemId : varchar <<PK>>
+  * RoleId : varchar <<PK>>
+}
+
+entity "Role_InheritedRoles" {
+  * InheritedRoleId : varchar <<PK>>
+  * RoleId : varchar <<PK>>
+}
+
+entity "Roles" {
+  * Id : varchar <<PK>>
+  --
+  Name : varchar <<NOT NULL>>
+}
+
+entity "Settings" {
+  * Key : varchar <<PK>>
+  --
+  Value : longtext <<NOT NULL>>
+}
+
+entity "UserSettings" {
+  * Key : varchar <<PK>>
+  * UserId : varchar <<PK>>
+  --
+  Value : longtext <<NOT NULL>>
+}
+
+entity "User_Roles" {
+  * RoleId : varchar <<PK>>
+  * UserId : varchar <<PK>>
+}
+
+entity "Users" {
+  * Id : varchar <<PK>>
+  --
+  EMailAddress : varchar
+  Name : varchar <<NOT NULL>>
+  PasswordHash : varchar
+  RegistrationMoment : datetime <<NOT NULL>>
+  TOTPActivated : tinyint
+  TOTPSecretKey : varchar
+  UserIsActivated : tinyint <<NOT NULL>>
+  UserIsLocked : tinyint <<NOT NULL>>
+}
+
+"AccessToken" }o--|| "Users" : UserId
+"InventoryObjects" }o--|| "InventoryObjects" : ParentId
+"InventoryObjects" }o--|| "InventoryObjects" : RealPlaceId
+"RefreshToken" }o--|| "Users" : UserId
+"Role_AuthorizableItems" }o--|| "InventoryObjects" : AuthorizableItemId
+"Role_AuthorizableItems" }o--|| "Roles" : RoleId
+"Role_InheritedRoles" }o--|| "Roles" : InheritedRoleId
+"Role_InheritedRoles" }o--|| "Roles" : RoleId
+"UserSettings" }o--|| "Users" : UserId
+"User_Roles" }o--|| "Roles" : RoleId
+"User_Roles" }o--|| "Users" : UserId
+@enduml

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" data-diagram-type="DESCRIPTION" style="width:845px;height:403px;background:#FFFFFF;" width="845px" height="403px" viewBox="0 0 845 403" zoomAndPan="magnify" preserveAspectRatio="none" contentStyleType="text/css">
+  <defs />
+  <g font-family="sans-serif" lengthAdjust="spacing">
+    <g class="title" data-source-line="2">
+      <text x="330.974" y="22.995" fill="#000" font-size="14" textLength="176.634" font-weight="700" font-family="'DejaVu Sans'">CodeUnits of OpenIMS</text>
+    </g>
+    <g class="entity" data-qualified-name="OpenIMSBackend" id="ent0001" data-source-line="4">
+      <rect x="83.34" y="256.887" width="162.849" height="46.297" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5" />
+      <rect x="226.189" y="261.887" width="15" height="10" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <rect x="224.189" y="263.887" width="4" height="2" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <rect x="224.189" y="267.887" width="4" height="2" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <text x="98.34" y="289.882" fill="#000" font-size="14" textLength="122.849" font-family="'DejaVu Sans'">OpenIMSBackend</text>
+    </g>
+    <g class="entity" data-qualified-name="OpenIMSBackendNote" id="ent0002" data-source-line="6">
+      <path d="M6,363.187 L6,388.32 A0,0 0 0 0 6,388.32 L323.524,388.32 A0,0 0 0 0 323.524,388.32 L323.524,373.187 L313.524,363.187 L168.76,363.187 L164.76,303.247 L160.76,363.187 L6,363.187 A0,0 0 0 0 6,363.187" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <path d="M313.524,363.187 L313.524,373.187 L323.524,373.187 L313.524,363.187" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <text x="12" y="380.254" fill="#000" font-size="13" textLength="296.524" font-family="'DejaVu Sans'">OpenIMSBackend is the backend of OpenIMS.</text>
+    </g>
+    <g class="entity" data-qualified-name="OpenIMSFrontend" id="ent0004" data-source-line="10">
+      <rect x="217.96" y="150.587" width="165.597" height="46.297" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5" />
+      <rect x="363.557" y="155.587" width="15" height="10" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <rect x="361.557" y="157.587" width="4" height="2" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <rect x="361.557" y="161.587" width="4" height="2" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <text x="232.96" y="183.582" fill="#000" font-size="14" textLength="125.597" font-family="'DejaVu Sans'">OpenIMSFrontend</text>
+    </g>
+    <g class="entity" data-qualified-name="OpenIMSFrontendNote" id="ent0005" data-source-line="12">
+      <path d="M281.57,267.467 L281.57,292.6 A0,0 0 0 0 281.57,292.6 L601.964,292.6 A0,0 0 0 0 601.964,292.6 L601.964,277.467 L591.964,267.467 L429.68,267.467 L331.36,197.367 L421.68,267.467 L281.57,267.467 A0,0 0 0 0 281.57,267.467" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <path d="M591.964,267.467 L591.964,277.467 L601.964,277.467 L591.964,267.467" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <text x="287.57" y="284.534" fill="#000" font-size="13" textLength="299.394" font-family="'DejaVu Sans'">OpenIMSFrontend is the frontend of OpenIMS.</text>
+    </g>
+    <g class="entity" data-qualified-name="OpenIMS" id="ent0007" data-source-line="16">
+      <rect x="249.52" y="44.297" width="102.487" height="46.297" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5" />
+      <rect x="332.007" y="49.297" width="15" height="10" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <rect x="330.007" y="51.297" width="4" height="2" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <rect x="330.007" y="55.297" width="4" height="2" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <text x="264.52" y="77.292" fill="#000" font-size="14" textLength="62.487" font-family="'DejaVu Sans'">OpenIMS</text>
+    </g>
+    <g class="entity" data-qualified-name="OpenIMSNote" id="ent0008" data-source-line="18">
+      <path d="M418.94,161.177 L418.94,186.31 A0,0 0 0 0 418.94,186.31 L830.581,186.31 A0,0 0 0 0 830.581,186.31 L830.581,171.177 L820.581,161.177 L591.39,161.177 L352.46,85.087 L583.39,161.177 L418.94,161.177 A0,0 0 0 0 418.94,161.177" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <path d="M820.581,161.177 L820.581,171.177 L830.581,171.177 L820.581,161.177" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <text x="424.94" y="178.244" fill="#000" font-size="13" textLength="390.641" font-family="'DejaVu Sans'">OpenIMS is an open source inventory-management-system.</text>
+    </g>
+    <g class="link" data-entity-1="ent0004" data-entity-2="ent0001" id="lnk10" data-source-line="22" data-link-type="dependency">
+      <path d="M271.25,197.367 C248.44,214.867 220.978,235.925 198.178,253.405" style="stroke:#181818;stroke-width:1;" fill="none" id="OpenIMSFrontend-to-OpenIMSBackend" />
+      <polygon points="194.21,256.447,203.786,254.145,198.178,253.405,198.919,247.797,194.21,256.447" fill="#181818" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+    </g>
+    <g class="link" data-entity-1="ent0007" data-entity-2="ent0001" id="lnk11" data-source-line="23" data-link-type="dependency">
+      <path d="M263.53,90.777 C242.26,105.327 216.72,126.127 200.76,150.587 C179.25,183.557 171.07,224.428 167.58,251.488" style="stroke:#181818;stroke-width:1;" fill="none" id="OpenIMS-to-OpenIMSBackend" />
+      <polygon points="166.94,256.447,172.058,248.032,167.58,251.488,164.124,247.009,166.94,256.447" fill="#181818" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+    </g>
+    <g class="link" data-entity-1="ent0007" data-entity-2="ent0004" id="lnk12" data-source-line="24" data-link-type="dependency">
+      <path d="M300.76,91.077 C300.76,108.567 300.76,127.667 300.76,145.157" style="stroke:#181818;stroke-width:1;" fill="none" id="OpenIMS-to-OpenIMSFrontend" />
+      <polygon points="300.76,150.157,304.76,141.157,300.76,145.157,296.76,141.157,300.76,150.157" fill="#181818" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+    </g>
+  </g>
+</svg>

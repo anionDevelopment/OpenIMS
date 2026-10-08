@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" data-diagram-type="DESCRIPTION" style="width:1326px;height:456px;background:#FFFFFF;" width="1326px" height="456px" viewBox="0 0 1326 456" zoomAndPan="magnify" preserveAspectRatio="none" contentStyleType="text/css">
+  <defs />
+  <g font-family="sans-serif" lengthAdjust="spacing">
+    <g class="title" data-source-line="1">
+      <text x="560.019" y="22.995" fill="#000" font-size="14" textLength="199.261" font-weight="700" font-family="DejaVu Sans">Runtime-view Debugging</text>
+    </g>
+    <g class="entity" data-qualified-name="user" id="ent0001" data-source-line="3">
+      <ellipse cx="488.165" cy="51.297" rx="8" ry="8" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <path d="M488.165,59.297 L488.165,86.297 M475.165,67.297 L501.165,67.297 M488.165,86.297 L475.165,101.297 M488.165,86.297 L501.165,101.297" style="stroke:#181818;stroke-width:0.5;" fill="none" />
+      <text x="472.21" y="115.792" fill="#000" font-size="14" textLength="31.91" font-family="DejaVu Sans">User</text>
+    </g>
+    <g class="entity" data-qualified-name="UserNote" id="ent0002" data-source-line="5">
+      <path d="M196.31,189.677 L196.31,214.81 A0,0 0 0 0 196.31,214.81 L502.021,214.81 A0,0 0 0 0 502.021,214.81 L502.021,199.677 L492.021,189.677 L367.19,189.677 L471.95,95.867 L359.19,189.677 L196.31,189.677 A0,0 0 0 0 196.31,189.677" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <path d="M492.021,189.677 L492.021,199.677 L502.021,199.677 L492.021,189.677" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <text x="202.31" y="206.744" fill="#000" font-size="13" textLength="284.711" font-family="DejaVu Sans">The user calls https://openimstest.local:443</text>
+    </g>
+    <g class="entity" data-qualified-name="ReverseProxy" id="ent0004" data-source-line="9">
+      <rect x="536.64" y="179.097" width="183.049" height="46.297" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5" />
+      <rect x="699.689" y="184.097" width="15" height="10" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <rect x="697.689" y="186.097" width="4" height="2" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <rect x="697.689" y="190.097" width="4" height="2" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <text x="551.64" y="212.092" fill="#000" font-size="14" textLength="143.049" font-family="DejaVu Sans">ReverseProxy (:443)</text>
+    </g>
+    <g class="entity" data-qualified-name="ReverseProxyNote" id="ent0005" data-source-line="11">
+      <path d="M6,285.397 L6,355.928 A0,0 0 0 0 6,355.928 L524.326,355.928 A0,0 0 0 0 524.326,355.928 L524.326,295.397 L514.326,285.397 L377.27,285.397 L557.74,225.827 L369.27,285.397 L6,285.397 A0,0 0 0 0 6,285.397" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <path d="M514.326,285.397 L514.326,295.397 L524.326,295.397 L514.326,285.397" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <text x="12" y="302.464" fill="#000" font-size="13" textLength="497.326" font-family="DejaVu Sans">Started via "task LocaltestserviceReverseProxyStart" (or shorter: "task lru").</text>
+      <text x="12" y="317.597" fill="#000" font-size="13" textLength="253.379" font-family="DejaVu Sans">The reverse-proxy is running von :443.</text>
+      <text x="12" y="332.729" fill="#000" font-size="13" textLength="435.049" font-family="DejaVu Sans">The reverse-proxy redirects frontend-calls to http://127.0.0.1:4200</text>
+      <text x="12" y="347.862" fill="#000" font-size="13" textLength="261.86" font-family="DejaVu Sans">and backend-calls to http://127.0.0.1:80</text>
+    </g>
+    <g class="entity" data-qualified-name="Backend" id="ent0007" data-source-line="18">
+      <rect x="559.03" y="297.507" width="138.267" height="46.297" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5" />
+      <rect x="677.297" y="302.507" width="15" height="10" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <rect x="675.297" y="304.507" width="4" height="2" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <rect x="675.297" y="308.507" width="4" height="2" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <text x="574.03" y="330.502" fill="#000" font-size="14" textLength="98.267" font-family="DejaVu Sans">Backend (:80)</text>
+    </g>
+    <g class="entity" data-qualified-name="BackendNote" id="ent0008" data-source-line="20">
+      <path d="M428.67,415.927 L428.67,441.06 A0,0 0 0 0 428.67,441.06 L689.656,441.06 A0,0 0 0 0 689.656,441.06 L689.656,425.927 L679.656,415.927 L570.93,415.927 L613.53,344.107 L562.93,415.927 L428.67,415.927 A0,0 0 0 0 428.67,415.927" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <path d="M679.656,415.927 L679.656,425.927 L689.656,425.927 L679.656,415.927" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <text x="434.67" y="432.994" fill="#000" font-size="13" textLength="239.986" font-family="DejaVu Sans">Started in the IDE and listens on :80.</text>
+    </g>
+    <g class="entity" data-qualified-name="Frontend" id="ent0010" data-source-line="24">
+      <rect x="869.75" y="297.507" width="158.829" height="46.297" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5" />
+      <rect x="1008.579" y="302.507" width="15" height="10" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <rect x="1006.579" y="304.507" width="4" height="2" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <rect x="1006.579" y="308.507" width="4" height="2" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <text x="884.75" y="330.502" fill="#000" font-size="14" textLength="118.829" font-family="DejaVu Sans">Frontend (:4200)</text>
+    </g>
+    <g class="entity" data-qualified-name="FrontendNote" id="ent0011" data-source-line="26">
+      <path d="M725.02,415.927 L725.02,441.06 A0,0 0 0 0 725.02,441.06 L1311.298,441.06 A0,0 0 0 0 1311.298,441.06 L1311.298,425.927 L1301.298,415.927 L1014.4,415.927 L963.8,344.107 L1006.4,415.927 L725.02,415.927 A0,0 0 0 0 725.02,415.927" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <path d="M1301.298,415.927 L1301.298,425.927 L1311.298,425.927 L1301.298,415.927" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <text x="731.02" y="432.994" fill="#000" font-size="13" textLength="565.278" font-family="DejaVu Sans">Started in the IDE or via "task RunFrontend" (or shorter: "task rf") and listens on :4200</text>
+    </g>
+    <g class="link" data-entity-1="ent0001" data-entity-2="ent0004" id="lnk13" data-source-line="30" data-link-type="dependency">
+      <path d="M504.5,95.867 C528.37,116.207 569.254,151.055 597.874,175.435" style="stroke:#181818;stroke-width:1;" fill="none" id="user-to-ReverseProxy" />
+      <polygon points="601.68,178.677,597.423,169.796,597.874,175.435,592.235,175.886,601.68,178.677" fill="#181818" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+    </g>
+    <g class="link" data-entity-1="ent0004" data-entity-2="ent0007" id="lnk14" data-source-line="31" data-link-type="dependency">
+      <path d="M628.16,225.687 C628.16,246.307 628.16,271.687 628.16,292.277" style="stroke:#181818;stroke-width:1;" fill="none" id="ReverseProxy-to-Backend" />
+      <polygon points="628.16,297.277,632.16,288.277,628.16,292.277,624.16,288.277,628.16,297.277" fill="#181818" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+    </g>
+    <g class="link" data-entity-1="ent0004" data-entity-2="ent0010" id="lnk15" data-source-line="32" data-link-type="dependency">
+      <path d="M690.44,225.827 C747.05,246.357 825.45,274.792 882.09,295.332" style="stroke:#181818;stroke-width:1;" fill="none" id="ReverseProxy-to-Frontend" />
+      <polygon points="886.79,297.037,879.693,290.208,882.09,295.332,876.965,297.729,886.79,297.037" fill="#181818" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+    </g>
+  </g>
+</svg>

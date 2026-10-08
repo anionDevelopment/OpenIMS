@@ -1,0 +1,675 @@
+components:
+  schemas:
+    AccessToken:
+      additionalProperties: false
+      properties:
+        expiredMoment:
+          format: date-time
+          type: string
+        ownerUserId:
+          nullable: true
+          type: string
+        value:
+          nullable: true
+          type: string
+      type: object
+    GeneralSettingsDTO:
+      additionalProperties: false
+      description: Data transfer object for the general (admin-configurable) OpenIMS-settings.
+      properties:
+        registrationIsEnabled:
+          description: Whether a new user-account can be created at all.
+          type: boolean
+      type: object
+    IdLabelDTO:
+      additionalProperties: false
+      description: Identifies an object by its id and describes it by a human-readable
+        label, for example as an entry of a selection-list.
+      properties:
+        id:
+          nullable: true
+          type: string
+        label:
+          nullable: true
+          type: string
+      type: object
+    StringValueDTO:
+      additionalProperties: false
+      description: Transports a single string-value, so that an endpoint which only
+        exchanges one value does not need a type of its own.
+      properties:
+        value:
+          nullable: true
+          type: string
+      type: object
+    UserInformationDTO:
+      additionalProperties: false
+      description: Represents the information about the currently authenticated user
+        which the frontend needs to render itself.
+      properties:
+        id:
+          nullable: true
+          type: string
+        isAdmin:
+          type: boolean
+        name:
+          nullable: true
+          type: string
+      type: object
+    UserOverviewDTO:
+      additionalProperties: false
+      description: Represents a user together with the names of the roles currently
+        assigned to it. Used for the administrative user-overview.
+      properties:
+        id:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        roles:
+          items:
+            type: string
+          nullable: true
+          type: array
+          uniqueItems: true
+      type: object
+info:
+  description: OpenIMSBackend is the backend of OpenIMS.
+  title: OpenIMSBackend v0.1.0 API documentation
+  version: v0.1.0
+openapi: 3.0.4
+paths:
+  /API/Other/Maintenance/AvailabilityCheck:
+    get:
+      responses:
+        '200':
+          description: OK
+      tags:
+      - MaintenanceRoutes
+  /API/Other/Maintenance/CurrentVersion:
+    get:
+      responses:
+        '200':
+          description: OK
+      tags:
+      - MaintenanceRoutes
+  /API/Other/Maintenance/HealthCheck:
+    get:
+      responses:
+        '200':
+          description: OK
+      tags:
+      - MaintenanceRoutes
+  /API/Other/Maintenance/InitializationState:
+    get:
+      responses:
+        '200':
+          description: OK
+      tags:
+      - MaintenanceRoutes
+  /API/Other/Maintenance/Metrics:
+    get:
+      responses:
+        '200':
+          description: OK
+      tags:
+      - MaintenanceRoutes
+  /API/Other/Maintenance/ShowAllEndpoints:
+    get:
+      responses:
+        '200':
+          description: OK
+      tags:
+      - MaintenanceRoutes
+  /API/v0/OpenIMSBackend/AssignGroupToAuthorizableItem:
+    put:
+      parameters:
+      - description: The name of the group.
+        in: query
+        name: groupName
+        schema:
+          type: string
+      - description: The id of the inventory-object.
+        in: query
+        name: authorizableItemId
+        schema:
+          type: string
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+      summary: Assigns the given group to the given inventory-object, so that its
+        members get read-access to the object and to everything which is in it. Requires
+        administrator privileges.
+      tags:
+      - OpenIMSBackend
+  /API/v0/OpenIMSBackend/GetAuthorizableItemsOfGroup:
+    get:
+      parameters:
+      - description: The name of the group.
+        in: query
+        name: groupName
+        schema:
+          type: string
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IdLabelDTO'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IdLabelDTO'
+                type: array
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IdLabelDTO'
+                type: array
+          description: OK
+      summary: Returns the inventory-objects to which the given group is directly
+        assigned. Requires administrator privileges.
+      tags:
+      - OpenIMSBackend
+  /API/v0/OpenIMSBackend/GetGeneralSettings:
+    get:
+      parameters:
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralSettingsDTO'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GeneralSettingsDTO'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GeneralSettingsDTO'
+          description: OK
+      summary: Returns the general settings of this installation. Requires administrator
+        privileges.
+      tags:
+      - OpenIMSBackend
+  /API/v0/OpenIMSBackend/RemoveGroupFromAuthorizableItem:
+    put:
+      parameters:
+      - description: The name of the group.
+        in: query
+        name: groupName
+        schema:
+          type: string
+      - description: The id of the inventory-object.
+        in: query
+        name: authorizableItemId
+        schema:
+          type: string
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+      summary: Removes the assignment of the given group to the given inventory-object.
+        Requires administrator privileges.
+      tags:
+      - OpenIMSBackend
+  /API/v0/OpenIMSBackend/SearchInventoryObjects:
+    get:
+      parameters:
+      - description: The text which the name has to contain. An empty text matches
+          every name.
+        in: query
+        name: searchText
+        schema:
+          type: string
+      - description: 'The types of the objects which are searched: "Location", "Building",
+          "Area", "Container" and/or "Item".'
+        in: query
+        name: types
+        schema:
+          items:
+            type: string
+          type: array
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IdLabelDTO'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IdLabelDTO'
+                type: array
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IdLabelDTO'
+                type: array
+          description: OK
+      summary: Searches the inventory-objects of the given types whose name contains
+        the given text (ignoring the case). The amount of results is limited, so this
+        is meant to be called while the user types. Requires administrator privileges.
+      tags:
+      - OpenIMSBackend
+  /API/v0/OpenIMSBackend/SetGeneralSettings:
+    put:
+      parameters:
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GeneralSettingsDTO'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeneralSettingsDTO'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GeneralSettingsDTO'
+        description: The settings to apply.
+      responses:
+        '200':
+          description: OK
+      summary: Changes the general settings of this installation. Requires administrator
+        privileges.
+      tags:
+      - OpenIMSBackend
+  /API/v0/UserController/CreateGroup:
+    post:
+      parameters:
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/StringValueDTO'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StringValueDTO'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/StringValueDTO'
+        description: The name of the new group.
+      responses:
+        '200':
+          description: OK
+      summary: Creates a new group (role) which has no members and is assigned to
+        nothing. Requires administrator privileges.
+      tags:
+      - User
+  /API/v0/UserController/DeleteGroup:
+    delete:
+      parameters:
+      - description: The name of the group.
+        in: query
+        name: groupName
+        schema:
+          type: string
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+      summary: Deletes the given group together with its memberships and its assignments
+        to inventory-objects. Requires administrator privileges.
+      tags:
+      - User
+  /API/v0/UserController/GetAllRoles:
+    get:
+      parameters:
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+            text/json:
+              schema:
+                items:
+                  type: string
+                type: array
+            text/plain:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: OK
+      summary: Returns the names of all roles that can be assigned to a user. Requires
+        administrator privileges.
+      tags:
+      - User
+  /API/v0/UserController/GetAllUsers:
+    get:
+      parameters:
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UserOverviewDTO'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UserOverviewDTO'
+                type: array
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UserOverviewDTO'
+                type: array
+          description: OK
+      summary: Returns all users together with the roles assigned to them. Requires
+        administrator privileges.
+      tags:
+      - User
+  /API/v0/UserController/GetRoles:
+    put:
+      parameters:
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+            text/json:
+              schema:
+                items:
+                  type: string
+                type: array
+            text/plain:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: OK
+      summary: Returns the roles assigned to the currently authenticated user.
+      tags:
+      - User
+  /API/v0/UserController/GetTheme:
+    get:
+      parameters:
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueDTO'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringValueDTO'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringValueDTO'
+          description: OK
+      summary: Returns the color-scheme which the currently authenticated user chose.
+      tags:
+      - User
+  /API/v0/UserController/GetUserInformation:
+    get:
+      parameters:
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInformationDTO'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UserInformationDTO'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/UserInformationDTO'
+          description: OK
+      summary: Returns profile-information for the currently authenticated user.
+      tags:
+      - User
+  /API/v0/UserController/Login:
+    put:
+      parameters:
+      - description: The username.
+        in: header
+        name: user
+        schema:
+          type: string
+      - description: The plain-text password.
+        in: header
+        name: password
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessToken'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccessToken'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccessToken'
+          description: OK
+      summary: Authenticates a user with the given credentials and returns an access
+        token on success.
+      tags:
+      - User
+  /API/v0/UserController/Logout:
+    put:
+      parameters:
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+      summary: Invalidates the access-token of the current session, logging the user
+        out.
+      tags:
+      - User
+  /API/v0/UserController/Register:
+    put:
+      parameters:
+      - description: The username for the new account.
+        in: header
+        name: user
+        schema:
+          type: string
+      - description: The plain-text password for the new account.
+        in: header
+        name: password
+        schema:
+          type: string
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+      summary: Creates a new user-account. Requires administrator privileges.
+      tags:
+      - User
+  /API/v0/UserController/SetRolesOfUser:
+    put:
+      parameters:
+      - description: The id of the user whose roles should be set.
+        in: header
+        name: userId
+        schema:
+          type: string
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/*+json:
+            schema:
+              items:
+                type: string
+              type: array
+          application/json:
+            schema:
+              items:
+                type: string
+              type: array
+          text/json:
+            schema:
+              items:
+                type: string
+              type: array
+        description: The names of the roles the user should have afterwards.
+      responses:
+        '200':
+          description: OK
+      summary: Sets the complete set of roles of the given user (roles not contained
+        are removed, missing ones are added). Requires administrator privileges.
+      tags:
+      - User
+  /API/v0/UserController/SetTheme:
+    put:
+      parameters:
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/StringValueDTO'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StringValueDTO'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/StringValueDTO'
+        description: 'The color-scheme to store: "system", "light" or "dark".'
+      responses:
+        '200':
+          description: OK
+      summary: Sets the color-scheme of the currently authenticated user, so that
+        the choice is available again on another device and after a new login.
+      tags:
+      - User
+  /API/v0/UserController/TokenIsValid:
+    get:
+      parameters:
+      - description: The access-token to validate.
+        in: header
+        name: accessToken
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: boolean
+            text/json:
+              schema:
+                type: boolean
+            text/plain:
+              schema:
+                type: boolean
+          description: OK
+      summary: Checks whether the given access-token is currently valid.
+      tags:
+      - User
+tags:
+- name: MaintenanceRoutes
+- name: OpenIMSBackend
+- name: User

@@ -1,0 +1,24 @@
+stages:
+  - buildpipeline
+variables:
+  GIT_DEPTH: 0
+  GIT_SUBMODULE_STRATEGY: recursive
+  GIT_SUBMODULE_DEPTH: 0
+  IS_RUNNING_IN_SERVER_PIPELINE: "true"
+  IS_RUNNING_IN_GITLAB_PIPELINE: "true"
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "api"'
+run-script:
+  stage: buildpipeline
+  before_script:
+    - pip3 install scriptcollection --upgrade
+    - scpreparebuildpipelineforgitlab
+  script:
+    - if [ "${FastLane:-false}" = "true" ]; then fastlane_argument="--fastlane"; else fastlane_argument=""; fi
+    - scbuildcodeunits --assertnonewchanges --verbosity 4 --targetenvironment "${TargetEnvironmentType:-QualityCheck}" $fastlane_argument
+  tags:
+    - scriptcollection
+  artifacts:
+    paths:
+      - Other/Resources/Artifacts

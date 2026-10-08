@@ -1,0 +1,12 @@
+ImageName;UpstreamRegistryAddress;DefaultTag
+MariaDB;docker.io/library/mariadb;12.2.2
+PostgreSQL;docker.io/library/postgres;17.7
+nginx;docker.io/library/nginx;1.29.4
+Adminer;docker.io/library/adminer;5.4.1
+Debian;docker.io/library/debian;13.4-slim
+Syft;docker.io/anchore/syft;v1.41.2
+Curl;docker.io/curlimages/curl;8.20.0
+Betterleaks;ghcr.io/betterleaks/betterleaks;v1.4.1
+Playwright;mcr.microsoft.com/playwright;v1.62.1-noble
+SCBuilder;aniondev/scbuilder;v1.2.13
+PlantUML;plantuml/plantuml;1.2026.8

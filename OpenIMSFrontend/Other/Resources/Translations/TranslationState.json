@@ -1,0 +1,1564 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Translation-state of the translation-units per language",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "background": "#fcfcfb"
+  },
+  "hconcat": [
+    {
+      "height": {
+        "step": 24
+      },
+      "width": 400,
+      "data": {
+        "values": [
+          {
+            "language": "af",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "af",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "af",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "af",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "ar",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "ar",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "ar",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "ar",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "bn",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "bn",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "bn",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "bn",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "cs",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "cs",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "cs",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "cs",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "da",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "da",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "da",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "da",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "de",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "de",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "de",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "de",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "el",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "el",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "el",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "el",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "es",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "es",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "es",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "es",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "et",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "et",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "et",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "et",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "fa",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "fa",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "fa",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "fa",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "fi",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "fi",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "fi",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "fi",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "fr",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "fr",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "fr",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "fr",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "ga",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "ga",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "ga",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "ga",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "he",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "he",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "he",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "he",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "hi",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "hi",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "hi",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "hi",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "hr",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "hr",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "hr",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "hr",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "hu",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "hu",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "hu",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "hu",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "id",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "id",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "id",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "id",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "is",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "is",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "is",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "is",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "it",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "it",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "it",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "it",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "ja",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "ja",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "ja",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "ja",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "ka",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "ka",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "ka",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "ka",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "kk",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "kk",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "kk",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "kk",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "km",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "km",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "km",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "km",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "ko",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "ko",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "ko",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "ko",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "ky",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "ky",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "ky",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "ky",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "lo",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "lo",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "lo",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "lo",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "lt",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "lt",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "lt",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "lt",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "lv",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "lv",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "lv",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "lv",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "mn",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "mn",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "mn",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "mn",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "ms",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "ms",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "ms",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "ms",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "my",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "my",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "my",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "my",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "nb",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "nb",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "nb",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "nb",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "nl",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "nl",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "nl",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "nl",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "ph",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "ph",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "ph",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "ph",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "pl",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "pl",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "pl",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "pl",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "pt",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "pt",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "pt",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "pt",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "ro",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "ro",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "ro",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "ro",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "ru",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "ru",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "ru",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "ru",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "sv",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "sv",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "sv",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "sv",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "th",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "th",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "th",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "th",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "tk",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "tk",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "tk",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "tk",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "tl",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "tl",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "tl",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "tl",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "tr",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "tr",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "tr",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "tr",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "uk",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "uk",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "uk",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "uk",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "ur",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "ur",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "ur",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "ur",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "vi",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "vi",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "vi",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "vi",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          },
+          {
+            "language": "zh",
+            "state": "Initial",
+            "state_order": 0,
+            "percentage": 1.0
+          },
+          {
+            "language": "zh",
+            "state": "Translated",
+            "state_order": 1,
+            "percentage": 0.0
+          },
+          {
+            "language": "zh",
+            "state": "Reviewed",
+            "state_order": 2,
+            "percentage": 0.0
+          },
+          {
+            "language": "zh",
+            "state": "Final",
+            "state_order": 3,
+            "percentage": 0.0
+          }
+        ]
+      },
+      "mark": {
+        "type": "bar"
+      },
+      "encoding": {
+        "y": {
+          "field": "language",
+          "type": "nominal",
+          "sort": [
+            "af",
+            "ar",
+            "bn",
+            "cs",
+            "da",
+            "de",
+            "el",
+            "es",
+            "et",
+            "fa",
+            "fi",
+            "fr",
+            "ga",
+            "he",
+            "hi",
+            "hr",
+            "hu",
+            "id",
+            "is",
+            "it",
+            "ja",
+            "ka",
+            "kk",
+            "km",
+            "ko",
+            "ky",
+            "lo",
+            "lt",
+            "lv",
+            "mn",
+            "ms",
+            "my",
+            "nb",
+            "nl",
+            "ph",
+            "pl",
+            "pt",
+            "ro",
+            "ru",
+            "sv",
+            "th",
+            "tk",
+            "tl",
+            "tr",
+            "uk",
+            "ur",
+            "vi",
+            "zh"
+          ],
+          "title": null
+        },
+        "x": {
+          "field": "percentage",
+          "type": "quantitative",
+          "stack": "normalize",
+          "axis": {
+            "format": "%",
+            "title": "Share of translation-units"
+          }
+        },
+        "order": {
+          "field": "state_order",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "sort": [
+            "Initial",
+            "Translated",
+            "Reviewed",
+            "Final"
+          ],
+          "scale": {
+            "domain": [
+              "Initial",
+              "Translated",
+              "Reviewed",
+              "Final"
+            ],
+            "range": [
+              "#86b6ef",
+              "#3987e5",
+              "#1c5cab",
+              "#0d366b"
+            ]
+          },
+          "legend": {
+            "title": "Translation state"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "language",
+            "type": "nominal",
+            "title": "Language"
+          },
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "percentage",
+            "type": "quantitative",
+            "title": "Share",
+            "format": ".1%"
+          }
+        ]
+      }
+    },
+    {
+      "height": {
+        "step": 24
+      },
+      "width": 220,
+      "data": {
+        "values": [
+          {
+            "language": "af",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "ar",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "bn",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "cs",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "da",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "de",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "el",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "es",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "et",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "fa",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "fi",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "fr",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "ga",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "he",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "hi",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "hr",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "hu",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "id",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "is",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "it",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "ja",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "ka",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "kk",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "km",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "ko",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "ky",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "lo",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "lt",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "lv",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "mn",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "ms",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "my",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "nb",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "nl",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "ph",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "pl",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "pt",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "ro",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "ru",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "sv",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "th",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "tk",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "tl",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "tr",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "uk",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "ur",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "vi",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          },
+          {
+            "language": "zh",
+            "label": "Initial 100%   Translated 0%   Reviewed 0%   Final 0%"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "color": "#52514e"
+      },
+      "encoding": {
+        "y": {
+          "field": "language",
+          "type": "nominal",
+          "sort": [
+            "af",
+            "ar",
+            "bn",
+            "cs",
+            "da",
+            "de",
+            "el",
+            "es",
+            "et",
+            "fa",
+            "fi",
+            "fr",
+            "ga",
+            "he",
+            "hi",
+            "hr",
+            "hu",
+            "id",
+            "is",
+            "it",
+            "ja",
+            "ka",
+            "kk",
+            "km",
+            "ko",
+            "ky",
+            "lo",
+            "lt",
+            "lv",
+            "mn",
+            "ms",
+            "my",
+            "nb",
+            "nl",
+            "ph",
+            "pl",
+            "pt",
+            "ro",
+            "ru",
+            "sv",
+            "th",
+            "tk",
+            "tl",
+            "tr",
+            "uk",
+            "ur",
+            "vi",
+            "zh"
+          ],
+          "axis": null
+        },
+        "x": {
+          "value": 0
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
+}

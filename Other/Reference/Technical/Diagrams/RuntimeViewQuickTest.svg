@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" data-diagram-type="DESCRIPTION" style="width:736px;height:370px;background:#FFFFFF;" width="736px" height="370px" viewBox="0 0 736 370" zoomAndPan="magnify" preserveAspectRatio="none" contentStyleType="text/css">
+  <defs />
+  <g font-family="sans-serif" lengthAdjust="spacing">
+    <g class="title" data-source-line="1">
+      <text x="268.809" y="22.995" fill="#000" font-size="14" textLength="191.81" font-weight="700" font-family="DejaVu Sans">Runtime-view quick test</text>
+    </g>
+    <g class="entity" data-qualified-name="user" id="ent0001" data-source-line="3">
+      <ellipse cx="292.925" cy="51.297" rx="8" ry="8" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <path d="M292.925,59.297 L292.925,86.297 M279.925,67.297 L305.925,67.297 M292.925,86.297 L279.925,101.297 M292.925,86.297 L305.925,101.297" style="stroke:#181818;stroke-width:0.5;" fill="none" />
+      <text x="276.97" y="115.792" fill="#000" font-size="14" textLength="31.91" font-family="DejaVu Sans">User</text>
+    </g>
+    <g class="entity" data-qualified-name="UserNote" id="ent0002" data-source-line="5">
+      <path d="M6,189.677 L6,214.81 A0,0 0 0 0 6,214.81 L315.844,214.81 A0,0 0 0 0 315.844,214.81 L315.844,199.677 L305.844,189.677 L178,189.677 L276.47,96.817 L170,189.677 L6,189.677 A0,0 0 0 0 6,189.677" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <path d="M305.844,189.677 L305.844,199.677 L315.844,199.677 L305.844,189.677" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <text x="12" y="206.744" fill="#000" font-size="13" textLength="288.844" font-family="DejaVu Sans">The user calls https://openims.test.local:443</text>
+    </g>
+    <g class="entity" data-qualified-name="OpenIMS" id="ent0004" data-source-line="9">
+      <rect x="351.27" y="179.097" width="149.3" height="46.297" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5" />
+      <rect x="480.57" y="184.097" width="15" height="10" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <rect x="478.57" y="186.097" width="4" height="2" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <rect x="478.57" y="190.097" width="4" height="2" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" />
+      <text x="366.27" y="212.092" fill="#000" font-size="14" textLength="109.3" font-family="DejaVu Sans">OpenIMS (:443)</text>
+    </g>
+    <g class="entity" data-qualified-name="OpenIMSNote" id="ent0005" data-source-line="11">
+      <path d="M130.42,285.397 L130.42,355.928 A0,0 0 0 0 130.42,355.928 L721.427,355.928 A0,0 0 0 0 721.427,355.928 L721.427,295.397 L711.427,285.397 L429.92,285.397 L425.92,225.697 L421.92,285.397 L130.42,285.397 A0,0 0 0 0 130.42,285.397" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <path d="M711.427,285.397 L711.427,295.397 L721.427,295.397 L711.427,285.397" style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD" />
+      <text x="136.42" y="302.464" fill="#000" font-size="13" textLength="327.799" font-family="DejaVu Sans">Started by container-engine (for example docker).</text>
+      <text x="136.42" y="317.597" fill="#000" font-size="13" textLength="570.007" font-family="DejaVu Sans">The domain can be set using the commandline-parameter "--InitialDomain &lt;domain&gt;".</text>
+      <text x="136.42" y="332.729" fill="#000" font-size="13" textLength="335.524" font-family="DejaVu Sans">Backend and frontend are running in the container.</text>
+      <text x="136.42" y="347.862" fill="#000" font-size="13" textLength="244.956" font-family="DejaVu Sans">Transient will be used as persistence.</text>
+    </g>
+    <g class="link" data-entity-1="ent0001" data-entity-2="ent0004" id="lnk7" data-source-line="18" data-link-type="dependency">
+      <path d="M309.23,96.577 C332.12,117.107 370.258,151.318 397.128,175.418" style="stroke:#181818;stroke-width:1;" fill="none" id="user-to-OpenIMS" />
+      <polygon points="400.85,178.757,396.821,169.77,397.128,175.418,391.479,175.725,400.85,178.757" fill="#181818" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,1050 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "OpenIMSBackend v0.1.0 API documentation",
+    "description": "OpenIMSBackend is the backend of OpenIMS.",
+    "version": "v0.1.0"
+  },
+  "paths": {
+    "/API/Other/Maintenance/AvailabilityCheck": {
+      "get": {
+        "tags": [
+          "MaintenanceRoutes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/Other/Maintenance/InitializationState": {
+      "get": {
+        "tags": [
+          "MaintenanceRoutes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/Other/Maintenance/CurrentVersion": {
+      "get": {
+        "tags": [
+          "MaintenanceRoutes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/Other/Maintenance/ShowAllEndpoints": {
+      "get": {
+        "tags": [
+          "MaintenanceRoutes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/Other/Maintenance/HealthCheck": {
+      "get": {
+        "tags": [
+          "MaintenanceRoutes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/Other/Maintenance/Metrics": {
+      "get": {
+        "tags": [
+          "MaintenanceRoutes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/v0/OpenIMSBackend/GetGeneralSettings": {
+      "get": {
+        "tags": [
+          "OpenIMSBackend"
+        ],
+        "summary": "Returns the general settings of this installation. Requires administrator privileges.",
+        "parameters": [
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralSettingsDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralSettingsDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralSettingsDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v0/OpenIMSBackend/SetGeneralSettings": {
+      "put": {
+        "tags": [
+          "OpenIMSBackend"
+        ],
+        "summary": "Changes the general settings of this installation. Requires administrator privileges.",
+        "parameters": [
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The settings to apply.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralSettingsDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralSettingsDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralSettingsDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/v0/OpenIMSBackend/SearchInventoryObjects": {
+      "get": {
+        "tags": [
+          "OpenIMSBackend"
+        ],
+        "summary": "Searches the inventory-objects of the given types whose name contains the given text (ignoring the case). The amount of results is limited, so this is meant to be called while the user types. Requires administrator privileges.",
+        "parameters": [
+          {
+            "name": "searchText",
+            "in": "query",
+            "description": "The text which the name has to contain. An empty text matches every name.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "types",
+            "in": "query",
+            "description": "The types of the objects which are searched: \"Location\", \"Building\", \"Area\", \"Container\" and/or \"Item\".",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IdLabelDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IdLabelDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IdLabelDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v0/OpenIMSBackend/GetAuthorizableItemsOfGroup": {
+      "get": {
+        "tags": [
+          "OpenIMSBackend"
+        ],
+        "summary": "Returns the inventory-objects to which the given group is directly assigned. Requires administrator privileges.",
+        "parameters": [
+          {
+            "name": "groupName",
+            "in": "query",
+            "description": "The name of the group.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IdLabelDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IdLabelDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IdLabelDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v0/OpenIMSBackend/AssignGroupToAuthorizableItem": {
+      "put": {
+        "tags": [
+          "OpenIMSBackend"
+        ],
+        "summary": "Assigns the given group to the given inventory-object, so that its members get read-access to the object and to everything which is in it. Requires administrator privileges.",
+        "parameters": [
+          {
+            "name": "groupName",
+            "in": "query",
+            "description": "The name of the group.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "authorizableItemId",
+            "in": "query",
+            "description": "The id of the inventory-object.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/v0/OpenIMSBackend/RemoveGroupFromAuthorizableItem": {
+      "put": {
+        "tags": [
+          "OpenIMSBackend"
+        ],
+        "summary": "Removes the assignment of the given group to the given inventory-object. Requires administrator privileges.",
+        "parameters": [
+          {
+            "name": "groupName",
+            "in": "query",
+            "description": "The name of the group.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "authorizableItemId",
+            "in": "query",
+            "description": "The id of the inventory-object.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/v0/UserController/Login": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Authenticates a user with the given credentials and returns an access token on success.",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "header",
+            "description": "The username.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "header",
+            "description": "The plain-text password.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessToken"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessToken"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessToken"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v0/UserController/Register": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Creates a new user-account. Requires administrator privileges.",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "header",
+            "description": "The username for the new account.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "header",
+            "description": "The plain-text password for the new account.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/v0/UserController/Logout": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Invalidates the access-token of the current session, logging the user out.",
+        "parameters": [
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/v0/UserController/TokenIsValid": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Checks whether the given access-token is currently valid.",
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "The access-token to validate.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v0/UserController/GetRoles": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Returns the roles assigned to the currently authenticated user.",
+        "parameters": [
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v0/UserController/GetUserInformation": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Returns profile-information for the currently authenticated user.",
+        "parameters": [
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserInformationDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserInformationDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserInformationDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v0/UserController/GetTheme": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Returns the color-scheme which the currently authenticated user chose.",
+        "parameters": [
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringValueDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringValueDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringValueDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v0/UserController/SetTheme": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Sets the color-scheme of the currently authenticated user, so that the choice is available again on another device and after a new login.",
+        "parameters": [
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The color-scheme to store: \"system\", \"light\" or \"dark\".",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StringValueDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StringValueDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StringValueDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/v0/UserController/GetAllUsers": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Returns all users together with the roles assigned to them. Requires administrator privileges.",
+        "parameters": [
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserOverviewDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserOverviewDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserOverviewDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v0/UserController/GetAllRoles": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Returns the names of all roles that can be assigned to a user. Requires administrator privileges.",
+        "parameters": [
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v0/UserController/SetRolesOfUser": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Sets the complete set of roles of the given user (roles not contained are removed, missing ones are added). Requires administrator privileges.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "header",
+            "description": "The id of the user whose roles should be set.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The names of the roles the user should have afterwards.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/v0/UserController/CreateGroup": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Creates a new group (role) which has no members and is assigned to nothing. Requires administrator privileges.",
+        "parameters": [
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The name of the new group.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StringValueDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StringValueDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StringValueDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/v0/UserController/DeleteGroup": {
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Deletes the given group together with its memberships and its assignments to inventory-objects. Requires administrator privileges.",
+        "parameters": [
+          {
+            "name": "groupName",
+            "in": "query",
+            "description": "The name of the group.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AccessToken": {
+        "type": "object",
+        "properties": {
+          "ownerUserId": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          },
+          "expiredMoment": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeneralSettingsDTO": {
+        "type": "object",
+        "properties": {
+          "registrationIsEnabled": {
+            "type": "boolean",
+            "description": "Whether a new user-account can be created at all."
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data transfer object for the general (admin-configurable) OpenIMS-settings."
+      },
+      "IdLabelDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "label": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Identifies an object by its id and describes it by a human-readable label, for example as an entry of a selection-list."
+      },
+      "StringValueDTO": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Transports a single string-value, so that an endpoint which only exchanges one value does not need a type of its own."
+      },
+      "UserInformationDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "isAdmin": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents the information about the currently authenticated user which the frontend needs to render itself."
+      },
+      "UserOverviewDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "roles": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a user together with the names of the roles currently assigned to it. Used for the administrative user-overview."
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "MaintenanceRoutes"
+    },
+    {
+      "name": "OpenIMSBackend"
+    },
+    {
+      "name": "User"
+    }
+  ]
+}

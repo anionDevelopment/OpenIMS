@@ -1,0 +1,14 @@
+<app-frame-work>
+  <app-user-area-container>
+    <span i18n="@@settings">settings</span>
+    <div class="setting">
+      <span class="setting-label" i18n="@@user.settings.colorscheme">Color scheme</span>
+      <ngx-darkmode-toggle-button></ngx-darkmode-toggle-button>
+    </div>
+    <div class="setting">
+      <span class="setting-label" i18n="@@user.settings.language">Language</span>
+      <!-- The label of the control itself stays empty because the description is already shown left of it. -->
+      <ngx-culture-selector [cultures]="cultures" [selectedCulture]="selectedCulture" label="" (cultureSelected)="cultureSelected($event)"></ngx-culture-selector>
+    </div>
+  </app-user-area-container>
+</app-frame-work>

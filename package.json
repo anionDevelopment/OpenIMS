@@ -1,0 +1,8 @@
+{
+  "name": "OpenIMS",
+  "scripts": {
+    "prepare": "husky"
+  },
+  "version": "0.1.0",
+  "dependencies": {}
+}

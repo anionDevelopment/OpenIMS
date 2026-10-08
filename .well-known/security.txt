@@ -1,0 +1,26 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+# If you would like to report a security issue
+# you may report it to:
+Contact: mailto:marius.goecke@aniondev.de
+Expires: 2034-12-31T23:59:59.999
+Encryption: https://raw.githubusercontent.com/anionDev/anionDev/main/PublicKeys/PGP-Key.txt
+Preferred-Languages: de, en
+Canonical: https://raw.githubusercontent.com/anionDevelopment/ConSurv/main/.well-known/security.txt
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEvVGQBLyIDHMspke4cqOMNHa+Jy8FAmqZzQMACgkQcqOMNHa+
+Jy8nCBAAq4IUlL1FAZLQP7vrHoJWOFsQ0nDRD7IWFDDoZCct+4oKML7LwBYWFesz
+VIUGT0bWHJHBGiR7qb4SBC7mpabxgsFR3g2qPw6bYIwkfQfPfBtGcR7BrqgqivSU
+Je8V9lax+ue5SWs1hH7TdMLTQ+3ddhzrG4DrKDHSHczOWGd3bXBPJznLIr/2Uij1
+FdhbsAUjyIt1/4dvpgMlwqXzjtycdlXcLi3SfC68r+486ZLaUFnpxmOpYlgSPFn7
+j6Qq0J16sBDuOjgNJmmMBHZOWYnB2n+DQrxxBvN3xzDr/nZy8XzjDy8gCS5JaWf1
+cnFaigI4T+GGMiN5e7fcnIkFN44nnCWa+7G3bUsS4cU0pdFPy+bz+LzOBi/d7O5Z
+zmjmX5SdKidyUlYGxwVuuv/XhTJXusS7sKbbbkExtFsvrVaUy6tPm0nrZQv+Pn0X
+RCERL59LBm3SL2AnQGI5LRgd0gpRV27qYGqTv0QB8uyRXD94Y0BYavwIBO1lGwdm
+671gwVkTCG0/qCiP76E27iPcSs9HQnnT16mw34zgfiLSxOGcrWHLfGSBovbX+0Ym
+P2YUy1EDNqGPW2lNLKBzCo/9vAK5MsCjWqQh21IuwVs3r9OyqicdI9GZNjAWnN2y
+Z4CivmEheSCXZaBQzjqPx0h6Y31tXwPMI6U9Lh4ao2mYOkPtXpg=
+=yqfW
+-----END PGP SIGNATURE-----

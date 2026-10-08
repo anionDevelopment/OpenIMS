@@ -1,0 +1,133 @@
+version: '3'
+
+tasks:
+
+  BaseBuildAllCodeunits:
+    desc: "Base: Build all codeunits"
+    silent: true
+    dir: "."
+    cmds:
+      - "scbuildcodeunits {{.CLI_ARGS}}"
+    aliases:
+      - basebuildallcodeunits
+      - bb
+
+  BaseExampleStart:
+    desc: "Base: Example start"
+    silent: true
+    dir: "./OpenIMS/Other/Reference/ReferenceContent/Examples/MinimalDockerComposeFile"
+    cmds:
+      - "python StartExample.py {{.CLI_ARGS}}"
+    aliases:
+      - baseexamplestart
+      - beu
+
+  BaseExampleStop:
+    desc: "Base: Example stop"
+    silent: true
+    dir: "./OpenIMS/Other/Reference/ReferenceContent/Examples/MinimalDockerComposeFile"
+    cmds:
+      - "python StopExample.py {{.CLI_ARGS}}"
+    aliases:
+      - baseexamplestop
+      - bed
+
+  BaseQuickStart:
+    desc: "Base: Quick start"
+    silent: true
+    dir: ". docker run openims:latest"
+    cmds:
+      - "python StartExample.py {{.CLI_ARGS}}"
+    aliases:
+      - basequickstart
+      - bqs
+
+  LocaltestserviceMariadbStart:
+    desc: "LocalTestService: MariaDB start"
+    silent: true
+    dir: "./Other/Resources/LocalTestServices/MariaDBDatabase"
+    cmds:
+      - "python Start.py {{.CLI_ARGS}}"
+    aliases:
+      - localtestservicemariadbstart
+      - ldmu
+
+  LocaltestserviceMariadbStop:
+    desc: "LocalTestService: MariaDB stop"
+    silent: true
+    dir: "./Other/Resources/LocalTestServices/MariaDBDatabase"
+    cmds:
+      - "python Stop.py {{.CLI_ARGS}}"
+    aliases:
+      - localtestservicemariadbstop
+      - ldmd
+
+  LocaltestservicePostgresqlStart:
+    desc: "LocalTestService: PostgreSQL start"
+    silent: true
+    dir: "./Other/Resources/LocalTestServices/PostgreSQLDatabase"
+    cmds:
+      - "python Start.py {{.CLI_ARGS}}"
+    aliases:
+      - localtestservicepostgresqlstart
+      - ldpu
+
+  LocaltestservicePostgresqlStop:
+    desc: "LocalTestService: PostgreSQL stop"
+    silent: true
+    dir: "./Other/Resources/LocalTestServices/PostgreSQLDatabase"
+    cmds:
+      - "python Stop.py {{.CLI_ARGS}}"
+    aliases:
+      - localtestservicepostgresqlstop
+      - ldpd
+
+  LocaltestserviceReverseProxyStart:
+    desc: "LocalTestService: Reverse-proxy start"
+    silent: true
+    dir: "./Other/Resources/LocalTestServices/ReverseProxy"
+    cmds:
+      - "python Start.py {{.CLI_ARGS}}"
+    aliases:
+      - localtestservicereverseproxystart
+      - lru
+
+  LocaltestserviceReverseProxyStop:
+    desc: "LocalTestService: Reverse-proxy stop"
+    silent: true
+    dir: "./Other/Resources/LocalTestServices/ReverseProxy"
+    cmds:
+      - "python Stop.py {{.CLI_ARGS}}"
+    aliases:
+      - localtestservicereverseproxystop
+      - lrd
+
+  RunFrontend:
+    desc: "Run: Frontend"
+    silent: true
+    dir: "./OpenIMSFrontend"
+    cmds:
+      - "npm run start {{.CLI_ARGS}}"
+    aliases:
+      - runfrontend
+      - rf
+
+  Translate:
+    desc: "Translate"
+    silent: true
+    dir: "./OpenIMSFrontend/Other"
+    cmds:
+      - "python Translate.py {{.CLI_ARGS}}"
+    aliases:
+      - translate
+      - t
+
+  UpdateVisualRegressionBaselines:
+    desc: "Update: Visual-regression-baselines"
+    silent: true
+    dir: "./OpenIMSFrontend/Other/QualityCheck"
+    cmds:
+      - "python UpdateVisualRegressionBaselines.py {{.CLI_ARGS}}"
+    aliases:
+      - updatevisualregressionbaselines
+      - uvrb

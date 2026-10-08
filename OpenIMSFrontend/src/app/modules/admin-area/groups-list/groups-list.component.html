@@ -1,0 +1,56 @@
+<app-frame-work>
+  <app-admin-area-container>
+    <h2 i18n="@@groups">Groups</h2>
+    <div class="create-group">
+      <mat-form-field>
+        <mat-label i18n="@@groups_name_of_new_group">Name of the new group</mat-label>
+        <input type="text" matInput [(ngModel)]="nameOfNewGroup">
+      </mat-form-field>
+      <button mat-flat-button [disabled]="nameOfNewGroup.trim() === ''" (click)="onCreateGroup()" i18n="@@groups_create">Create group</button>
+    </div>
+    @if (actionFailed) {
+    <p class="action-failed" i18n="@@groups_action_failed">The action could not be executed.</p>
+    }
+    <div class="groups-layout">
+      <table class="groups-table">
+        <tbody>
+          @for (group of groups; track group) {
+          <tr>
+            <td>
+              @if (group === selectedGroup) {
+              <button mat-flat-button (click)="onGroupSelected(group)">{{group}}</button>
+              } @else {
+              <button mat-button (click)="onGroupSelected(group)">{{group}}</button>
+              }
+            </td>
+            <td>
+              <button mat-icon-button (click)="onDeleteGroup(group)" i18n-aria-label="@@groups_delete" aria-label="Delete group">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+      @if (selectedGroup !== null) {
+      <div class="items-of-group">
+        <h3 i18n="@@groups_items_of_group">Objects which the members of "{{selectedGroup}}" can view</h3>
+        <p class="hint" i18n="@@groups_items_of_group_hint">The members can also view everything which is in these objects.</p>
+        <ul class="items">
+          @for (item of itemsOfSelectedGroup; track item.id) {
+          <li>
+            <span>{{item.label}}</span>
+            <button mat-icon-button (click)="onItemRemoved(item)" i18n-aria-label="@@groups_remove_item" aria-label="Remove object">
+              <mat-icon>close</mat-icon>
+            </button>
+          </li>
+          } @empty {
+          <li i18n="@@groups_no_items">No objects assigned.</li>
+          }
+        </ul>
+        <app-inventory-object-selector [types]="assignableTypes" (objectSelected)="onItemAdded($event)"></app-inventory-object-selector>
+      </div>
+      }
+    </div>
+  </app-admin-area-container>
+</app-frame-work>

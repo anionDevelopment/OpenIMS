@@ -1,0 +1,13 @@
+﻿<#@ output extension=".cs" #>
+<#@ template language="C#" #>
+<#@ assembly name="System.IO" #>
+<#@ parameter type="System.String" name="repositoryFolder" #>
+<#@ parameter type="System.String" name="codeUnitName" #>
+namespace <#=codeUnitName#>.Tests.TestUtilities.Constants
+{
+    internal static class GeneralConstants
+    {
+        internal const string RepositoryFolder = @"<#= repositoryFolder #>";
+        internal const string CodeUnitFolder = @"<#= repositoryFolder #>/<#= codeUnitName #>";
+    }
+}

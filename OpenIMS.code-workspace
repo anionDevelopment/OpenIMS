@@ -1,0 +1,209 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "Entire repository"
+    }
+  ],
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Base: Build all codeunits",
+        "command": "scbuildcodeunits",
+        "type": "shell",
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "aliases": [
+          "bb"
+        ],
+        "allowcustomarguments": true
+      },
+      {
+        "label": "Base: Example start",
+        "command": "python StartExample.py",
+        "args": [],
+        "type": "shell",
+        "options": {
+          "cwd": "${workspaceFolder}/OpenIMS/Other/Reference/ReferenceContent/Examples/MinimalDockerComposeFile"
+        },
+        "aliases": [
+          "beu"
+        ],
+        "allowcustomarguments": true
+      },
+      {
+        "label": "Base: Example stop",
+        "command": "python StopExample.py",
+        "args": [],
+        "type": "shell",
+        "options": {
+          "cwd": "${workspaceFolder}/OpenIMS/Other/Reference/ReferenceContent/Examples/MinimalDockerComposeFile"
+        },
+        "aliases": [
+          "bed"
+        ],
+        "allowcustomarguments": true
+      },
+      {
+        "label": "Base: Quick start",
+        "command": "python StartExample.py",
+        "args": [],
+        "type": "shell",
+        "options": {
+          "cwd": "${workspaceFolder} docker run openims:latest"
+        },
+        "aliases": [
+          "bqs"
+        ],
+        "allowcustomarguments": true
+      },
+      {
+        "label": "Run: Frontend",
+        "command": "npm run start",
+        "args": [],
+        "type": "shell",
+        "options": {
+          "cwd": "${workspaceFolder}/OpenIMSFrontend"
+        },
+        "aliases": [
+          "rf"
+        ],
+        "allowcustomarguments": true
+      },
+      {
+        "label": "LocalTestService: MariaDB start",
+        "command": "python Start.py",
+        "args": [],
+        "type": "shell",
+        "options": {
+          "cwd": "${workspaceFolder}/Other/Resources/LocalTestServices/MariaDBDatabase"
+        },
+        "aliases": [
+          "ldmu"
+        ],
+        "allowcustomarguments": true
+      },
+      {
+        "label": "LocalTestService: MariaDB stop",
+        "command": "python Stop.py",
+        "args": [],
+        "type": "shell",
+        "options": {
+          "cwd": "${workspaceFolder}/Other/Resources/LocalTestServices/MariaDBDatabase"
+        },
+        "aliases": [
+          "ldmd"
+        ],
+        "allowcustomarguments": true
+      },
+      {
+        "label": "LocalTestService: PostgreSQL start",
+        "command": "python Start.py",
+        "args": [],
+        "type": "shell",
+        "options": {
+          "cwd": "${workspaceFolder}/Other/Resources/LocalTestServices/PostgreSQLDatabase"
+        },
+        "aliases": [
+          "ldpu"
+        ],
+        "allowcustomarguments": true
+      },
+      {
+        "label": "LocalTestService: PostgreSQL stop",
+        "command": "python Stop.py",
+        "args": [],
+        "type": "shell",
+        "options": {
+          "cwd": "${workspaceFolder}/Other/Resources/LocalTestServices/PostgreSQLDatabase"
+        },
+        "aliases": [
+          "ldpd"
+        ],
+        "allowcustomarguments": true
+      },
+      {
+        "label": "LocalTestService: Reverse-proxy start",
+        "command": "python Start.py",
+        "args": [],
+        "type": "shell",
+        "options": {
+          "cwd": "${workspaceFolder}/Other/Resources/LocalTestServices/ReverseProxy"
+        },
+        "aliases": [
+          "lru"
+        ],
+        "allowcustomarguments": true
+      },
+      {
+        "label": "LocalTestService: Reverse-proxy stop",
+        "command": "python Stop.py",
+        "args": [],
+        "type": "shell",
+        "options": {
+          "cwd": "${workspaceFolder}/Other/Resources/LocalTestServices/ReverseProxy"
+        },
+        "aliases": [
+          "lrd"
+        ],
+        "allowcustomarguments": true
+      },
+      {
+        "label": "Update: Visual-regression-baselines",
+        "command": "python UpdateVisualRegressionBaselines.py",
+        "args": [],
+        "type": "shell",
+        "options": {
+          "cwd": "${workspaceFolder}/OpenIMSFrontend/Other/QualityCheck"
+        },
+        "aliases": [
+          "uvrb"
+        ],
+        "allowcustomarguments": true
+      },
+      {
+        "label": "Translate",
+        "command": "python Translate.py",
+        "args": [],
+        "type": "shell",
+        "options": {
+          "cwd": "${workspaceFolder}/OpenIMSFrontend/Other"
+        },
+        "aliases": [
+          "t"
+        ],
+        "allowcustomarguments": true
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug current file",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${file}",
+        "console": "integratedTerminal"
+      }
+    ]
+  },
+  "settings": {
+    "terminal.integrated.cwd": "${workspaceFolder}",
+    "window.title": "${dirty} ${rootName}",
+    "files.exclude": {
+      ".coverage": true,
+      "TestResults": true,
+      ".vs": true
+    },
+    "spellright.language": [
+      "en"
+    ],
+    "spellright.documentTypes": [
+      "markdown",
+      "plaintext"
+    ]
+  }
+}
