@@ -76,8 +76,8 @@ components:
       type: object
 info:
   description: OpenIMSBackend is the backend of OpenIMS.
-  title: OpenIMSBackend v0.1.0 API documentation
-  version: v0.1.0
+  title: OpenIMSBackend v1.0.0 API documentation
+  version: v1.0.0
 openapi: 3.0.4
 paths:
   /API/Other/Maintenance/AvailabilityCheck:
@@ -122,7 +122,7 @@ paths:
           description: OK
       tags:
       - MaintenanceRoutes
-  /API/v0/OpenIMSBackend/AssignGroupToAuthorizableItem:
+  /API/v1/OpenIMSBackend/AssignGroupToAuthorizableItem:
     put:
       parameters:
       - description: The name of the group.
@@ -149,7 +149,7 @@ paths:
         administrator privileges.
       tags:
       - OpenIMSBackend
-  /API/v0/OpenIMSBackend/GetAuthorizableItemsOfGroup:
+  /API/v1/OpenIMSBackend/GetAuthorizableItemsOfGroup:
     get:
       parameters:
       - description: The name of the group.
@@ -186,7 +186,7 @@ paths:
         assigned. Requires administrator privileges.
       tags:
       - OpenIMSBackend
-  /API/v0/OpenIMSBackend/GetGeneralSettings:
+  /API/v1/OpenIMSBackend/GetGeneralSettings:
     get:
       parameters:
       - description: Access Token
@@ -212,7 +212,7 @@ paths:
         privileges.
       tags:
       - OpenIMSBackend
-  /API/v0/OpenIMSBackend/RemoveGroupFromAuthorizableItem:
+  /API/v1/OpenIMSBackend/RemoveGroupFromAuthorizableItem:
     put:
       parameters:
       - description: The name of the group.
@@ -238,7 +238,7 @@ paths:
         Requires administrator privileges.
       tags:
       - OpenIMSBackend
-  /API/v0/OpenIMSBackend/SearchInventoryObjects:
+  /API/v1/OpenIMSBackend/SearchInventoryObjects:
     get:
       parameters:
       - description: The text which the name has to contain. An empty text matches
@@ -285,7 +285,7 @@ paths:
         is meant to be called while the user types. Requires administrator privileges.
       tags:
       - OpenIMSBackend
-  /API/v0/OpenIMSBackend/SetGeneralSettings:
+  /API/v1/OpenIMSBackend/SetGeneralSettings:
     put:
       parameters:
       - description: Access Token
@@ -313,7 +313,7 @@ paths:
         privileges.
       tags:
       - OpenIMSBackend
-  /API/v0/UserController/CreateGroup:
+  /API/v1/UserController/CreateGroup:
     post:
       parameters:
       - description: Access Token
@@ -341,7 +341,7 @@ paths:
         nothing. Requires administrator privileges.
       tags:
       - User
-  /API/v0/UserController/DeleteGroup:
+  /API/v1/UserController/DeleteGroup:
     delete:
       parameters:
       - description: The name of the group.
@@ -362,7 +362,7 @@ paths:
         to inventory-objects. Requires administrator privileges.
       tags:
       - User
-  /API/v0/UserController/GetAllRoles:
+  /API/v1/UserController/GetAllRoles:
     get:
       parameters:
       - description: Access Token
@@ -394,7 +394,7 @@ paths:
         administrator privileges.
       tags:
       - User
-  /API/v0/UserController/GetAllUsers:
+  /API/v1/UserController/GetAllUsers:
     get:
       parameters:
       - description: Access Token
@@ -426,7 +426,7 @@ paths:
         administrator privileges.
       tags:
       - User
-  /API/v0/UserController/GetRoles:
+  /API/v1/UserController/GetRoles:
     put:
       parameters:
       - description: Access Token
@@ -457,7 +457,7 @@ paths:
       summary: Returns the roles assigned to the currently authenticated user.
       tags:
       - User
-  /API/v0/UserController/GetTheme:
+  /API/v1/UserController/GetTheme:
     get:
       parameters:
       - description: Access Token
@@ -482,7 +482,7 @@ paths:
       summary: Returns the color-scheme which the currently authenticated user chose.
       tags:
       - User
-  /API/v0/UserController/GetUserInformation:
+  /API/v1/UserController/GetUserInformation:
     get:
       parameters:
       - description: Access Token
@@ -507,7 +507,7 @@ paths:
       summary: Returns profile-information for the currently authenticated user.
       tags:
       - User
-  /API/v0/UserController/Login:
+  /API/v1/UserController/Login:
     put:
       parameters:
       - description: The username.
@@ -537,7 +537,7 @@ paths:
         token on success.
       tags:
       - User
-  /API/v0/UserController/Logout:
+  /API/v1/UserController/Logout:
     put:
       parameters:
       - description: Access Token
@@ -553,7 +553,7 @@ paths:
         out.
       tags:
       - User
-  /API/v0/UserController/Register:
+  /API/v1/UserController/Register:
     put:
       parameters:
       - description: The username for the new account.
@@ -578,7 +578,7 @@ paths:
       summary: Creates a new user-account. Requires administrator privileges.
       tags:
       - User
-  /API/v0/UserController/SetRolesOfUser:
+  /API/v1/UserController/SetRolesOfUser:
     put:
       parameters:
       - description: The id of the user whose roles should be set.
@@ -617,7 +617,7 @@ paths:
         are removed, missing ones are added). Requires administrator privileges.
       tags:
       - User
-  /API/v0/UserController/SetTheme:
+  /API/v1/UserController/SetTheme:
     put:
       parameters:
       - description: Access Token
@@ -645,7 +645,7 @@ paths:
         the choice is available again on another device and after a new login.
       tags:
       - User
-  /API/v0/UserController/TokenIsValid:
+  /API/v1/UserController/TokenIsValid:
     get:
       parameters:
       - description: The access-token to validate.

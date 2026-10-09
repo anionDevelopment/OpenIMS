@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.4",
   "info": {
-    "title": "OpenIMSBackend v0.1.0 API documentation",
+    "title": "OpenIMSBackend v1.0.0 API documentation",
     "description": "OpenIMSBackend is the backend of OpenIMS.",
-    "version": "v0.1.0"
+    "version": "v1.0.0"
   },
   "paths": {
     "/API/Other/Maintenance/AvailabilityCheck": {
@@ -78,7 +78,7 @@
         }
       }
     },
-    "/API/v0/OpenIMSBackend/GetGeneralSettings": {
+    "/API/v1/OpenIMSBackend/GetGeneralSettings": {
       "get": {
         "tags": [
           "OpenIMSBackend"
@@ -119,7 +119,7 @@
         }
       }
     },
-    "/API/v0/OpenIMSBackend/SetGeneralSettings": {
+    "/API/v1/OpenIMSBackend/SetGeneralSettings": {
       "put": {
         "tags": [
           "OpenIMSBackend"
@@ -163,7 +163,7 @@
         }
       }
     },
-    "/API/v0/OpenIMSBackend/SearchInventoryObjects": {
+    "/API/v1/OpenIMSBackend/SearchInventoryObjects": {
       "get": {
         "tags": [
           "OpenIMSBackend"
@@ -232,7 +232,7 @@
         }
       }
     },
-    "/API/v0/OpenIMSBackend/GetAuthorizableItemsOfGroup": {
+    "/API/v1/OpenIMSBackend/GetAuthorizableItemsOfGroup": {
       "get": {
         "tags": [
           "OpenIMSBackend"
@@ -290,7 +290,7 @@
         }
       }
     },
-    "/API/v0/OpenIMSBackend/AssignGroupToAuthorizableItem": {
+    "/API/v1/OpenIMSBackend/AssignGroupToAuthorizableItem": {
       "put": {
         "tags": [
           "OpenIMSBackend"
@@ -330,7 +330,7 @@
         }
       }
     },
-    "/API/v0/OpenIMSBackend/RemoveGroupFromAuthorizableItem": {
+    "/API/v1/OpenIMSBackend/RemoveGroupFromAuthorizableItem": {
       "put": {
         "tags": [
           "OpenIMSBackend"
@@ -370,7 +370,7 @@
         }
       }
     },
-    "/API/v0/UserController/Login": {
+    "/API/v1/UserController/Login": {
       "put": {
         "tags": [
           "User"
@@ -418,7 +418,7 @@
         }
       }
     },
-    "/API/v0/UserController/Register": {
+    "/API/v1/UserController/Register": {
       "put": {
         "tags": [
           "User"
@@ -458,7 +458,7 @@
         }
       }
     },
-    "/API/v0/UserController/Logout": {
+    "/API/v1/UserController/Logout": {
       "put": {
         "tags": [
           "User"
@@ -482,7 +482,7 @@
         }
       }
     },
-    "/API/v0/UserController/TokenIsValid": {
+    "/API/v1/UserController/TokenIsValid": {
       "get": {
         "tags": [
           "User"
@@ -522,7 +522,7 @@
         }
       }
     },
-    "/API/v0/UserController/GetRoles": {
+    "/API/v1/UserController/GetRoles": {
       "put": {
         "tags": [
           "User"
@@ -572,7 +572,7 @@
         }
       }
     },
-    "/API/v0/UserController/GetUserInformation": {
+    "/API/v1/UserController/GetUserInformation": {
       "get": {
         "tags": [
           "User"
@@ -613,7 +613,7 @@
         }
       }
     },
-    "/API/v0/UserController/GetTheme": {
+    "/API/v1/UserController/GetTheme": {
       "get": {
         "tags": [
           "User"
@@ -654,7 +654,7 @@
         }
       }
     },
-    "/API/v0/UserController/SetTheme": {
+    "/API/v1/UserController/SetTheme": {
       "put": {
         "tags": [
           "User"
@@ -698,7 +698,7 @@
         }
       }
     },
-    "/API/v0/UserController/GetAllUsers": {
+    "/API/v1/UserController/GetAllUsers": {
       "get": {
         "tags": [
           "User"
@@ -748,7 +748,7 @@
         }
       }
     },
-    "/API/v0/UserController/GetAllRoles": {
+    "/API/v1/UserController/GetAllRoles": {
       "get": {
         "tags": [
           "User"
@@ -798,7 +798,7 @@
         }
       }
     },
-    "/API/v0/UserController/SetRolesOfUser": {
+    "/API/v1/UserController/SetRolesOfUser": {
       "put": {
         "tags": [
           "User"
@@ -859,7 +859,7 @@
         }
       }
     },
-    "/API/v0/UserController/CreateGroup": {
+    "/API/v1/UserController/CreateGroup": {
       "post": {
         "tags": [
           "User"
@@ -903,7 +903,7 @@
         }
       }
     },
-    "/API/v0/UserController/DeleteGroup": {
+    "/API/v1/UserController/DeleteGroup": {
       "delete": {
         "tags": [
           "User"
