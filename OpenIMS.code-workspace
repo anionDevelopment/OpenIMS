@@ -156,7 +156,7 @@
         "args": [],
         "type": "shell",
         "options": {
-          "cwd": "${workspaceFolder}/OpenIMSFrontend/Other/QualityCheck"
+          "cwd": "${workspaceFolder}/Other/Scripts"
         },
         "aliases": [
           "uvrb"

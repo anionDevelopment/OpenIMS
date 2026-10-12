@@ -125,7 +125,7 @@ tasks:
   UpdateVisualRegressionBaselines:
     desc: "Update: Visual-regression-baselines"
     silent: true
-    dir: "./OpenIMSFrontend/Other/QualityCheck"
+    dir: "./Other/Scripts"
     cmds:
       - "python UpdateVisualRegressionBaselines.py {{.CLI_ARGS}}"
     aliases:
