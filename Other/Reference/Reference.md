@@ -2,6 +2,23 @@
 
 OpenIMS is an open source inventory-management-system.
 
+## Features
+
+This table lists the features which a user can expect from this product.
+See the specification in `openspec/specs/product-features/spec.md` for how this list is maintained.
+
+| Id     | State       | Description                                                                                                                                                                                              |
+| ------ | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| feat-1 | available   | Log in with a username and a password; a logout invalidates the access-token which the login returned.                                                                                                   |
+| feat-2 | available   | An administrator manages user-accounts: creating an account and setting the roles of an existing account.                                                                                                 |
+| feat-3 | available   | Role-based authorization: every user has the role `Users`, an administrator additionally has `Administrators`, which inherits `Users`.                                                                    |
+| feat-4 | available   | Store the color-scheme (system, light or dark) per user, so the choice applies again after a new login and on another device.                                                                            |
+| feat-5 | available   | Choose the persistence: PostgreSQL, MariaDB or a transient in-memory persistence for testcases and demonstrations.                                                                                        |
+| feat-6 | available   | Model the inventory as a hierarchy of locations, buildings, areas, containers and items, including the distinction between the place where an item belongs to and the place where it actually is.         |
+| feat-7 | available   | Grant groups read-access to parts of the inventory and manage the groups and their members as an administrator; access to a place grants access to everything which is contained in it.                   |
+| feat-8 | unavailable | Use the inventory through endpoints and a user-interface.                                                                                                                                                 |
+| feat-9 | unavailable | Check the access of the requesting user on the operations of the inventory (which operation requires which access).                                                                                      |
+
 ## Technical documentation
 
 - [1. Introduction and Goals](./Technical/01_Introduction-and-Goals.md)
