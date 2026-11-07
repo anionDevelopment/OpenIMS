@@ -1,0 +1,5 @@
+[codespell]
+skip = ./.git,*/Other/Artifacts,*/Other/Metrics,*/Other/Logs,*/Other/Resources/Artifacts,*/Other/Resources/DependentCodeUnits,./Other/Reference,*/Reference,*/bin,*/obj,*/dist,*/build,*/out,*/node_modules,*/.venv,*/venv,*/packages,*/vendor,*/__pycache__,*/.pytest_cache,*/.mypy_cache,*/.angular,*/.vs,*/.ScriptCollection/Cache,*/TestCoverageHistory,*/TestCoverageBadges,*.min.js,*.min.css,*.map,*.svg,*.lock,package-lock.json,*.woff,*.woff2,*.ttf,*.eot,*.pdf,*.key,*.crt
+# containees: composite-pattern domain term (objects contained in a container, see IContainee/IContainer)
+# usera: test fixture identifier ("user A") in persistence tests, not a misspelling of "users"
+ignore-words-list = containees,usera

@@ -3,7 +3,7 @@ from ScriptCollection.TFCPS.NodeJS.TFCPS_CodeUnitSpecific_NodeJS import TFCPS_Co
 
 def common_tasks():
     tf:TFCPS_CodeUnitSpecific_NodeJS_Functions=TFCPS_CodeUnitSpecific_NodeJS_CLI.parse(__file__)
-    tf.do_common_tasks(tf.get_version_of_project())#codeunit-version should alsways be the same as project-version
+    tf.do_common_tasks(tf.get_version_of_project())#codeunit-version should always be the same as project-version
     tf.tfcps_Tools_General.generate_api_client_from_dependent_codeunit(tf.get_codeunit_folder(),"OpenIMSBackend","src/app/generated/open-ims-backend", "typescript-angular",tf.use_cache(),["apis","models","supportingFiles"])
     tf.organize_translations([
         "af",  # Afrikaans
