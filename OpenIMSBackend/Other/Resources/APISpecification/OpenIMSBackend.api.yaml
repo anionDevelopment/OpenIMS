@@ -33,6 +33,47 @@ components:
           nullable: true
           type: string
       type: object
+    InventoryObjectDataDTO:
+      additionalProperties: false
+      description: The data of an inventory-object which a user enters when creating
+        or editing it.
+      properties:
+        description:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+      type: object
+    InventoryTreeNodeDTO:
+      additionalProperties: false
+      description: One inventory-object of the inventory-tree together with the objects
+        it directly contains.
+      properties:
+        children:
+          description: 'The objects which this object directly contains: the buildings
+            and then the areas of a location, the areas of a building, the containers
+            and items of an area or container. Each of these lists is ordered by the
+            name.'
+          items:
+            $ref: '#/components/schemas/InventoryTreeNodeDTO'
+          nullable: true
+          type: array
+        description:
+          nullable: true
+          type: string
+        id:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        type:
+          description: 'The type of the object: "Location", "Building", "Area", "Container"
+            or "Item".'
+          nullable: true
+          type: string
+      type: object
     StringValueDTO:
       additionalProperties: false
       description: Transports a single string-value, so that an endpoint which only
@@ -149,6 +190,238 @@ paths:
         administrator privileges.
       tags:
       - OpenIMSBackend
+  /API/v1/OpenIMSBackend/CreateArea:
+    post:
+      parameters:
+      - description: The id of the location or building.
+        in: query
+        name: parentId
+        schema:
+          type: string
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InventoryObjectDataDTO'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InventoryObjectDataDTO'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InventoryObjectDataDTO'
+        description: Name and description of the new area.
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueDTO'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringValueDTO'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringValueDTO'
+          description: OK
+      summary: Creates a new area (for example a room or a yard) in the given location
+        or building. Every logged-in user may do this.
+      tags:
+      - OpenIMSBackend
+  /API/v1/OpenIMSBackend/CreateBuilding:
+    post:
+      parameters:
+      - description: The id of the location.
+        in: query
+        name: parentId
+        schema:
+          type: string
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InventoryObjectDataDTO'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InventoryObjectDataDTO'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InventoryObjectDataDTO'
+        description: Name and description of the new building.
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueDTO'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringValueDTO'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringValueDTO'
+          description: OK
+      summary: Creates a new building in the given location. Every logged-in user
+        may do this.
+      tags:
+      - OpenIMSBackend
+  /API/v1/OpenIMSBackend/CreateContainer:
+    post:
+      parameters:
+      - description: The id of the area or container.
+        in: query
+        name: parentId
+        schema:
+          type: string
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InventoryObjectDataDTO'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InventoryObjectDataDTO'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InventoryObjectDataDTO'
+        description: Name and description of the new container.
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueDTO'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringValueDTO'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringValueDTO'
+          description: OK
+      summary: Creates a new container (for example a cupboard or a box) in the given
+        area or container. Every logged-in user may do this.
+      tags:
+      - OpenIMSBackend
+  /API/v1/OpenIMSBackend/CreateItem:
+    post:
+      parameters:
+      - description: The id of the area or container.
+        in: query
+        name: parentId
+        schema:
+          type: string
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InventoryObjectDataDTO'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InventoryObjectDataDTO'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InventoryObjectDataDTO'
+        description: Name and description of the new item.
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueDTO'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringValueDTO'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringValueDTO'
+          description: OK
+      summary: Creates a new item in the given area or container. The area or container
+        is the target place and the real place of the new item. Every logged-in user
+        may do this.
+      tags:
+      - OpenIMSBackend
+  /API/v1/OpenIMSBackend/CreateLocation:
+    post:
+      parameters:
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InventoryObjectDataDTO'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InventoryObjectDataDTO'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InventoryObjectDataDTO'
+        description: Name and description of the new location.
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringValueDTO'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringValueDTO'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringValueDTO'
+          description: OK
+      summary: Creates a new location. Every logged-in user may do this.
+      tags:
+      - OpenIMSBackend
+  /API/v1/OpenIMSBackend/DeleteInventoryObject:
+    delete:
+      parameters:
+      - description: The id of the inventory-object.
+        in: query
+        name: inventoryObjectId
+        schema:
+          type: string
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+      summary: Deletes the given inventory-object. Only an object which contains nothing
+        and where no item actually is can be deleted. Every logged-in user may do
+        this.
+      tags:
+      - OpenIMSBackend
   /API/v1/OpenIMSBackend/GetAuthorizableItemsOfGroup:
     get:
       parameters:
@@ -210,6 +483,38 @@ paths:
           description: OK
       summary: Returns the general settings of this installation. Requires administrator
         privileges.
+      tags:
+      - OpenIMSBackend
+  /API/v1/OpenIMSBackend/GetInventoryTree:
+    get:
+      parameters:
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/InventoryTreeNodeDTO'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/InventoryTreeNodeDTO'
+                type: array
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/InventoryTreeNodeDTO'
+                type: array
+          description: OK
+      summary: Returns the complete inventory as a tree. Every logged-in user may
+        do this; the result is not restricted by groups.
       tags:
       - OpenIMSBackend
   /API/v1/OpenIMSBackend/RemoveGroupFromAuthorizableItem:
@@ -311,6 +616,39 @@ paths:
           description: OK
       summary: Changes the general settings of this installation. Requires administrator
         privileges.
+      tags:
+      - OpenIMSBackend
+  /API/v1/OpenIMSBackend/UpdateInventoryObject:
+    put:
+      parameters:
+      - description: The id of the inventory-object.
+        in: query
+        name: inventoryObjectId
+        schema:
+          type: string
+      - description: Access Token
+        in: header
+        name: X-AccessToken
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InventoryObjectDataDTO'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InventoryObjectDataDTO'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InventoryObjectDataDTO'
+        description: The new name and description.
+      responses:
+        '200':
+          description: OK
+      summary: Changes name and description of the given inventory-object. Every logged-in
+        user may do this.
       tags:
       - OpenIMSBackend
   /API/v1/UserController/CreateGroup:

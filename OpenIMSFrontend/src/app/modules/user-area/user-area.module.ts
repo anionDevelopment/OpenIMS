@@ -22,6 +22,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTreeModule } from '@angular/material/tree';
+import { InventoryComponent } from './inventory/inventory.component';
+import { InventoryObjectDialogComponent } from './inventory-object-dialog/inventory-object-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,8 @@ import { MatSelectModule } from '@angular/material/select';
     UserAreaContainerComponent,
     UserDashboardComponent,
     UserSettingsComponent,
+    InventoryComponent,
+    InventoryObjectDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -50,6 +55,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatSidenavModule,
     MatButtonModule,
     MatTabsModule,
+    MatTreeModule,
     HomePageModule
   ],
   exports: [

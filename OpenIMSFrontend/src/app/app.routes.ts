@@ -8,6 +8,7 @@ import { UsersListComponent } from './modules/admin-area/users-list/users-list.c
 import { GroupsListComponent } from './modules/admin-area/groups-list/groups-list.component';
 import { UserComponent } from './modules/admin-area/user/user.component';
 import { AdminSettingsComponent } from './modules/admin-area/admin-settings/admin-settings.component';
+import { InventoryComponent } from './modules/user-area/inventory/inventory.component';
 import { HintNotFoundComponent } from './modules/home-page/hint-not-found/hint-not-found.component';
 
 export const routes: Routes = [
@@ -18,6 +19,7 @@ export const routes: Routes = [
     { path: 'admin/user', component: UserComponent, canActivate: [authenticationCheckGuard] },
     { path: 'admin/groups', component: GroupsListComponent, canActivate: [authenticationCheckGuard] },
     { path: 'user/dashboard', component: UserDashboardComponent, canActivate: [authenticationCheckGuard] },
+    { path: 'user/inventory', component: InventoryComponent, canActivate: [authenticationCheckGuard] },
     { path: 'user/settings', component: UserSettingsComponent, canActivate: [authenticationCheckGuard] },
     { path: '**', component: HintNotFoundComponent },
 ];

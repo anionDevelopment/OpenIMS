@@ -40,9 +40,9 @@ export async function simulateLoggedInUser(page: Page, colorScheme: ColorScheme 
     await page.addInitScript((accessToken: { key: string, value: string }) => {
         sessionStorage.setItem(accessToken.key, accessToken.value);
     }, { key: storageKeyOfTheAccessToken, value: accessTokenOfTheSimulatedUser });
-    await respondWith(page, '**/API/v0/UserController/TokenIsValid*', true);
-    await respondWith(page, '**/API/v0/UserController/GetUserInformation*', informationAboutTheSimulatedUser);
-    await respondWith(page, '**/API/v0/UserController/GetTheme*', { value: colorScheme });
+    await respondWith(page, '**/API/v1/UserController/TokenIsValid*', true);
+    await respondWith(page, '**/API/v1/UserController/GetUserInformation*', informationAboutTheSimulatedUser);
+    await respondWith(page, '**/API/v1/UserController/GetTheme*', { value: colorScheme });
 }
 
 /* The color-schemes which the application supports. (See the color-scheme-toggle-button.) */

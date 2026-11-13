@@ -370,6 +370,477 @@
         }
       }
     },
+    "/API/v1/OpenIMSBackend/GetInventoryTree": {
+      "get": {
+        "tags": [
+          "OpenIMSBackend"
+        ],
+        "summary": "Returns the complete inventory as a tree. Every logged-in user may do this; the result is not restricted by groups.",
+        "parameters": [
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/InventoryTreeNodeDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/InventoryTreeNodeDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/InventoryTreeNodeDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v1/OpenIMSBackend/CreateLocation": {
+      "post": {
+        "tags": [
+          "OpenIMSBackend"
+        ],
+        "summary": "Creates a new location. Every logged-in user may do this.",
+        "parameters": [
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Name and description of the new location.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryObjectDataDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryObjectDataDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryObjectDataDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringValueDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringValueDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringValueDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v1/OpenIMSBackend/CreateBuilding": {
+      "post": {
+        "tags": [
+          "OpenIMSBackend"
+        ],
+        "summary": "Creates a new building in the given location. Every logged-in user may do this.",
+        "parameters": [
+          {
+            "name": "parentId",
+            "in": "query",
+            "description": "The id of the location.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Name and description of the new building.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryObjectDataDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryObjectDataDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryObjectDataDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringValueDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringValueDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringValueDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v1/OpenIMSBackend/CreateArea": {
+      "post": {
+        "tags": [
+          "OpenIMSBackend"
+        ],
+        "summary": "Creates a new area (for example a room or a yard) in the given location or building. Every logged-in user may do this.",
+        "parameters": [
+          {
+            "name": "parentId",
+            "in": "query",
+            "description": "The id of the location or building.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Name and description of the new area.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryObjectDataDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryObjectDataDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryObjectDataDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringValueDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringValueDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringValueDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v1/OpenIMSBackend/CreateContainer": {
+      "post": {
+        "tags": [
+          "OpenIMSBackend"
+        ],
+        "summary": "Creates a new container (for example a cupboard or a box) in the given area or container. Every logged-in user may do this.",
+        "parameters": [
+          {
+            "name": "parentId",
+            "in": "query",
+            "description": "The id of the area or container.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Name and description of the new container.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryObjectDataDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryObjectDataDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryObjectDataDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringValueDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringValueDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringValueDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v1/OpenIMSBackend/CreateItem": {
+      "post": {
+        "tags": [
+          "OpenIMSBackend"
+        ],
+        "summary": "Creates a new item in the given area or container. The area or container is the target place and the real place of the new item. Every logged-in user may do this.",
+        "parameters": [
+          {
+            "name": "parentId",
+            "in": "query",
+            "description": "The id of the area or container.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Name and description of the new item.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryObjectDataDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryObjectDataDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryObjectDataDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringValueDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringValueDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringValueDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v1/OpenIMSBackend/UpdateInventoryObject": {
+      "put": {
+        "tags": [
+          "OpenIMSBackend"
+        ],
+        "summary": "Changes name and description of the given inventory-object. Every logged-in user may do this.",
+        "parameters": [
+          {
+            "name": "inventoryObjectId",
+            "in": "query",
+            "description": "The id of the inventory-object.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The new name and description.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryObjectDataDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryObjectDataDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryObjectDataDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/v1/OpenIMSBackend/DeleteInventoryObject": {
+      "delete": {
+        "tags": [
+          "OpenIMSBackend"
+        ],
+        "summary": "Deletes the given inventory-object. Only an object which contains nothing and where no item actually is can be deleted. Every logged-in user may do this.",
+        "parameters": [
+          {
+            "name": "inventoryObjectId",
+            "in": "query",
+            "description": "The id of the inventory-object.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-AccessToken",
+            "in": "header",
+            "description": "Access Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/API/v1/UserController/Login": {
       "put": {
         "tags": [
@@ -981,6 +1452,53 @@
         },
         "additionalProperties": false,
         "description": "Identifies an object by its id and describes it by a human-readable label, for example as an entry of a selection-list."
+      },
+      "InventoryObjectDataDTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The data of an inventory-object which a user enters when creating or editing it."
+      },
+      "InventoryTreeNodeDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the object: \"Location\", \"Building\", \"Area\", \"Container\" or \"Item\".",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InventoryTreeNodeDTO"
+            },
+            "description": "The objects which this object directly contains: the buildings and then the areas of a location, the areas of a building, the containers and items of an area or container. Each of these lists is ordered by the name.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "One inventory-object of the inventory-tree together with the objects it directly contains."
       },
       "StringValueDTO": {
         "type": "object",

@@ -1,5 +1,5 @@
 /**
- * OpenIMSBackend v0.1.0 API documentation
+ * OpenIMSBackend v1.0.0 API documentation
  *
  * 
  *

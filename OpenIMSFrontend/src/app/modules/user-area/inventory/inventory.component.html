@@ -1,0 +1,48 @@
+<app-frame-work>
+  <app-user-area-container>
+    <div class="toolbar">
+      <button mat-flat-button (click)="onCreateLocation()">
+        <mat-icon>add</mat-icon>
+        <span i18n="@@inventory_create_location">Create location</span>
+      </button>
+    </div>
+    @if (actionFailed) {
+    <p class="action-failed" i18n="@@inventory_action_failed">The action could not be executed.</p>
+    } @if (locations.length === 0) {
+    <p class="hint" i18n="@@inventory_empty">The inventory is empty. Create a location to start.</p>
+    }
+    <mat-tree #tree [dataSource]="locations" [childrenAccessor]="childrenAccessor" [expansionKey]="expansionKey" class="inventory-tree">
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="node">
+        <span class="toggle-placeholder"></span>
+        <ng-container *ngTemplateOutlet="nodeContent; context: { $implicit: node }"></ng-container>
+      </mat-tree-node>
+      <mat-tree-node *matTreeNodeDef="let node; when: hasChildren" matTreeNodePadding [isExpandable]="true" class="node">
+        <button mat-icon-button matTreeNodeToggle i18n-aria-label="@@inventory_toggle" aria-label="Expand or collapse">
+          <mat-icon>{{tree.isExpanded(node) ? 'expand_more' : 'chevron_right'}}</mat-icon>
+        </button>
+        <ng-container *ngTemplateOutlet="nodeContent; context: { $implicit: node }"></ng-container>
+      </mat-tree-node>
+    </mat-tree>
+    <ng-template #nodeContent let-node>
+      <mat-icon class="type-icon">{{getIconOfType(node.type)}}</mat-icon>
+      <span class="name">{{node.name}}</span>
+      @if (node.description) {
+      <span class="description">{{node.description}}</span>
+      }
+      <span class="actions">
+        @for (type of getCreatableChildTypes(node); track type) {
+        <button mat-button (click)="onCreateChild(node, type)">
+          <mat-icon>add</mat-icon>
+          <span>{{getLabelOfType(type)}}</span>
+        </button>
+        }
+        <button mat-icon-button (click)="onEdit(node)" i18n-aria-label="@@inventory_edit_button" aria-label="Edit">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onDelete(node)" i18n-aria-label="@@inventory_delete_button" aria-label="Delete">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </span>
+    </ng-template>
+  </app-user-area-container>
+</app-frame-work>

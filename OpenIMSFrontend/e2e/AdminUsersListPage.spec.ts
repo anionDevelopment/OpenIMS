@@ -17,8 +17,8 @@ const usersOfTheSimulatedInstallation = [
 test.describe('Admin-users-list-page', () => {
     test('looks like the baseline-screenshot', async ({ page }) => {
         await simulateLoggedInUser(page);
-        await respondWith(page, '**/API/v0/UserController/GetAllRoles*', rolesOfTheSimulatedInstallation);
-        await respondWith(page, '**/API/v0/UserController/GetAllUsers*', usersOfTheSimulatedInstallation);
+        await respondWith(page, '**/API/v1/UserController/GetAllRoles*', rolesOfTheSimulatedInstallation);
+        await respondWith(page, '**/API/v1/UserController/GetAllUsers*', usersOfTheSimulatedInstallation);
         await expectPageToLookLikeBaseline(page, '/admin/users', 'admin-users-list-page');
     });
 });

@@ -308,5 +308,80 @@ namespace OpenIMSBackend.Tests.Testcases.Services
             Assert.HasCount(BusinessLogicService.MaximalAmountOfSearchResults, businessLogicService.SearchInventoryObjects(adminId, string.Empty, new HashSet<string>() { "Location" }));
             Assert.ThrowsExactly<NotAuthorizedException>(() => businessLogicService.SearchInventoryObjects(userId, string.Empty, new HashSet<string>() { "Location" }), "The result is not restricted to the accessible objects, so only an administrator may search.");
         }
+
+        [TestMethod(DisplayName = nameof(InventoryTreeContainsTheCompleteHierarchy))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
+        public void InventoryTreeContainsTheCompleteHierarchy()
+        {
+            //arrange
+            IBusinessLogicService businessLogicService = CreateBusinessLogicService();
+            string locationId = businessLogicService.CreateLocation("Headquarter", "The main site");
+            string buildingId = businessLogicService.CreateBuilding(locationId, "Building A", "Office-building");
+            string roomId = businessLogicService.CreateArea(buildingId, "Room 101", string.Empty);
+            string boxId = businessLogicService.CreateContainer(roomId, "Euro-box", string.Empty);
+            string drillId = businessLogicService.CreateItem(boxId, boxId, "Drill", "Cordless drill");
+            string yardId = businessLogicService.CreateArea(locationId, "Yard", string.Empty);
+
+            //act
+            IList<InventoryTreeNodeDTO> tree = businessLogicService.GetInventoryTree();
+
+            //assert
+            InventoryTreeNodeDTO location = tree.Single();
+            AssertNode(location, locationId, "Location", "Headquarter", "The main site");
+            CollectionAssert.AreEqual(new List<string>() { buildingId, yardId }, location.Children.Select(child => child.Id).ToList(), "The buildings of a location are listed before its areas.");
+            InventoryTreeNodeDTO building = location.Children[0];
+            AssertNode(building, buildingId, "Building", "Building A", "Office-building");
+            AssertNode(location.Children[1], yardId, "Area", "Yard", string.Empty);
+            InventoryTreeNodeDTO room = building.Children.Single();
+            AssertNode(room, roomId, "Area", "Room 101", string.Empty);
+            InventoryTreeNodeDTO box = room.Children.Single();
+            AssertNode(box, boxId, "Container", "Euro-box", string.Empty);
+            InventoryTreeNodeDTO drill = box.Children.Single();
+            AssertNode(drill, drillId, "Item", "Drill", "Cordless drill");
+            Assert.IsEmpty(drill.Children);
+        }
+
+        [TestMethod(DisplayName = nameof(InventoryTreeOfAnEmptyInventoryIsEmpty))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
+        public void InventoryTreeOfAnEmptyInventoryIsEmpty()
+        {
+            //arrange
+            IBusinessLogicService businessLogicService = CreateBusinessLogicService();
+
+            //act
+            IList<InventoryTreeNodeDTO> tree = businessLogicService.GetInventoryTree();
+
+            //assert
+            Assert.IsEmpty(tree);
+        }
+
+        [TestMethod(DisplayName = nameof(InventoryTreeListsAnItemOnlyAtItsTargetPlace))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
+        public void InventoryTreeListsAnItemOnlyAtItsTargetPlace()
+        {
+            //arrange
+            IBusinessLogicService businessLogicService = CreateBusinessLogicService();
+            string locationId = businessLogicService.CreateLocation("Location", string.Empty);
+            string areaAId = businessLogicService.CreateArea(locationId, "Area A", string.Empty);
+            string areaBId = businessLogicService.CreateArea(locationId, "Area B", string.Empty);
+            string itemId = businessLogicService.CreateItem(areaAId, areaAId, "Laptop", string.Empty);
+            businessLogicService.SetRealPlaceOfItem(itemId, areaBId);
+
+            //act
+            IList<InventoryTreeNodeDTO> tree = businessLogicService.GetInventoryTree();
+
+            //assert
+            IList<InventoryTreeNodeDTO> areas = tree.Single().Children;
+            Assert.AreEqual(itemId, areas.Single(area => area.Id == areaAId).Children.Single().Id);
+            Assert.IsEmpty(areas.Single(area => area.Id == areaBId).Children, "The real place of an item does not contain it in the tree.");
+        }
+
+        private static void AssertNode(InventoryTreeNodeDTO node, string expectedId, string expectedType, string expectedName, string expectedDescription)
+        {
+            Assert.AreEqual(expectedId, node.Id);
+            Assert.AreEqual(expectedType, node.Type);
+            Assert.AreEqual(expectedName, node.Name);
+            Assert.AreEqual(expectedDescription, node.Description);
+        }
     }
 }

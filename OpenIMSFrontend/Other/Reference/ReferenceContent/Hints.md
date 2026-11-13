@@ -25,7 +25,7 @@ The recommended IDE for this codeunit is [Visual Studio Code](https://code.visua
 The application has three modules, which is also how the pages are grouped:
 
 - `home-page`: everything which is reachable without being logged in. This is the login-mask (`login-form`), the frame which every page uses (`frame-work`, `footer`) and the hint-pages (not found, not authenticated, not authorized).
-- `user-area`: the pages which every logged-in user reaches. The frame of these pages is `user-area-container`, which also contains the menu and the `user-icon` (the menu with the logout).
+- `user-area`: the pages which every logged-in user reaches (dashboard, inventory, settings). The frame of these pages is `user-area-container`, which also contains the menu and the `user-icon` (the menu with the logout).
 - `admin-area`: the pages which only an administrator reaches (the user-overview and the general settings). The frame of these pages is `admin-area-container`.
 
 Which pages require a login is decided in exactly one place: `app.routes.ts`, where every route of the user- and the admin-area carries the `authenticationCheckGuard`.

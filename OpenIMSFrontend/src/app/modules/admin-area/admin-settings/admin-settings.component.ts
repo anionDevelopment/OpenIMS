@@ -16,7 +16,7 @@ export class AdminSettingsComponent {
   registrationIsEnabled = false;
 
   constructor(private storageService: StorageService, private openIMSBackendService: OpenIMSBackendService) {
-    this.openIMSBackendService.aPIV0OpenIMSBackendGetGeneralSettingsGet(this.storageService.getAccessToken()).subscribe(settings => {
+    this.openIMSBackendService.aPIV1OpenIMSBackendGetGeneralSettingsGet(this.storageService.getAccessToken()).subscribe(settings => {
       this.registrationIsEnabled = settings.registrationIsEnabled ?? false;
     });
   }
@@ -24,6 +24,6 @@ export class AdminSettingsComponent {
   onRegistrationIsEnabledChanged(enabled: boolean): void {
     this.registrationIsEnabled = enabled;
     const settings: GeneralSettingsDTO = { registrationIsEnabled: enabled };
-    this.openIMSBackendService.aPIV0OpenIMSBackendSetGeneralSettingsPut(this.storageService.getAccessToken(), settings).subscribe();
+    this.openIMSBackendService.aPIV1OpenIMSBackendSetGeneralSettingsPut(this.storageService.getAccessToken(), settings).subscribe();
   }
 }

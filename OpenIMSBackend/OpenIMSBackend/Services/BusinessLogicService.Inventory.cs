@@ -175,6 +175,12 @@ namespace OpenIMSBackend.Core.Services
         }
 
         /// <inheritdoc />
+        public IList<InventoryTreeNodeDTO> GetInventoryTree()
+        {
+            return InventoryTreeNodeDTOMapper.Map(this.GetAllLocations());
+        }
+
+        /// <inheritdoc />
         public IList<IdLabelDTO> SearchInventoryObjects(string requesterUserId, string searchText, ISet<string> typeNames)
         {
             this.EnsureAdministrator(requesterUserId);

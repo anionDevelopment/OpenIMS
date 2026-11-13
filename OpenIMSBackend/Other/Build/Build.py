@@ -3,7 +3,7 @@ from ScriptCollection.TFCPS.DotNet.TFCPS_CodeUnitSpecific_DotNet import TFCPS_Co
 
 def build():
     tf:TFCPS_CodeUnitSpecific_DotNet_Functions=TFCPS_CodeUnitSpecific_DotNet_CLI.parse(__file__)
-    tf.build(True)
+    tf.build(True, False)
 
 
 if __name__ == "__main__":

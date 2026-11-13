@@ -19,8 +19,8 @@ export class UsersListComponent {
 
   private reload(): void {
     const accessToken = this.storageService.getAccessToken();
-    this.userService.aPIV0UserControllerGetAllRolesGet(accessToken).subscribe(roles => this.allRoles = (roles ?? []).sort());
-    this.userService.aPIV0UserControllerGetAllUsersGet(accessToken).subscribe(users => this.users = users ?? []);
+    this.userService.aPIV1UserControllerGetAllRolesGet(accessToken).subscribe(roles => this.allRoles = (roles ?? []).sort());
+    this.userService.aPIV1UserControllerGetAllUsersGet(accessToken).subscribe(users => this.users = users ?? []);
   }
 
   userHasRole(user: UserOverviewDTO, role: string): boolean {
@@ -45,6 +45,6 @@ export class UsersListComponent {
     }
     user.roles = roles;
     const accessToken = this.storageService.getAccessToken();
-    this.userService.aPIV0UserControllerSetRolesOfUserPut(accessToken, user.id ?? '', Array.from(roles)).subscribe();
+    this.userService.aPIV1UserControllerSetRolesOfUserPut(accessToken, user.id ?? '', Array.from(roles)).subscribe();
   }
 }

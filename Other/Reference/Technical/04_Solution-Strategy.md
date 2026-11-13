@@ -142,6 +142,15 @@ Instead the reusable component `app-inventory-object-selector` (module `SharedCo
 - The result is a list of pairs of id and label (`IdLabelDTO`); the label currently is the name of the object.
 - The search is currently only allowed for administrators, because its result is not restricted to the objects the requesting user has access to.
 
+### Modeling the inventory in the user-interface
+
+The page "Inventory" of the user-area (`modules/user-area/inventory`, route `user/inventory`) displays the complete inventory as a tree (`mat-tree`) and offers on every object exactly the creations which the hierarchy allows for its type, plus editing and deleting.
+
+- The backend delivers the tree with `GetInventoryTree` as `InventoryTreeNodeDTO`s (id, type, name, description, children). The business-types are not transported directly, because their children are typed as interfaces and `Item.RealPlace` references another object of the tree; the mapping is done by `InventoryTreeNodeDTOMapper`.
+- There is one endpoint per creatable type (`CreateLocation`, `CreateBuilding`, `CreateArea`, `CreateContainer`, `CreateItem`) plus `UpdateInventoryObject` and `DeleteInventoryObject` in `OpenIMSBackendController`. Each calls exactly one method of the business-logic, so the rules of the hierarchy are not duplicated. A new item gets its target place as its real place.
+- These endpoints require the role `Users`, so every logged-in user can use them, and they are not restricted by the groups which are assigned to inventory-objects (see finding `SEC-3`), because it is not specified yet which operation requires which access.
+- After every action the whole tree is loaded again (see finding `PER-1`); the expansion of the tree is keyed by the id of the objects, so expanded objects stay expanded.
+
 ### Persistence of the inventory
 
 All inventory-objects are stored in the one table `InventoryObjects`, one row per object, with the column `Type` (`Location`, `Building`, `Area`, `Container`, `Item`).

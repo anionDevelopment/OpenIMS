@@ -38,7 +38,7 @@ export class LoginFormComponent {
     const username: string = this.form.get('username')!.value;
     const password: string = this.form.get('password')!.value;
     this.loginFailed = false;
-    this.userService.aPIV0UserControllerLoginPut(username, password)
+    this.userService.aPIV1UserControllerLoginPut(username, password)
       .pipe(
         switchMap((accessToken: AccessToken) => {
           this.storageService.setAccessToken(accessToken.value!);

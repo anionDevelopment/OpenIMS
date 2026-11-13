@@ -2,7 +2,7 @@
 
 OpenIMSBackend is the backend of OpenIMS.
 
-The version of the OpenAPI document: v0.1.0
+The version of the OpenAPI document: v1.0.0
 
 ## Building
 

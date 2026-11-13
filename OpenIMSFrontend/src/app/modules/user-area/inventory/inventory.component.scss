@@ -1,0 +1,33 @@
+.toolbar {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin: 16px 0;
+}
+.node {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+.toggle-placeholder {
+    display: inline-block;
+    width: 48px;
+    flex-shrink: 0;
+}
+.type-icon {
+    flex-shrink: 0;
+}
+.description {
+    color: var(--mat-sys-on-surface-variant);
+}
+.actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    margin-left: 16px;
+}
+.action-failed {
+    color: var(--mat-sys-error);
+}

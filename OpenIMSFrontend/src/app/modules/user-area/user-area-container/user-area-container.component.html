@@ -6,6 +6,7 @@
       <button mat-button (click)="onAdminAreaClick()">{{getSiteTitle("admin")}}</button>
       }
       <button mat-button [disabled]="activeSite=='Dashboard'" (click)="onDashboardClick()">{{getSiteTitle("dashboard")}}</button>
+      <button mat-button [disabled]="activeSite=='Inventory'" (click)="onInventoryClick()">{{getSiteTitle("inventory")}}</button>
       <button mat-button [disabled]="activeSite=='Settings'" (click)="onSettingsClick()">{{getSiteTitle("settings")}}</button>
     </div>
   </div>

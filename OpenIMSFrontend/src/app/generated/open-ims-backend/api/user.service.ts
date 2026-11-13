@@ -1,5 +1,5 @@
 /**
- * OpenIMSBackend v0.1.0 API documentation
+ * OpenIMSBackend v1.0.0 API documentation
  *
  * 
  *
@@ -48,12 +48,12 @@ export class UserService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public aPIV0UserControllerCreateGroupPost(xAccessToken: string, stringValueDTO?: StringValueDTO, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public aPIV0UserControllerCreateGroupPost(xAccessToken: string, stringValueDTO?: StringValueDTO, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public aPIV0UserControllerCreateGroupPost(xAccessToken: string, stringValueDTO?: StringValueDTO, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public aPIV0UserControllerCreateGroupPost(xAccessToken: string, stringValueDTO?: StringValueDTO, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public aPIV1UserControllerCreateGroupPost(xAccessToken: string, stringValueDTO?: StringValueDTO, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
+    public aPIV1UserControllerCreateGroupPost(xAccessToken: string, stringValueDTO?: StringValueDTO, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
+    public aPIV1UserControllerCreateGroupPost(xAccessToken: string, stringValueDTO?: StringValueDTO, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public aPIV1UserControllerCreateGroupPost(xAccessToken: string, stringValueDTO?: StringValueDTO, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (xAccessToken === null || xAccessToken === undefined) {
-            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV0UserControllerCreateGroupPost.');
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1UserControllerCreateGroupPost.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -94,7 +94,7 @@ export class UserService extends BaseService {
             }
         }
 
-        let localVarPath = `/API/v0/UserController/CreateGroup`;
+        let localVarPath = `/API/v1/UserController/CreateGroup`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<any>('post', `${basePath}${localVarPath}`,
             {
@@ -117,12 +117,12 @@ export class UserService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public aPIV0UserControllerDeleteGroupDelete(xAccessToken: string, groupName?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public aPIV0UserControllerDeleteGroupDelete(xAccessToken: string, groupName?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public aPIV0UserControllerDeleteGroupDelete(xAccessToken: string, groupName?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public aPIV0UserControllerDeleteGroupDelete(xAccessToken: string, groupName?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public aPIV1UserControllerDeleteGroupDelete(xAccessToken: string, groupName?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
+    public aPIV1UserControllerDeleteGroupDelete(xAccessToken: string, groupName?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
+    public aPIV1UserControllerDeleteGroupDelete(xAccessToken: string, groupName?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public aPIV1UserControllerDeleteGroupDelete(xAccessToken: string, groupName?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (xAccessToken === null || xAccessToken === undefined) {
-            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV0UserControllerDeleteGroupDelete.');
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1UserControllerDeleteGroupDelete.');
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
@@ -156,7 +156,7 @@ export class UserService extends BaseService {
             }
         }
 
-        let localVarPath = `/API/v0/UserController/DeleteGroup`;
+        let localVarPath = `/API/v1/UserController/DeleteGroup`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<any>('delete', `${basePath}${localVarPath}`,
             {
@@ -178,12 +178,12 @@ export class UserService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public aPIV0UserControllerGetAllRolesGet(xAccessToken: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<string>>;
-    public aPIV0UserControllerGetAllRolesGet(xAccessToken: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<string>>>;
-    public aPIV0UserControllerGetAllRolesGet(xAccessToken: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<string>>>;
-    public aPIV0UserControllerGetAllRolesGet(xAccessToken: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public aPIV1UserControllerGetAllRolesGet(xAccessToken: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<string>>;
+    public aPIV1UserControllerGetAllRolesGet(xAccessToken: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<string>>>;
+    public aPIV1UserControllerGetAllRolesGet(xAccessToken: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<string>>>;
+    public aPIV1UserControllerGetAllRolesGet(xAccessToken: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (xAccessToken === null || xAccessToken === undefined) {
-            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV0UserControllerGetAllRolesGet.');
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1UserControllerGetAllRolesGet.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -216,7 +216,7 @@ export class UserService extends BaseService {
             }
         }
 
-        let localVarPath = `/API/v0/UserController/GetAllRoles`;
+        let localVarPath = `/API/v1/UserController/GetAllRoles`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<Array<string>>('get', `${basePath}${localVarPath}`,
             {
@@ -237,12 +237,12 @@ export class UserService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public aPIV0UserControllerGetAllUsersGet(xAccessToken: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<UserOverviewDTO>>;
-    public aPIV0UserControllerGetAllUsersGet(xAccessToken: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<UserOverviewDTO>>>;
-    public aPIV0UserControllerGetAllUsersGet(xAccessToken: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<UserOverviewDTO>>>;
-    public aPIV0UserControllerGetAllUsersGet(xAccessToken: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public aPIV1UserControllerGetAllUsersGet(xAccessToken: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<UserOverviewDTO>>;
+    public aPIV1UserControllerGetAllUsersGet(xAccessToken: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<UserOverviewDTO>>>;
+    public aPIV1UserControllerGetAllUsersGet(xAccessToken: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<UserOverviewDTO>>>;
+    public aPIV1UserControllerGetAllUsersGet(xAccessToken: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (xAccessToken === null || xAccessToken === undefined) {
-            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV0UserControllerGetAllUsersGet.');
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1UserControllerGetAllUsersGet.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -275,7 +275,7 @@ export class UserService extends BaseService {
             }
         }
 
-        let localVarPath = `/API/v0/UserController/GetAllUsers`;
+        let localVarPath = `/API/v1/UserController/GetAllUsers`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<Array<UserOverviewDTO>>('get', `${basePath}${localVarPath}`,
             {
@@ -296,12 +296,12 @@ export class UserService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public aPIV0UserControllerGetRolesPut(xAccessToken: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<string>>;
-    public aPIV0UserControllerGetRolesPut(xAccessToken: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<string>>>;
-    public aPIV0UserControllerGetRolesPut(xAccessToken: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<string>>>;
-    public aPIV0UserControllerGetRolesPut(xAccessToken: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public aPIV1UserControllerGetRolesPut(xAccessToken: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<string>>;
+    public aPIV1UserControllerGetRolesPut(xAccessToken: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<string>>>;
+    public aPIV1UserControllerGetRolesPut(xAccessToken: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<string>>>;
+    public aPIV1UserControllerGetRolesPut(xAccessToken: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (xAccessToken === null || xAccessToken === undefined) {
-            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV0UserControllerGetRolesPut.');
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1UserControllerGetRolesPut.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -334,7 +334,7 @@ export class UserService extends BaseService {
             }
         }
 
-        let localVarPath = `/API/v0/UserController/GetRoles`;
+        let localVarPath = `/API/v1/UserController/GetRoles`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<Array<string>>('put', `${basePath}${localVarPath}`,
             {
@@ -355,12 +355,12 @@ export class UserService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public aPIV0UserControllerGetThemeGet(xAccessToken: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<StringValueDTO>;
-    public aPIV0UserControllerGetThemeGet(xAccessToken: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<StringValueDTO>>;
-    public aPIV0UserControllerGetThemeGet(xAccessToken: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<StringValueDTO>>;
-    public aPIV0UserControllerGetThemeGet(xAccessToken: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public aPIV1UserControllerGetThemeGet(xAccessToken: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<StringValueDTO>;
+    public aPIV1UserControllerGetThemeGet(xAccessToken: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<StringValueDTO>>;
+    public aPIV1UserControllerGetThemeGet(xAccessToken: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<StringValueDTO>>;
+    public aPIV1UserControllerGetThemeGet(xAccessToken: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (xAccessToken === null || xAccessToken === undefined) {
-            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV0UserControllerGetThemeGet.');
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1UserControllerGetThemeGet.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -393,7 +393,7 @@ export class UserService extends BaseService {
             }
         }
 
-        let localVarPath = `/API/v0/UserController/GetTheme`;
+        let localVarPath = `/API/v1/UserController/GetTheme`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<StringValueDTO>('get', `${basePath}${localVarPath}`,
             {
@@ -414,12 +414,12 @@ export class UserService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public aPIV0UserControllerGetUserInformationGet(xAccessToken: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<UserInformationDTO>;
-    public aPIV0UserControllerGetUserInformationGet(xAccessToken: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<UserInformationDTO>>;
-    public aPIV0UserControllerGetUserInformationGet(xAccessToken: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<UserInformationDTO>>;
-    public aPIV0UserControllerGetUserInformationGet(xAccessToken: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public aPIV1UserControllerGetUserInformationGet(xAccessToken: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<UserInformationDTO>;
+    public aPIV1UserControllerGetUserInformationGet(xAccessToken: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<UserInformationDTO>>;
+    public aPIV1UserControllerGetUserInformationGet(xAccessToken: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<UserInformationDTO>>;
+    public aPIV1UserControllerGetUserInformationGet(xAccessToken: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (xAccessToken === null || xAccessToken === undefined) {
-            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV0UserControllerGetUserInformationGet.');
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1UserControllerGetUserInformationGet.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -452,7 +452,7 @@ export class UserService extends BaseService {
             }
         }
 
-        let localVarPath = `/API/v0/UserController/GetUserInformation`;
+        let localVarPath = `/API/v1/UserController/GetUserInformation`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<UserInformationDTO>('get', `${basePath}${localVarPath}`,
             {
@@ -474,10 +474,10 @@ export class UserService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public aPIV0UserControllerLoginPut(user?: string, password?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<AccessToken>;
-    public aPIV0UserControllerLoginPut(user?: string, password?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AccessToken>>;
-    public aPIV0UserControllerLoginPut(user?: string, password?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AccessToken>>;
-    public aPIV0UserControllerLoginPut(user?: string, password?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public aPIV1UserControllerLoginPut(user?: string, password?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<AccessToken>;
+    public aPIV1UserControllerLoginPut(user?: string, password?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AccessToken>>;
+    public aPIV1UserControllerLoginPut(user?: string, password?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AccessToken>>;
+    public aPIV1UserControllerLoginPut(user?: string, password?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
         if (user !== undefined && user !== null) {
@@ -512,7 +512,7 @@ export class UserService extends BaseService {
             }
         }
 
-        let localVarPath = `/API/v0/UserController/Login`;
+        let localVarPath = `/API/v1/UserController/Login`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<AccessToken>('put', `${basePath}${localVarPath}`,
             {
@@ -533,12 +533,12 @@ export class UserService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public aPIV0UserControllerLogoutPut(xAccessToken: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public aPIV0UserControllerLogoutPut(xAccessToken: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public aPIV0UserControllerLogoutPut(xAccessToken: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public aPIV0UserControllerLogoutPut(xAccessToken: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public aPIV1UserControllerLogoutPut(xAccessToken: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
+    public aPIV1UserControllerLogoutPut(xAccessToken: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
+    public aPIV1UserControllerLogoutPut(xAccessToken: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public aPIV1UserControllerLogoutPut(xAccessToken: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (xAccessToken === null || xAccessToken === undefined) {
-            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV0UserControllerLogoutPut.');
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1UserControllerLogoutPut.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -568,7 +568,7 @@ export class UserService extends BaseService {
             }
         }
 
-        let localVarPath = `/API/v0/UserController/Logout`;
+        let localVarPath = `/API/v1/UserController/Logout`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<any>('put', `${basePath}${localVarPath}`,
             {
@@ -591,12 +591,12 @@ export class UserService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public aPIV0UserControllerRegisterPut(xAccessToken: string, user?: string, password?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public aPIV0UserControllerRegisterPut(xAccessToken: string, user?: string, password?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public aPIV0UserControllerRegisterPut(xAccessToken: string, user?: string, password?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public aPIV0UserControllerRegisterPut(xAccessToken: string, user?: string, password?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public aPIV1UserControllerRegisterPut(xAccessToken: string, user?: string, password?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
+    public aPIV1UserControllerRegisterPut(xAccessToken: string, user?: string, password?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
+    public aPIV1UserControllerRegisterPut(xAccessToken: string, user?: string, password?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public aPIV1UserControllerRegisterPut(xAccessToken: string, user?: string, password?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (xAccessToken === null || xAccessToken === undefined) {
-            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV0UserControllerRegisterPut.');
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1UserControllerRegisterPut.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -632,7 +632,7 @@ export class UserService extends BaseService {
             }
         }
 
-        let localVarPath = `/API/v0/UserController/Register`;
+        let localVarPath = `/API/v1/UserController/Register`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<any>('put', `${basePath}${localVarPath}`,
             {
@@ -655,12 +655,12 @@ export class UserService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public aPIV0UserControllerSetRolesOfUserPut(xAccessToken: string, userId?: string, requestBody?: Array<string>, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public aPIV0UserControllerSetRolesOfUserPut(xAccessToken: string, userId?: string, requestBody?: Array<string>, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public aPIV0UserControllerSetRolesOfUserPut(xAccessToken: string, userId?: string, requestBody?: Array<string>, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public aPIV0UserControllerSetRolesOfUserPut(xAccessToken: string, userId?: string, requestBody?: Array<string>, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public aPIV1UserControllerSetRolesOfUserPut(xAccessToken: string, userId?: string, requestBody?: Array<string>, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
+    public aPIV1UserControllerSetRolesOfUserPut(xAccessToken: string, userId?: string, requestBody?: Array<string>, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
+    public aPIV1UserControllerSetRolesOfUserPut(xAccessToken: string, userId?: string, requestBody?: Array<string>, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public aPIV1UserControllerSetRolesOfUserPut(xAccessToken: string, userId?: string, requestBody?: Array<string>, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (xAccessToken === null || xAccessToken === undefined) {
-            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV0UserControllerSetRolesOfUserPut.');
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1UserControllerSetRolesOfUserPut.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -704,7 +704,7 @@ export class UserService extends BaseService {
             }
         }
 
-        let localVarPath = `/API/v0/UserController/SetRolesOfUser`;
+        let localVarPath = `/API/v1/UserController/SetRolesOfUser`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<any>('put', `${basePath}${localVarPath}`,
             {
@@ -727,12 +727,12 @@ export class UserService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public aPIV0UserControllerSetThemePut(xAccessToken: string, stringValueDTO?: StringValueDTO, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public aPIV0UserControllerSetThemePut(xAccessToken: string, stringValueDTO?: StringValueDTO, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public aPIV0UserControllerSetThemePut(xAccessToken: string, stringValueDTO?: StringValueDTO, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public aPIV0UserControllerSetThemePut(xAccessToken: string, stringValueDTO?: StringValueDTO, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public aPIV1UserControllerSetThemePut(xAccessToken: string, stringValueDTO?: StringValueDTO, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
+    public aPIV1UserControllerSetThemePut(xAccessToken: string, stringValueDTO?: StringValueDTO, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
+    public aPIV1UserControllerSetThemePut(xAccessToken: string, stringValueDTO?: StringValueDTO, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public aPIV1UserControllerSetThemePut(xAccessToken: string, stringValueDTO?: StringValueDTO, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (xAccessToken === null || xAccessToken === undefined) {
-            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV0UserControllerSetThemePut.');
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1UserControllerSetThemePut.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -773,7 +773,7 @@ export class UserService extends BaseService {
             }
         }
 
-        let localVarPath = `/API/v0/UserController/SetTheme`;
+        let localVarPath = `/API/v1/UserController/SetTheme`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<any>('put', `${basePath}${localVarPath}`,
             {
@@ -795,10 +795,10 @@ export class UserService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public aPIV0UserControllerTokenIsValidGet(accessToken?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<boolean>;
-    public aPIV0UserControllerTokenIsValidGet(accessToken?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<boolean>>;
-    public aPIV0UserControllerTokenIsValidGet(accessToken?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<boolean>>;
-    public aPIV0UserControllerTokenIsValidGet(accessToken?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public aPIV1UserControllerTokenIsValidGet(accessToken?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<boolean>;
+    public aPIV1UserControllerTokenIsValidGet(accessToken?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<boolean>>;
+    public aPIV1UserControllerTokenIsValidGet(accessToken?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<boolean>>;
+    public aPIV1UserControllerTokenIsValidGet(accessToken?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
         if (accessToken !== undefined && accessToken !== null) {
@@ -830,7 +830,7 @@ export class UserService extends BaseService {
             }
         }
 
-        let localVarPath = `/API/v0/UserController/TokenIsValid`;
+        let localVarPath = `/API/v1/UserController/TokenIsValid`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<boolean>('get', `${basePath}${localVarPath}`,
             {

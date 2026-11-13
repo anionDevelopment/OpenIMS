@@ -90,6 +90,10 @@ describe('UserAreaContainerComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('names the inventory-page', () => {
+    expect(component.getSiteTitle('inventory')).toBe('Inventory');
+  });
+
   it('rejects an unknown url-segment instead of showing an empty title', () => {
     expect(() => component.getSiteTitle('this-segment-does-not-exist')).toThrow();
   });

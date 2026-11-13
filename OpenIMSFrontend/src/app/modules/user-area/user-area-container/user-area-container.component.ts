@@ -30,6 +30,10 @@ export class UserAreaContainerComponent {
     this.router.navigate(['user', 'dashboard']);
   }
 
+  onInventoryClick() {
+    this.router.navigate(['user', 'inventory']);
+  }
+
   onSettingsClick() {
     this.router.navigate(['user', 'settings']);
   }
@@ -45,6 +49,9 @@ export class UserAreaContainerComponent {
       }
       case "dashboard": {
         return "Dashboard";
+      }
+      case "inventory": {
+        return "Inventory";
       }
       case "settings": {
         return "Settings";

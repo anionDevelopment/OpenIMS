@@ -22,9 +22,9 @@ const resultOfTheSearch = [
 
 async function openPageWithSelectedGroup(page: Page): Promise<void> {
     await simulateLoggedInUser(page);
-    await respondWith(page, '**/API/v0/UserController/GetAllRoles*', groupsOfTheSimulatedInstallation);
-    await respondWith(page, '**/API/v0/OpenIMSBackend/GetAuthorizableItemsOfGroup*', objectsOfTheSelectedGroup);
-    await respondWith(page, '**/API/v0/OpenIMSBackend/SearchInventoryObjects*', resultOfTheSearch);
+    await respondWith(page, '**/API/v1/UserController/GetAllRoles*', groupsOfTheSimulatedInstallation);
+    await respondWith(page, '**/API/v1/OpenIMSBackend/GetAuthorizableItemsOfGroup*', objectsOfTheSelectedGroup);
+    await respondWith(page, '**/API/v1/OpenIMSBackend/SearchInventoryObjects*', resultOfTheSearch);
     await openPageInReproducibleState(page, '/admin/groups');
     await page.getByRole('button', { name: 'Workshop' }).click();
     await page.getByText('Building A').waitFor();
@@ -42,7 +42,7 @@ async function openPageWithSelectedGroup(page: Page): Promise<void> {
 test.describe('Admin-groups-list-page', () => {
     test('looks like the baseline-screenshot', async ({ page }) => {
         await simulateLoggedInUser(page);
-        await respondWith(page, '**/API/v0/UserController/GetAllRoles*', groupsOfTheSimulatedInstallation);
+        await respondWith(page, '**/API/v1/UserController/GetAllRoles*', groupsOfTheSimulatedInstallation);
         await expectPageToLookLikeBaseline(page, '/admin/groups', 'admin-groups-list-page');
     });
 

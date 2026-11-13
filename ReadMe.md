@@ -33,8 +33,9 @@ See the general [product reference](./Other/Reference/Reference.md).
 - ✅ Support PostgreSQL and MariaDB as persistence, plus a transient (in-memory) persistence for testcases and demonstrations.
 - ✅ Model the inventory as a hierarchy of locations, buildings, areas, containers and items in the backend, including the distinction between the place where an item belongs to and the place where it actually is (see [Inventory-model](#inventory-model)).
 - ✅ Grant groups read-access to parts of the inventory; the access applies to everything which is contained. An administrator manages the groups (create, delete, assign inventory-objects) on the page "Groups" of the admin-area and the members of the groups on the page "Users".
-- ❌ Endpoints and user-interface for the inventory are not implemented yet.
-- ❌ The operations of the inventory do not check the access of the requesting user yet (the access can already be computed, but it is not specified yet which operation requires which access).
+- ✅ Model the inventory on the page "Inventory" of the user-area: every logged-in user sees the complete inventory as a tree and creates locations, buildings, areas, containers and items, changes their name and description and deletes them (see [Inventory-model](#inventory-model)).
+- ❌ Moving inventory-objects and changing the real place of an item are not available via endpoints and user-interface yet.
+- ❌ The operations of the inventory do not check the access of the requesting user yet (the access can already be computed, but it is not specified yet which operation requires which access). Until then every logged-in user sees and changes the complete inventory, regardless of the groups.
 
 ## Inventory-model
 

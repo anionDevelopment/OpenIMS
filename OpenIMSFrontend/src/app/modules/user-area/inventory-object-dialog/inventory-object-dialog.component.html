@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content class="fields">
+  <mat-form-field>
+    <mat-label i18n="@@inventory_object_name">Name</mat-label>
+    <input type="text" matInput cdkFocusInitial [(ngModel)]="name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label i18n="@@inventory_object_description">Description</mat-label>
+    <textarea matInput [(ngModel)]="description"></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()" i18n="@@inventory_object_cancel">Cancel</button>
+  <button mat-flat-button [disabled]="!nameIsValid()" (click)="onConfirm()" i18n="@@inventory_object_save">Save</button>
+</mat-dialog-actions>

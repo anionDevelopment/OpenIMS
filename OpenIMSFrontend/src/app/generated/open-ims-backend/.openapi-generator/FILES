@@ -14,6 +14,8 @@ index.ts
 model/accessToken.ts
 model/generalSettingsDTO.ts
 model/idLabelDTO.ts
+model/inventoryObjectDataDTO.ts
+model/inventoryTreeNodeDTO.ts
 model/models.ts
 model/stringValueDTO.ts
 model/userInformationDTO.ts

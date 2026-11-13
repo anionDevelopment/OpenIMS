@@ -1,5 +1,5 @@
 /**
- * OpenIMSBackend v0.1.0 API documentation
+ * OpenIMSBackend v1.0.0 API documentation
  *
  * 
  *
@@ -20,6 +20,12 @@ import { Observable }                                        from 'rxjs';
 import { GeneralSettingsDTO } from '../model/generalSettingsDTO';
 // @ts-ignore
 import { IdLabelDTO } from '../model/idLabelDTO';
+// @ts-ignore
+import { InventoryObjectDataDTO } from '../model/inventoryObjectDataDTO';
+// @ts-ignore
+import { InventoryTreeNodeDTO } from '../model/inventoryTreeNodeDTO';
+// @ts-ignore
+import { StringValueDTO } from '../model/stringValueDTO';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -45,12 +51,12 @@ export class OpenIMSBackendService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public aPIV0OpenIMSBackendAssignGroupToAuthorizableItemPut(xAccessToken: string, groupName?: string, authorizableItemId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public aPIV0OpenIMSBackendAssignGroupToAuthorizableItemPut(xAccessToken: string, groupName?: string, authorizableItemId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public aPIV0OpenIMSBackendAssignGroupToAuthorizableItemPut(xAccessToken: string, groupName?: string, authorizableItemId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public aPIV0OpenIMSBackendAssignGroupToAuthorizableItemPut(xAccessToken: string, groupName?: string, authorizableItemId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public aPIV1OpenIMSBackendAssignGroupToAuthorizableItemPut(xAccessToken: string, groupName?: string, authorizableItemId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
+    public aPIV1OpenIMSBackendAssignGroupToAuthorizableItemPut(xAccessToken: string, groupName?: string, authorizableItemId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
+    public aPIV1OpenIMSBackendAssignGroupToAuthorizableItemPut(xAccessToken: string, groupName?: string, authorizableItemId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public aPIV1OpenIMSBackendAssignGroupToAuthorizableItemPut(xAccessToken: string, groupName?: string, authorizableItemId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (xAccessToken === null || xAccessToken === undefined) {
-            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV0OpenIMSBackendAssignGroupToAuthorizableItemPut.');
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1OpenIMSBackendAssignGroupToAuthorizableItemPut.');
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
@@ -86,9 +92,455 @@ export class OpenIMSBackendService extends BaseService {
             }
         }
 
-        let localVarPath = `/API/v0/OpenIMSBackend/AssignGroupToAuthorizableItem`;
+        let localVarPath = `/API/v1/OpenIMSBackend/AssignGroupToAuthorizableItem`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<any>('put', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                params: localVarQueryParameters,
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                transferCache: localVarTransferCache,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Creates a new area (for example a room or a yard) in the given location or building. Every logged-in user may do this.
+     * @param xAccessToken Access Token
+     * @param parentId The id of the location or building.
+     * @param inventoryObjectDataDTO Name and description of the new area.
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public aPIV1OpenIMSBackendCreateAreaPost(xAccessToken: string, parentId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<StringValueDTO>;
+    public aPIV1OpenIMSBackendCreateAreaPost(xAccessToken: string, parentId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<StringValueDTO>>;
+    public aPIV1OpenIMSBackendCreateAreaPost(xAccessToken: string, parentId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<StringValueDTO>>;
+    public aPIV1OpenIMSBackendCreateAreaPost(xAccessToken: string, parentId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (xAccessToken === null || xAccessToken === undefined) {
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1OpenIMSBackendCreateAreaPost.');
+        }
+
+        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>parentId, 'parentId');
+
+        let localVarHeaders = this.defaultHeaders;
+        if (xAccessToken !== undefined && xAccessToken !== null) {
+            localVarHeaders = localVarHeaders.set('X-AccessToken', String(xAccessToken));
+        }
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'text/plain',
+            'application/json',
+            'text/json'
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json',
+            'text/json',
+            'application/*+json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/API/v1/OpenIMSBackend/CreateArea`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<StringValueDTO>('post', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: inventoryObjectDataDTO,
+                params: localVarQueryParameters,
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                transferCache: localVarTransferCache,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Creates a new building in the given location. Every logged-in user may do this.
+     * @param xAccessToken Access Token
+     * @param parentId The id of the location.
+     * @param inventoryObjectDataDTO Name and description of the new building.
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public aPIV1OpenIMSBackendCreateBuildingPost(xAccessToken: string, parentId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<StringValueDTO>;
+    public aPIV1OpenIMSBackendCreateBuildingPost(xAccessToken: string, parentId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<StringValueDTO>>;
+    public aPIV1OpenIMSBackendCreateBuildingPost(xAccessToken: string, parentId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<StringValueDTO>>;
+    public aPIV1OpenIMSBackendCreateBuildingPost(xAccessToken: string, parentId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (xAccessToken === null || xAccessToken === undefined) {
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1OpenIMSBackendCreateBuildingPost.');
+        }
+
+        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>parentId, 'parentId');
+
+        let localVarHeaders = this.defaultHeaders;
+        if (xAccessToken !== undefined && xAccessToken !== null) {
+            localVarHeaders = localVarHeaders.set('X-AccessToken', String(xAccessToken));
+        }
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'text/plain',
+            'application/json',
+            'text/json'
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json',
+            'text/json',
+            'application/*+json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/API/v1/OpenIMSBackend/CreateBuilding`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<StringValueDTO>('post', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: inventoryObjectDataDTO,
+                params: localVarQueryParameters,
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                transferCache: localVarTransferCache,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Creates a new container (for example a cupboard or a box) in the given area or container. Every logged-in user may do this.
+     * @param xAccessToken Access Token
+     * @param parentId The id of the area or container.
+     * @param inventoryObjectDataDTO Name and description of the new container.
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public aPIV1OpenIMSBackendCreateContainerPost(xAccessToken: string, parentId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<StringValueDTO>;
+    public aPIV1OpenIMSBackendCreateContainerPost(xAccessToken: string, parentId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<StringValueDTO>>;
+    public aPIV1OpenIMSBackendCreateContainerPost(xAccessToken: string, parentId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<StringValueDTO>>;
+    public aPIV1OpenIMSBackendCreateContainerPost(xAccessToken: string, parentId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (xAccessToken === null || xAccessToken === undefined) {
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1OpenIMSBackendCreateContainerPost.');
+        }
+
+        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>parentId, 'parentId');
+
+        let localVarHeaders = this.defaultHeaders;
+        if (xAccessToken !== undefined && xAccessToken !== null) {
+            localVarHeaders = localVarHeaders.set('X-AccessToken', String(xAccessToken));
+        }
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'text/plain',
+            'application/json',
+            'text/json'
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json',
+            'text/json',
+            'application/*+json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/API/v1/OpenIMSBackend/CreateContainer`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<StringValueDTO>('post', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: inventoryObjectDataDTO,
+                params: localVarQueryParameters,
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                transferCache: localVarTransferCache,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Creates a new item in the given area or container. The area or container is the target place and the real place of the new item. Every logged-in user may do this.
+     * @param xAccessToken Access Token
+     * @param parentId The id of the area or container.
+     * @param inventoryObjectDataDTO Name and description of the new item.
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public aPIV1OpenIMSBackendCreateItemPost(xAccessToken: string, parentId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<StringValueDTO>;
+    public aPIV1OpenIMSBackendCreateItemPost(xAccessToken: string, parentId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<StringValueDTO>>;
+    public aPIV1OpenIMSBackendCreateItemPost(xAccessToken: string, parentId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<StringValueDTO>>;
+    public aPIV1OpenIMSBackendCreateItemPost(xAccessToken: string, parentId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (xAccessToken === null || xAccessToken === undefined) {
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1OpenIMSBackendCreateItemPost.');
+        }
+
+        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>parentId, 'parentId');
+
+        let localVarHeaders = this.defaultHeaders;
+        if (xAccessToken !== undefined && xAccessToken !== null) {
+            localVarHeaders = localVarHeaders.set('X-AccessToken', String(xAccessToken));
+        }
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'text/plain',
+            'application/json',
+            'text/json'
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json',
+            'text/json',
+            'application/*+json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/API/v1/OpenIMSBackend/CreateItem`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<StringValueDTO>('post', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: inventoryObjectDataDTO,
+                params: localVarQueryParameters,
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                transferCache: localVarTransferCache,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Creates a new location. Every logged-in user may do this.
+     * @param xAccessToken Access Token
+     * @param inventoryObjectDataDTO Name and description of the new location.
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public aPIV1OpenIMSBackendCreateLocationPost(xAccessToken: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<StringValueDTO>;
+    public aPIV1OpenIMSBackendCreateLocationPost(xAccessToken: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<StringValueDTO>>;
+    public aPIV1OpenIMSBackendCreateLocationPost(xAccessToken: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<StringValueDTO>>;
+    public aPIV1OpenIMSBackendCreateLocationPost(xAccessToken: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (xAccessToken === null || xAccessToken === undefined) {
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1OpenIMSBackendCreateLocationPost.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+        if (xAccessToken !== undefined && xAccessToken !== null) {
+            localVarHeaders = localVarHeaders.set('X-AccessToken', String(xAccessToken));
+        }
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'text/plain',
+            'application/json',
+            'text/json'
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json',
+            'text/json',
+            'application/*+json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/API/v1/OpenIMSBackend/CreateLocation`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<StringValueDTO>('post', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: inventoryObjectDataDTO,
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                transferCache: localVarTransferCache,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Deletes the given inventory-object. Only an object which contains nothing and where no item actually is can be deleted. Every logged-in user may do this.
+     * @param xAccessToken Access Token
+     * @param inventoryObjectId The id of the inventory-object.
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public aPIV1OpenIMSBackendDeleteInventoryObjectDelete(xAccessToken: string, inventoryObjectId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
+    public aPIV1OpenIMSBackendDeleteInventoryObjectDelete(xAccessToken: string, inventoryObjectId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
+    public aPIV1OpenIMSBackendDeleteInventoryObjectDelete(xAccessToken: string, inventoryObjectId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public aPIV1OpenIMSBackendDeleteInventoryObjectDelete(xAccessToken: string, inventoryObjectId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (xAccessToken === null || xAccessToken === undefined) {
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1OpenIMSBackendDeleteInventoryObjectDelete.');
+        }
+
+        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>inventoryObjectId, 'inventoryObjectId');
+
+        let localVarHeaders = this.defaultHeaders;
+        if (xAccessToken !== undefined && xAccessToken !== null) {
+            localVarHeaders = localVarHeaders.set('X-AccessToken', String(xAccessToken));
+        }
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/API/v1/OpenIMSBackend/DeleteInventoryObject`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<any>('delete', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,
@@ -109,12 +561,12 @@ export class OpenIMSBackendService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public aPIV0OpenIMSBackendGetAuthorizableItemsOfGroupGet(xAccessToken: string, groupName?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<IdLabelDTO>>;
-    public aPIV0OpenIMSBackendGetAuthorizableItemsOfGroupGet(xAccessToken: string, groupName?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<IdLabelDTO>>>;
-    public aPIV0OpenIMSBackendGetAuthorizableItemsOfGroupGet(xAccessToken: string, groupName?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<IdLabelDTO>>>;
-    public aPIV0OpenIMSBackendGetAuthorizableItemsOfGroupGet(xAccessToken: string, groupName?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public aPIV1OpenIMSBackendGetAuthorizableItemsOfGroupGet(xAccessToken: string, groupName?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<IdLabelDTO>>;
+    public aPIV1OpenIMSBackendGetAuthorizableItemsOfGroupGet(xAccessToken: string, groupName?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<IdLabelDTO>>>;
+    public aPIV1OpenIMSBackendGetAuthorizableItemsOfGroupGet(xAccessToken: string, groupName?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<IdLabelDTO>>>;
+    public aPIV1OpenIMSBackendGetAuthorizableItemsOfGroupGet(xAccessToken: string, groupName?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (xAccessToken === null || xAccessToken === undefined) {
-            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV0OpenIMSBackendGetAuthorizableItemsOfGroupGet.');
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1OpenIMSBackendGetAuthorizableItemsOfGroupGet.');
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
@@ -151,7 +603,7 @@ export class OpenIMSBackendService extends BaseService {
             }
         }
 
-        let localVarPath = `/API/v0/OpenIMSBackend/GetAuthorizableItemsOfGroup`;
+        let localVarPath = `/API/v1/OpenIMSBackend/GetAuthorizableItemsOfGroup`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<Array<IdLabelDTO>>('get', `${basePath}${localVarPath}`,
             {
@@ -173,12 +625,12 @@ export class OpenIMSBackendService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public aPIV0OpenIMSBackendGetGeneralSettingsGet(xAccessToken: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<GeneralSettingsDTO>;
-    public aPIV0OpenIMSBackendGetGeneralSettingsGet(xAccessToken: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<GeneralSettingsDTO>>;
-    public aPIV0OpenIMSBackendGetGeneralSettingsGet(xAccessToken: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<GeneralSettingsDTO>>;
-    public aPIV0OpenIMSBackendGetGeneralSettingsGet(xAccessToken: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public aPIV1OpenIMSBackendGetGeneralSettingsGet(xAccessToken: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<GeneralSettingsDTO>;
+    public aPIV1OpenIMSBackendGetGeneralSettingsGet(xAccessToken: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<GeneralSettingsDTO>>;
+    public aPIV1OpenIMSBackendGetGeneralSettingsGet(xAccessToken: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<GeneralSettingsDTO>>;
+    public aPIV1OpenIMSBackendGetGeneralSettingsGet(xAccessToken: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (xAccessToken === null || xAccessToken === undefined) {
-            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV0OpenIMSBackendGetGeneralSettingsGet.');
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1OpenIMSBackendGetGeneralSettingsGet.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -211,9 +663,68 @@ export class OpenIMSBackendService extends BaseService {
             }
         }
 
-        let localVarPath = `/API/v0/OpenIMSBackend/GetGeneralSettings`;
+        let localVarPath = `/API/v1/OpenIMSBackend/GetGeneralSettings`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<GeneralSettingsDTO>('get', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                transferCache: localVarTransferCache,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Returns the complete inventory as a tree. Every logged-in user may do this; the result is not restricted by groups.
+     * @param xAccessToken Access Token
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public aPIV1OpenIMSBackendGetInventoryTreeGet(xAccessToken: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<InventoryTreeNodeDTO>>;
+    public aPIV1OpenIMSBackendGetInventoryTreeGet(xAccessToken: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<InventoryTreeNodeDTO>>>;
+    public aPIV1OpenIMSBackendGetInventoryTreeGet(xAccessToken: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<InventoryTreeNodeDTO>>>;
+    public aPIV1OpenIMSBackendGetInventoryTreeGet(xAccessToken: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (xAccessToken === null || xAccessToken === undefined) {
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1OpenIMSBackendGetInventoryTreeGet.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+        if (xAccessToken !== undefined && xAccessToken !== null) {
+            localVarHeaders = localVarHeaders.set('X-AccessToken', String(xAccessToken));
+        }
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'text/plain',
+            'application/json',
+            'text/json'
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/API/v1/OpenIMSBackend/GetInventoryTree`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<Array<InventoryTreeNodeDTO>>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -234,12 +745,12 @@ export class OpenIMSBackendService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public aPIV0OpenIMSBackendRemoveGroupFromAuthorizableItemPut(xAccessToken: string, groupName?: string, authorizableItemId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public aPIV0OpenIMSBackendRemoveGroupFromAuthorizableItemPut(xAccessToken: string, groupName?: string, authorizableItemId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public aPIV0OpenIMSBackendRemoveGroupFromAuthorizableItemPut(xAccessToken: string, groupName?: string, authorizableItemId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public aPIV0OpenIMSBackendRemoveGroupFromAuthorizableItemPut(xAccessToken: string, groupName?: string, authorizableItemId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public aPIV1OpenIMSBackendRemoveGroupFromAuthorizableItemPut(xAccessToken: string, groupName?: string, authorizableItemId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
+    public aPIV1OpenIMSBackendRemoveGroupFromAuthorizableItemPut(xAccessToken: string, groupName?: string, authorizableItemId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
+    public aPIV1OpenIMSBackendRemoveGroupFromAuthorizableItemPut(xAccessToken: string, groupName?: string, authorizableItemId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public aPIV1OpenIMSBackendRemoveGroupFromAuthorizableItemPut(xAccessToken: string, groupName?: string, authorizableItemId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (xAccessToken === null || xAccessToken === undefined) {
-            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV0OpenIMSBackendRemoveGroupFromAuthorizableItemPut.');
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1OpenIMSBackendRemoveGroupFromAuthorizableItemPut.');
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
@@ -275,7 +786,7 @@ export class OpenIMSBackendService extends BaseService {
             }
         }
 
-        let localVarPath = `/API/v0/OpenIMSBackend/RemoveGroupFromAuthorizableItem`;
+        let localVarPath = `/API/v1/OpenIMSBackend/RemoveGroupFromAuthorizableItem`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<any>('put', `${basePath}${localVarPath}`,
             {
@@ -299,12 +810,12 @@ export class OpenIMSBackendService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public aPIV0OpenIMSBackendSearchInventoryObjectsGet(xAccessToken: string, searchText?: string, types?: Array<string>, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<IdLabelDTO>>;
-    public aPIV0OpenIMSBackendSearchInventoryObjectsGet(xAccessToken: string, searchText?: string, types?: Array<string>, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<IdLabelDTO>>>;
-    public aPIV0OpenIMSBackendSearchInventoryObjectsGet(xAccessToken: string, searchText?: string, types?: Array<string>, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<IdLabelDTO>>>;
-    public aPIV0OpenIMSBackendSearchInventoryObjectsGet(xAccessToken: string, searchText?: string, types?: Array<string>, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public aPIV1OpenIMSBackendSearchInventoryObjectsGet(xAccessToken: string, searchText?: string, types?: Array<string>, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<IdLabelDTO>>;
+    public aPIV1OpenIMSBackendSearchInventoryObjectsGet(xAccessToken: string, searchText?: string, types?: Array<string>, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<IdLabelDTO>>>;
+    public aPIV1OpenIMSBackendSearchInventoryObjectsGet(xAccessToken: string, searchText?: string, types?: Array<string>, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<IdLabelDTO>>>;
+    public aPIV1OpenIMSBackendSearchInventoryObjectsGet(xAccessToken: string, searchText?: string, types?: Array<string>, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (xAccessToken === null || xAccessToken === undefined) {
-            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV0OpenIMSBackendSearchInventoryObjectsGet.');
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1OpenIMSBackendSearchInventoryObjectsGet.');
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
@@ -347,7 +858,7 @@ export class OpenIMSBackendService extends BaseService {
             }
         }
 
-        let localVarPath = `/API/v0/OpenIMSBackend/SearchInventoryObjects`;
+        let localVarPath = `/API/v1/OpenIMSBackend/SearchInventoryObjects`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<Array<IdLabelDTO>>('get', `${basePath}${localVarPath}`,
             {
@@ -370,12 +881,12 @@ export class OpenIMSBackendService extends BaseService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public aPIV0OpenIMSBackendSetGeneralSettingsPut(xAccessToken: string, generalSettingsDTO?: GeneralSettingsDTO, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public aPIV0OpenIMSBackendSetGeneralSettingsPut(xAccessToken: string, generalSettingsDTO?: GeneralSettingsDTO, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public aPIV0OpenIMSBackendSetGeneralSettingsPut(xAccessToken: string, generalSettingsDTO?: GeneralSettingsDTO, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public aPIV0OpenIMSBackendSetGeneralSettingsPut(xAccessToken: string, generalSettingsDTO?: GeneralSettingsDTO, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public aPIV1OpenIMSBackendSetGeneralSettingsPut(xAccessToken: string, generalSettingsDTO?: GeneralSettingsDTO, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
+    public aPIV1OpenIMSBackendSetGeneralSettingsPut(xAccessToken: string, generalSettingsDTO?: GeneralSettingsDTO, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
+    public aPIV1OpenIMSBackendSetGeneralSettingsPut(xAccessToken: string, generalSettingsDTO?: GeneralSettingsDTO, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public aPIV1OpenIMSBackendSetGeneralSettingsPut(xAccessToken: string, generalSettingsDTO?: GeneralSettingsDTO, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (xAccessToken === null || xAccessToken === undefined) {
-            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV0OpenIMSBackendSetGeneralSettingsPut.');
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1OpenIMSBackendSetGeneralSettingsPut.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -416,12 +927,87 @@ export class OpenIMSBackendService extends BaseService {
             }
         }
 
-        let localVarPath = `/API/v0/OpenIMSBackend/SetGeneralSettings`;
+        let localVarPath = `/API/v1/OpenIMSBackend/SetGeneralSettings`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<any>('put', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: generalSettingsDTO,
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                transferCache: localVarTransferCache,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Changes name and description of the given inventory-object. Every logged-in user may do this.
+     * @param xAccessToken Access Token
+     * @param inventoryObjectId The id of the inventory-object.
+     * @param inventoryObjectDataDTO The new name and description.
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public aPIV1OpenIMSBackendUpdateInventoryObjectPut(xAccessToken: string, inventoryObjectId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
+    public aPIV1OpenIMSBackendUpdateInventoryObjectPut(xAccessToken: string, inventoryObjectId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
+    public aPIV1OpenIMSBackendUpdateInventoryObjectPut(xAccessToken: string, inventoryObjectId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public aPIV1OpenIMSBackendUpdateInventoryObjectPut(xAccessToken: string, inventoryObjectId?: string, inventoryObjectDataDTO?: InventoryObjectDataDTO, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (xAccessToken === null || xAccessToken === undefined) {
+            throw new Error('Required parameter xAccessToken was null or undefined when calling aPIV1OpenIMSBackendUpdateInventoryObjectPut.');
+        }
+
+        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>inventoryObjectId, 'inventoryObjectId');
+
+        let localVarHeaders = this.defaultHeaders;
+        if (xAccessToken !== undefined && xAccessToken !== null) {
+            localVarHeaders = localVarHeaders.set('X-AccessToken', String(xAccessToken));
+        }
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json',
+            'text/json',
+            'application/*+json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/API/v1/OpenIMSBackend/UpdateInventoryObject`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<any>('put', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: inventoryObjectDataDTO,
+                params: localVarQueryParameters,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,

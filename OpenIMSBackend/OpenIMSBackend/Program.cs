@@ -98,7 +98,7 @@ namespace OpenIMSBackend.Core
                             @$"^/API/Other/Maintenance/Metrics$",
                             @$"^/API/Other/Maintenance/HealthCheck$",
                         },
-                        MaximalLengthofRequestBodies = 500,
+                        MaximalLengthOfRequestBodies = 500,
                         MaximalLengthOfResponseBodies = 500,
                         RoutesWhereResponseBodyIsNotLogged = new HashSet<string>()
                         {

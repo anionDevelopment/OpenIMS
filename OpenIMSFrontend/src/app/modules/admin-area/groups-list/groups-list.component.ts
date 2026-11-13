@@ -29,7 +29,7 @@ export class GroupsListComponent {
   }
 
   private reloadGroups(): void {
-    this.userService.aPIV0UserControllerGetAllRolesGet(this.storageService.getAccessToken()).subscribe(groups => this.groups = (groups ?? []).sort());
+    this.userService.aPIV1UserControllerGetAllRolesGet(this.storageService.getAccessToken()).subscribe(groups => this.groups = (groups ?? []).sort());
   }
 
   private reloadItemsOfSelectedGroup(): void {
@@ -37,7 +37,7 @@ export class GroupsListComponent {
       this.itemsOfSelectedGroup = [];
       return;
     }
-    this.openIMSBackendService.aPIV0OpenIMSBackendGetAuthorizableItemsOfGroupGet(this.storageService.getAccessToken(), this.selectedGroup).subscribe(items => this.itemsOfSelectedGroup = items ?? []);
+    this.openIMSBackendService.aPIV1OpenIMSBackendGetAuthorizableItemsOfGroupGet(this.storageService.getAccessToken(), this.selectedGroup).subscribe(items => this.itemsOfSelectedGroup = items ?? []);
   }
 
   /** Every action reports a failure the same way, so that a rejected action (for example deleting a group which OpenIMS requires) is visible. */
@@ -56,7 +56,7 @@ export class GroupsListComponent {
 
   onCreateGroup(): void {
     const groupName = this.nameOfNewGroup.trim();
-    this.userService.aPIV0UserControllerCreateGroupPost(this.storageService.getAccessToken(), { value: groupName }).subscribe(this.observer(() => {
+    this.userService.aPIV1UserControllerCreateGroupPost(this.storageService.getAccessToken(), { value: groupName }).subscribe(this.observer(() => {
       this.nameOfNewGroup = '';
       this.reloadGroups();
     }));
@@ -66,7 +66,7 @@ export class GroupsListComponent {
     if (!confirm($localize`:@@groups_delete_confirmation:Delete the group "${group}:groupName:"? Its members lose the access which they have through this group.`)) {
       return;
     }
-    this.userService.aPIV0UserControllerDeleteGroupDelete(this.storageService.getAccessToken(), group).subscribe(this.observer(() => {
+    this.userService.aPIV1UserControllerDeleteGroupDelete(this.storageService.getAccessToken(), group).subscribe(this.observer(() => {
       if (this.selectedGroup === group) {
         this.selectedGroup = null;
         this.reloadItemsOfSelectedGroup();
@@ -76,10 +76,10 @@ export class GroupsListComponent {
   }
 
   onItemAdded(item: IdLabelDTO): void {
-    this.openIMSBackendService.aPIV0OpenIMSBackendAssignGroupToAuthorizableItemPut(this.storageService.getAccessToken(), this.selectedGroup!, item.id!).subscribe(this.observer(() => this.reloadItemsOfSelectedGroup()));
+    this.openIMSBackendService.aPIV1OpenIMSBackendAssignGroupToAuthorizableItemPut(this.storageService.getAccessToken(), this.selectedGroup!, item.id!).subscribe(this.observer(() => this.reloadItemsOfSelectedGroup()));
   }
 
   onItemRemoved(item: IdLabelDTO): void {
-    this.openIMSBackendService.aPIV0OpenIMSBackendRemoveGroupFromAuthorizableItemPut(this.storageService.getAccessToken(), this.selectedGroup!, item.id!).subscribe(this.observer(() => this.reloadItemsOfSelectedGroup()));
+    this.openIMSBackendService.aPIV1OpenIMSBackendRemoveGroupFromAuthorizableItemPut(this.storageService.getAccessToken(), this.selectedGroup!, item.id!).subscribe(this.observer(() => this.reloadItemsOfSelectedGroup()));
   }
 }

@@ -146,6 +146,9 @@ namespace OpenIMSBackend.Core.Services
         /// <summary>Returns the given location with its complete hierarchy.</summary>
         public Location GetLocation(string locationId);
 
+        /// <summary>Returns the complete inventory as a tree: one node per location, each with its complete hierarchy. It is meant for displaying and modeling the inventory in the user-interface.</summary>
+        public IList<InventoryTreeNodeDTO> GetInventoryTree();
+
         /// <summary>
         /// Returns the inventory-objects of the given types whose name contains the given text (ignoring the case),
         /// ordered by name and limited to <see cref="BusinessLogicService.MaximalAmountOfSearchResults"/> results. It

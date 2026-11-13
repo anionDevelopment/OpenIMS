@@ -34,6 +34,86 @@
         <source>Allow the creation of new user-accounts</source>
       </segment>
     </unit>
+    <unit id="groups">
+      <notes>
+        <note category="location">src/app/modules/admin-area/groups-list/groups-list.component.html:3,4</note>
+      </notes>
+      <segment>
+        <source>Groups</source>
+      </segment>
+    </unit>
+    <unit id="groups_name_of_new_group">
+      <notes>
+        <note category="location">src/app/modules/admin-area/groups-list/groups-list.component.html:6,7</note>
+      </notes>
+      <segment>
+        <source>Name of the new group</source>
+      </segment>
+    </unit>
+    <unit id="groups_create">
+      <notes>
+        <note category="location">src/app/modules/admin-area/groups-list/groups-list.component.html:9,11</note>
+      </notes>
+      <segment>
+        <source>Create group</source>
+      </segment>
+    </unit>
+    <unit id="groups_action_failed">
+      <notes>
+        <note category="location">src/app/modules/admin-area/groups-list/groups-list.component.html:12,14</note>
+      </notes>
+      <segment>
+        <source>The action could not be executed.</source>
+      </segment>
+    </unit>
+    <unit id="groups_delete">
+      <notes>
+        <note category="location">src/app/modules/admin-area/groups-list/groups-list.component.html:27,28</note>
+      </notes>
+      <segment>
+        <source>Delete group</source>
+      </segment>
+    </unit>
+    <unit id="groups_items_of_group">
+      <notes>
+        <note category="location">src/app/modules/admin-area/groups-list/groups-list.component.html:37,38</note>
+      </notes>
+      <segment>
+        <source>Objects which the members of &quot;<ph id="0" equiv="INTERPOLATION" disp="{{selectedGroup}}"/>&quot; can view</source>
+      </segment>
+    </unit>
+    <unit id="groups_items_of_group_hint">
+      <notes>
+        <note category="location">src/app/modules/admin-area/groups-list/groups-list.component.html:38,40</note>
+      </notes>
+      <segment>
+        <source>The members can also view everything which is in these objects.</source>
+      </segment>
+    </unit>
+    <unit id="groups_remove_item">
+      <notes>
+        <note category="location">src/app/modules/admin-area/groups-list/groups-list.component.html:43,44</note>
+      </notes>
+      <segment>
+        <source>Remove object</source>
+      </segment>
+    </unit>
+    <unit id="groups_no_items">
+      <notes>
+        <note category="location">src/app/modules/admin-area/groups-list/groups-list.component.html:48,50</note>
+      </notes>
+      <segment>
+        <source>No objects assigned.</source>
+      </segment>
+    </unit>
+    <unit id="groups_delete_confirmation">
+      <notes>
+        <note category="location">src/app/modules/admin-area/groups-list/groups-list.component.ts:66</note>
+      </notes>
+      <segment>
+        <source>Delete the group &quot;<ph id="0" equiv="groupName" disp="group"/>&quot;? Its members lose the access which they have through this group.</source>
+      </segment>
+    </unit>
     <unit id="admin_user_placeholder">
       <notes>
         <note category="location">src/app/modules/admin-area/user/user.component.html:2,3</note>
@@ -120,6 +200,174 @@
       </notes>
       <segment>
         <source>Login failed. Please check username and password.</source>
+      </segment>
+    </unit>
+    <unit id="inventory_object_selector_label">
+      <notes>
+        <note category="location">src/app/modules/shared-components/inventory-object-selector/inventory-object-selector.component.html:2,3</note>
+      </notes>
+      <segment>
+        <source>Search an object</source>
+      </segment>
+    </unit>
+    <unit id="inventory_object_selector_no_result">
+      <notes>
+        <note category="location">src/app/modules/shared-components/inventory-object-selector/inventory-object-selector.component.html:8,11</note>
+      </notes>
+      <segment>
+        <source>No matching object found</source>
+      </segment>
+    </unit>
+    <unit id="inventory_object_name">
+      <notes>
+        <note category="location">src/app/modules/user-area/inventory-object-dialog/inventory-object-dialog.component.html:4,5</note>
+      </notes>
+      <segment>
+        <source>Name</source>
+      </segment>
+    </unit>
+    <unit id="inventory_object_description">
+      <notes>
+        <note category="location">src/app/modules/user-area/inventory-object-dialog/inventory-object-dialog.component.html:8,9</note>
+      </notes>
+      <segment>
+        <source>Description</source>
+      </segment>
+    </unit>
+    <unit id="inventory_object_cancel">
+      <notes>
+        <note category="location">src/app/modules/user-area/inventory-object-dialog/inventory-object-dialog.component.html:13,14</note>
+      </notes>
+      <segment>
+        <source>Cancel</source>
+      </segment>
+    </unit>
+    <unit id="inventory_object_save">
+      <notes>
+        <note category="location">src/app/modules/user-area/inventory-object-dialog/inventory-object-dialog.component.html:14,16</note>
+      </notes>
+      <segment>
+        <source>Save</source>
+      </segment>
+    </unit>
+    <unit id="inventory_create_location">
+      <notes>
+        <note category="location">src/app/modules/user-area/inventory/inventory.component.html:6,9</note>
+      </notes>
+      <segment>
+        <source>Create location</source>
+      </segment>
+    </unit>
+    <unit id="inventory_action_failed">
+      <notes>
+        <note category="location">src/app/modules/user-area/inventory/inventory.component.html:10,12</note>
+      </notes>
+      <segment>
+        <source>The action could not be executed.</source>
+      </segment>
+    </unit>
+    <unit id="inventory_empty">
+      <notes>
+        <note category="location">src/app/modules/user-area/inventory/inventory.component.html:13,15</note>
+      </notes>
+      <segment>
+        <source>The inventory is empty. Create a location to start.</source>
+      </segment>
+    </unit>
+    <unit id="inventory_toggle">
+      <notes>
+        <note category="location">src/app/modules/user-area/inventory/inventory.component.html:21,22</note>
+      </notes>
+      <segment>
+        <source>Expand or collapse</source>
+      </segment>
+    </unit>
+    <unit id="inventory_edit_button">
+      <notes>
+        <note category="location">src/app/modules/user-area/inventory/inventory.component.html:41</note>
+      </notes>
+      <segment>
+        <source>Edit</source>
+      </segment>
+    </unit>
+    <unit id="inventory_delete_button">
+      <notes>
+        <note category="location">src/app/modules/user-area/inventory/inventory.component.html:44</note>
+      </notes>
+      <segment>
+        <source>Delete</source>
+      </segment>
+    </unit>
+    <unit id="inventory_type_location">
+      <notes>
+        <note category="location">src/app/modules/user-area/inventory/inventory.component.ts:66</note>
+      </notes>
+      <segment>
+        <source>Location</source>
+      </segment>
+    </unit>
+    <unit id="inventory_type_building">
+      <notes>
+        <note category="location">src/app/modules/user-area/inventory/inventory.component.ts:67</note>
+      </notes>
+      <segment>
+        <source>Building</source>
+      </segment>
+    </unit>
+    <unit id="inventory_type_area">
+      <notes>
+        <note category="location">src/app/modules/user-area/inventory/inventory.component.ts:68</note>
+      </notes>
+      <segment>
+        <source>Area</source>
+      </segment>
+    </unit>
+    <unit id="inventory_type_container">
+      <notes>
+        <note category="location">src/app/modules/user-area/inventory/inventory.component.ts:69</note>
+      </notes>
+      <segment>
+        <source>Container</source>
+      </segment>
+    </unit>
+    <unit id="inventory_type_item">
+      <notes>
+        <note category="location">src/app/modules/user-area/inventory/inventory.component.ts:70</note>
+      </notes>
+      <segment>
+        <source>Item</source>
+      </segment>
+    </unit>
+    <unit id="inventory_create_location_title">
+      <notes>
+        <note category="location">src/app/modules/user-area/inventory/inventory.component.ts:85</note>
+      </notes>
+      <segment>
+        <source>Create location</source>
+      </segment>
+    </unit>
+    <unit id="inventory_create_child_title">
+      <notes>
+        <note category="location">src/app/modules/user-area/inventory/inventory.component.ts:89</note>
+      </notes>
+      <segment>
+        <source>Create <ph id="0" equiv="type" disp="this.getLabelOfType(type)"/> in &quot;<ph id="1" equiv="parentName" disp="parent.name"/>&quot;</source>
+      </segment>
+    </unit>
+    <unit id="inventory_edit_title">
+      <notes>
+        <note category="location">src/app/modules/user-area/inventory/inventory.component.ts:94</note>
+      </notes>
+      <segment>
+        <source>Edit &quot;<ph id="0" equiv="name" disp="node.name"/>&quot;</source>
+      </segment>
+    </unit>
+    <unit id="inventory_delete_confirmation">
+      <notes>
+        <note category="location">src/app/modules/user-area/inventory/inventory.component.ts:99</note>
+      </notes>
+      <segment>
+        <source>Delete &quot;<ph id="0" equiv="name" disp="node.name"/>&quot;? Only an object which contains nothing can be deleted.</source>
       </segment>
     </unit>
     <unit id="user_menu_label">

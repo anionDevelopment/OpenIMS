@@ -49,7 +49,7 @@ export class InventoryObjectSelectorComponent {
   }
 
   private search(searchText: string): Observable<IdLabelDTO[]> {
-    return this.openIMSBackendService.aPIV0OpenIMSBackendSearchInventoryObjectsGet(this.storageService.getAccessToken(), searchText, this.types);
+    return this.openIMSBackendService.aPIV1OpenIMSBackendSearchInventoryObjectsGet(this.storageService.getAccessToken(), searchText, this.types);
   }
 
   displayLabel(entry: IdLabelDTO | string | null): string {

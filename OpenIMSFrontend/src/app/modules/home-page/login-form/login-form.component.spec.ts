@@ -19,12 +19,12 @@ import { StorageService } from '../../../services/storage.service';
 describe('LoginFormComponent', () => {
   let component: LoginFormComponent;
   let fixture: ComponentFixture<LoginFormComponent>;
-  let userServiceMock: { aPIV0UserControllerLoginPut: ReturnType<typeof vi.fn> };
+  let userServiceMock: { aPIV1UserControllerLoginPut: ReturnType<typeof vi.fn> };
   let storageServiceMock: { setAccessToken: ReturnType<typeof vi.fn> };
   let routerMock: { navigate: ReturnType<typeof vi.fn> };
 
   beforeEach(async () => {
-    userServiceMock = { aPIV0UserControllerLoginPut: vi.fn() };
+    userServiceMock = { aPIV1UserControllerLoginPut: vi.fn() };
     storageServiceMock = { setAccessToken: vi.fn() };
     routerMock = { navigate: vi.fn() };
 
@@ -63,14 +63,14 @@ describe('LoginFormComponent', () => {
 
   it('stores the access-token and navigates to the dashboard on a successful login', () => {
     // arrange
-    userServiceMock.aPIV0UserControllerLoginPut.mockReturnValue(of({ value: 'the-access-token' }));
+    userServiceMock.aPIV1UserControllerLoginPut.mockReturnValue(of({ value: 'the-access-token' }));
     component.form.setValue({ username: 'alice', password: 'pa55w0rd' });
 
     // act
     component.login();
 
     // assert
-    expect(userServiceMock.aPIV0UserControllerLoginPut).toHaveBeenCalledWith('alice', 'pa55w0rd');
+    expect(userServiceMock.aPIV1UserControllerLoginPut).toHaveBeenCalledWith('alice', 'pa55w0rd');
     expect(storageServiceMock.setAccessToken).toHaveBeenCalledWith('the-access-token');
     expect(routerMock.navigate).toHaveBeenCalledWith(['user', 'dashboard']);
     expect(component.loginFailed).toBe(false);
@@ -78,7 +78,7 @@ describe('LoginFormComponent', () => {
 
   it('shows a hint and does not navigate when the credentials were rejected', () => {
     // arrange
-    userServiceMock.aPIV0UserControllerLoginPut.mockReturnValue(throwError(() => ({ status: 401 })));
+    userServiceMock.aPIV1UserControllerLoginPut.mockReturnValue(throwError(() => ({ status: 401 })));
     component.form.setValue({ username: 'alice', password: 'wrong-password' });
 
     // act
